@@ -1,0 +1,594 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>2.2 Pathfinding 2D - Programació en Xarxa i Intel·ligència Artificial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/my.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#22-pathfinding-2d" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-header__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació en Xarxa i Intel·ligència Artificial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.2 Pathfinding 2D
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-nav__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    Programació en Xarxa i Intel·ligència Artificial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programació en xarxa i intel·ligència artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    U02.  IA i aprenentatge automàtic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            U02.  IA i aprenentatge automàtic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.1. Introducció al pathfinding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2.2 Pathfinding 2D
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2.2 Pathfinding 2D
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-projecte" class="md-nav__link">
+    Configuració del projecte
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afegir-component-de-pathfinding" class="md-nav__link">
+    Afegir component de pathfinding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afegir-components-de-pathfinding-als-fantasmes" class="md-nav__link">
+    Afegir components de pathfinding als fantasmes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programacio-de-la-ia-per-codi" class="md-nav__link">
+    Programació de la IA per codi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-projecte" class="md-nav__link">
+    Configuració del projecte
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afegir-component-de-pathfinding" class="md-nav__link">
+    Afegir component de pathfinding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afegir-components-de-pathfinding-als-fantasmes" class="md-nav__link">
+    Afegir components de pathfinding als fantasmes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programacio-de-la-ia-per-codi" class="md-nav__link">
+    Programació de la IA per codi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="22-pathfinding-2d">2.2 Pathfinding 2D</h1>
+<p>En aquesta secció, explorarem els conceptes bàsics del pathfinding en un entorn 2D, treballant amb un videojoc clàssic.</p>
+<h2 id="configuracio-del-projecte">Configuració del projecte</h2>
+<p>Descarregueu el projecte base des del següent enllaç: <a href="https://github.com/ricardoprofe/pacman_ia_base_PXIA_25_26/tree/main">Enllaç al projecte base</a>.</p>
+<p>Un cop descarregat, obriu-lo amb Unity. Veureu que és el clàssic Pacman.</p>
+<p><img alt="Pacman" src="../images/pacman1.png" /></p>
+<p>Ara, descarregueu el paquet del A* Pathfinding Project des del següent enllaç:</p>
+<ul>
+<li><a href="https://arongranberg.com/astar/download">A* Pathfinding Project</a></li>
+</ul>
+<p>Descarregueu la versió gratuïta.</p>
+<p>Importeu el paquet descarregat al vostre projecte de Unity, fent doble click o arrossegant-lo a la finestra de Unity dins de la carpeta "Packages". Deixeu totes les opcions per defecte seleccionades i feu click a "Import".</p>
+<p><img alt="Importar paquet" src="../images/import1.png" /></p>
+<h2 id="afegir-component-de-pathfinding">Afegir component de pathfinding</h2>
+<p>Per afegir el component de pathfinding al vostre escenari, primer creem un <em>GameObject</em> buit. Nomeneu-lo <strong>"A*"</strong>.</p>
+<p>Seleccioneu el <em>GameObject</em> <strong>"A*"</strong> i feu click a "Add Component". Cerqueu "Pathfinder" i afegiu-lo.</p>
+<p>Dins del component <strong>Pathfinder</strong>, feu click a <em>Graphs -&gt; Add New Graph -&gt; Grid Graph</em>.</p>
+<p>Dins de les propietats del <strong>Grid Graph</strong>, ajusteu els següents paràmetres:</p>
+<ul>
+<li>Grid Graph 2D: activat</li>
+</ul>
+<p>Ara apareixerà una graella sobre el vostre escenari. Ajusteu la mida i la posició de la graella perquè cobreixi tota l'àrea on voleu que els personatges es puguen moure, usant l'eina <em>scale</em>.</p>
+<p>Configureu també  les següents opcions:</p>
+<ul>
+<li><em>Connections</em>: Four. Això farà que cada quadrat de la graella estigui connectat només amb els seus 4 veïns (dalt, baix, esquerra, dreta).</li>
+<li><em>Use 2D Physics</em>: activat. Això farà que el pathfinding utilitzi la física 2D per detectar obstacles.</li>
+<li><em>Collider type</em>: <em>Sphere</em>.</li>
+<li><em>Diameter</em>: 0.5. Això defineix la mida de l'esfera que s'utilitzarà per detectar col·lisions amb obstacles.</li>
+<li><em>Obstacle layer mask</em>: Obstacle. Això farà que el pathfinding considere com a obstacles tots els objectes que estiguin en la capa "Obstacle".</li>
+<li><em>Height testing</em>: desactivat. Això desactiva la comprovació d'altura, ja que estem treballant en 2D.</li>
+</ul>
+<p><img alt="A* Configuració" src="../images/a_config1.png" /></p>
+<p>Un cop fet això, feu click a "Scan" per generar el graf de navegació. Us haurà generat una graella blava sobre l'escenari amb els possibles camins.</p>
+<p><img alt="Graella de navegació" src="../images/pacman2.png" /></p>
+<h2 id="afegir-components-de-pathfinding-als-fantasmes">Afegir components de pathfinding als fantasmes</h2>
+<p>Selecioneu el fantasma roig (Ghost_blinky) i feu click a "Add Component". Cerqueu "AIPath (2D,3D)" i afegiu-lo. Veureu q    ue us ha afegit dos components nous: <strong>AIPath</strong> i <strong>Seeker</strong>.</p>
+<p>En el component <strong>AIPath</strong>, configureu els següents paràmetres:</p>
+<ul>
+<li><em>Orientation</em>: <em>Y-axis forward (for 2D games)</em>.</li>
+<li>Max Speed: 7.</li>
+<li>Enable rotation: desactivat.</li>
+</ul>
+<p>Ara afegiu un component més: feu click a "Add Component", cerqueu "AI Destination Setter" i afegiu-lo. Afegiu el gameobject Pacman al camp <strong>Target</strong> del component.</p>
+<p>Si poseu en marxa el joc, veureu que el fantasma comença a perseguir el Pacman utilitzant el pathfinding.</p>
+<p>N'hi ha 3 paràmetres més que podem ajustar:</p>
+<ul>
+<li><em>Slowdown distance</em>: distància a la qual el fantasma comença a frenar quan s'acosta a la seva destinació: 0.</li>
+<li><em>Pick next waypoint distance</em>: distància a la qual el fantasma considera que ha arribat a un punt de pas i comença a moure's cap al següent: 2.</li>
+<li><em>End reached distance</em>: distància a la qual el fantasma considera que ha arribat a la seva destinació final: 2.5.</li>
+</ul>
+<p><img alt="Configuració fantasma" src="../images/a_config2.png" /></p>
+<p>Si poseu en marxa el joc, veureu que el fantasma persegueix el Pacman utilitzant el pathfinding. Fixeu-vos en el gizmo que marca el camí que està seguint el fantasma.</p>
+<p><img alt="Fantasma perseguint" src="../images/pacman3.png" /></p>
+<h2 id="programacio-de-la-ia-per-codi">Programació de la IA per codi</h2>
+<p>En aquest apartat, programarem la IA del fantasma per codi, en lloc d'utilitzar el component <strong>AI Destination Setter</strong>.</p>
+<p>Fes una còpia del fantasma roig (Ghost_blinky) i desactiva l'anterior. Treballarem en la còpia. Elimina els components <strong>AI Destination Setter</strong> i <strong>AIPath</strong>. Obre l'script <strong>GhostController.cs</strong>.</p>
+<p>Actualitza també la referència al fantasma dins del script <strong>GameController.cs</strong> per a que apunte a la còpia que acabes de crear.</p>
+<p><img alt="Game Manager" src="../images/game_manager01.png" /></p>
+<p>Abans de començar a treballar amb una nova biblioteca, és una bona idea consultar la seua documentació oficial. Pots consultar la documentació de l'A* Pathfinding Project ací: <a href="https://arongranberg.com/astar/docs/">Documentació A* Pathfinding Project</a>.</p>
+<p>Les classes més importants són:</p>
+<ul>
+<li><a href="https://arongranberg.com/astar/docs/seeker.html">Seeker</a>: s'encarrega de calcular els camins.</li>
+<li><a href="https://arongranberg.com/astar/docs/path.html">Path</a>: representa un camí calculat. Podem accedir als punts del camí a través de la propietat <code>vectorPath</code>.</li>
+</ul>
+<p>El primer serà importar el <em>namespace</em> <strong><code>Pathfinding</code></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Pathfinding</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>Després crearem propietats públiques per a l'objectiu (Pacman) i per al pròxim punt de cerca (distància a partir de la qual cercarà el pròxim punt):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3f</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>També necessitarem propietats privades per al camí (<code>Path</code>), per al punt actual del camí i un booleà per saber si hem arribat al final del camí. També necessitarem una referència al component <code>Seeker</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="n">Seeker</span><span class="w"> </span><span class="n">seeker</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reachedEndOfPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>A continuació, inicialitzarem la referència al <code>Seeker</code> dins del mètode <code>Start()</code> i començarem a cercar el camí cap a l'objectiu usant el mètode <code>StartPath()</code> on indiquem la posició inicial, la posició final i la funció que es cridarà quan s'acabe de calcular el camí:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">seeker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Seeker</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">seeker</span><span class="p">.</span><span class="n">StartPath</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">OnPathComplete</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Ara creem el mètode <code>OnPathComplete()</code> que s'encarregarà de rebre el camí calculat i assignar-lo a la propietat <code>path</code>. També reiniciarem l'índex del punt actual del camí:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPathComplete</span><span class="p">(</span><span class="n">Path</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// The path is now calculated!</span>
+
+<span class="w">    </span><span class="c1">//Check for errors</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">error</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="s">&quot;Error calculating path: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">errorLog</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// Store the calculated path</span>
+<span class="w">    </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset waypoint index</span>
+
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En l'inspector de Unity, assigna el Pacman a la propietat <strong>Target</strong> del fantasma. Posa en marxa el joc i comprova que es dibuixa el camí des del fantasma fins al Pacman. Però de moment aquest no s'actualitza.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>
