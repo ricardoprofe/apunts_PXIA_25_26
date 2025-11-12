@@ -7,10 +7,14 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+        <meta name="author" content="Ricardo Sánchez">
+      
       
       
         <link rel="prev" href="../2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/">
       
+      
+        <link rel="next" href="../2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>2.2 Pathfinding 2D - Programació en Xarxa i Intel·ligència Artificial</title>
+        <title>Unitat 2.2. Pathfinding 2D - Programació en Xarxa i Intel·ligència Artificial</title>
       
     
     
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.2 Pathfinding 2D
+              Unitat 2.2. Pathfinding 2D
             
           </span>
         </div>
@@ -284,7 +288,7 @@
           
   
   <span class="md-ellipsis">
-    2.2 Pathfinding 2D
+    Unitat 2.2. Pathfinding 2D
   </span>
   
 
@@ -295,7 +299,7 @@
         
   
   <span class="md-ellipsis">
-    2.2 Pathfinding 2D
+    Unitat 2.2. Pathfinding 2D
   </span>
   
 
@@ -344,10 +348,44 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#afegint-punts-de-cerca" class="md-nav__link">
+    Afegint punts de cerca
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    Tasques
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.3. Pathfinding 2D amb físiques
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -410,6 +448,20 @@
         <li class="md-nav__item">
   <a href="#programacio-de-la-ia-per-codi" class="md-nav__link">
     Programació de la IA per codi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afegint-punts-de-cerca" class="md-nav__link">
+    Afegint punts de cerca
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    Tasques
   </a>
   
 </li>
@@ -483,39 +535,148 @@
 <p>Si poseu en marxa el joc, veureu que el fantasma persegueix el Pacman utilitzant el pathfinding. Fixeu-vos en el gizmo que marca el camí que està seguint el fantasma.</p>
 <p><img alt="Fantasma perseguint" src="../images/pacman3.png" /></p>
 <h2 id="programacio-de-la-ia-per-codi">Programació de la IA per codi</h2>
-<p>En aquest apartat, programarem la IA del fantasma per codi, en lloc d'utilitzar el component <strong>AI Destination Setter</strong>.</p>
-<p>Fes una còpia del fantasma roig (Ghost_blinky) i desactiva l'anterior. Treballarem en la còpia. Elimina els components <strong>AI Destination Setter</strong> i <strong>AIPath</strong>. Obre l'script <strong>GhostController.cs</strong>.</p>
-<p>Actualitza també la referència al fantasma dins del script <strong>GameController.cs</strong> per a que apunte a la còpia que acabes de crear.</p>
-<p><img alt="Game Manager" src="../images/game_manager01.png" /></p>
-<p>Abans de començar a treballar amb una nova biblioteca, és una bona idea consultar la seua documentació oficial. Pots consultar la documentació de l'A* Pathfinding Project ací: <a href="https://arongranberg.com/astar/docs/">Documentació A* Pathfinding Project</a>.</p>
+<p>En aquest apartat, programarem la IA del fantasma per codi.</p>
+<p>Obre l'script <strong>GhostMovement.cs</strong>.</p>
+<p>Abans de començar a treballar amb una nova biblioteca, és una bona idea consultar la seua documentació oficial. Pots consultar la documentació de l'A* Pathfinding Project ací: <a href="https://arongranberg.com/astar/documentation/4_2_17_c030646a/">Documentació A* Pathfinding Project</a>.</p>
 <p>Les classes més importants són:</p>
 <ul>
-<li><a href="https://arongranberg.com/astar/docs/seeker.html">Seeker</a>: s'encarrega de calcular els camins.</li>
-<li><a href="https://arongranberg.com/astar/docs/path.html">Path</a>: representa un camí calculat. Podem accedir als punts del camí a través de la propietat <code>vectorPath</code>.</li>
+<li><a href="https://arongranberg.com/astar/documentation/4_2_17_c030646a/seeker.html">Seeker</a>: s'encarrega de calcular els camins.</li>
+<li><a href="https://arongranberg.com/astar/documentation/4_2_17_c030646a/path.html">Path</a>: representa un camí calculat. Podem accedir als punts del camí a través de la propietat <code>vectorPath</code>.</li>
+<li><a href="https://arongranberg.com/astar/documentation/4_2_17_c030646a/iastarai.html">IAstarAI</a>: interfície que defineix les funcionalitats bàsiques d'una entitat que utilitza el pathfinding.</li>
+<li><a href="https://arongranberg.com/astar/documentation/4_2_17_c030646a/aidestinationsetter.html">AIDestinationSetter</a>: component que estableix la destinació d'una entitat.</li>
 </ul>
 <p>El primer serà importar el <em>namespace</em> <strong><code>Pathfinding</code></strong>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Pathfinding</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
-<p>Després crearem propietats públiques per a l'objectiu (Pacman) i per al pròxim punt de cerca (distància a partir de la qual cercarà el pròxim punt):</p>
+<p>Després crearem 2 propietats públiques per al Pacman i per a un punt de cera (target) que serà el pròxim punt del camí:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">pacman</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
-<p>També necessitarem propietats privades per al camí (<code>Path</code>), per al punt actual del camí i un booleà per saber si hem arribat al final del camí. També necessitarem una referència al component <code>Seeker</code>:</p>
+<p>target serà el primer objectiu del fantasma; quan arribe a ell, el següent objectiu serà el Pacman.</p>
+<p>També necessitem referències als components <code>IAstarAI</code> i <code>AIDestinationSetter</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">IAstarAI</span><span class="w"> </span><span class="n">ai</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="n">AIDestinationSetter</span><span class="w"> </span><span class="n">destinationSetter</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><code>ai</code> ens proporciona les funcionalitats bàsiques per a moure el fantasma, mentre que <code>destinationSetter</code> ens permetrà establir la destinació del fantasma.</p>
+<p>El següent pas serà inicialitzar aquestes referències dins del mètode <code>Start()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ai</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">IAstarAI</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ai</span><span class="p">.</span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">destinationSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">AIDestinationSetter</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ResetState</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Finalment, dins del mètode <code>Update()</code>, comprovararem si el fantasma ha arribat al seu objectiu actual. Si és així, actualitzarem l'objectiu a Pacman:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
-<span class="k">private</span><span class="w"> </span><span class="n">Seeker</span><span class="w"> </span><span class="n">seeker</span><span class="p">;</span>
-<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
-<span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reachedEndOfPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ai</span><span class="p">.</span><span class="n">reachedDestination</span><span class="p">){</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Reached&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pacman</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>A continuació, inicialitzarem la referència al <code>Seeker</code> dins del mètode <code>Start()</code> i començarem a cercar el camí cap a l'objectiu usant el mètode <code>StartPath()</code> on indiquem la posició inicial, la posició final i la funció que es cridarà quan s'acabe de calcular el camí:</p>
+<p>Ara hem de crear un GameObject buit dins de l'escena i anomenar-lo <code>target01</code>. Col·loca'l en el cantó superior dreta de l'escena, en un lloc accessible per al fantasma. Després, assigna aquest GameObject a la propietat <strong>Target</strong> del script <strong>GhostMovement</strong> del fantasma roig. Assigna també el Pacman a la propietat <strong>Pacman</strong>.</p>
+<p>Posa en marxa el joc i comprova que el fantasma es mou cap al punt de cerca primer i després comença a perseguir el Pacman.</p>
+<h2 id="afegint-punts-de-cerca">Afegint punts de cerca</h2>
+<p>Ara afegirem més punts de cerca perquè el fantasma no vage directament al Pacman després d'arribar al primer punt.
+La forma més eficient de fer-ho és crear un array de punts de cerca i anar actualitzant l'objectiu a mesura que el fantasma arribe a cada punt.</p>
+<p>Actualitza les propietats públiques per a que siguen un array de punts de cerca. També necessitem una propietat privada per a portar el compte de l'índex del punt de cerca actual:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">seeker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Seeker</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="n">seeker</span><span class="p">.</span><span class="n">StartPath</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">OnPathComplete</span><span class="p">);</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="p">[]</span><span class="w"> </span><span class="n">targets</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentTargetIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
-<p>Ara creem el mètode <code>OnPathComplete()</code> que s'encarregarà de rebre el camí calculat i assignar-lo a la propietat <code>path</code>. També reiniciarem l'índex del punt actual del camí:</p>
+<p>En l'inspector, crea un Empty Object anomenat <code>BlinkyTargets</code> i mou dins el <code>target_01</code>. Duplica el target per a crear 3 punts de cerca més (<code>target_02</code>, <code>target_03</code> i <code>target_04</code>). Col·loca'ls en diferents llocs de l'escena tal com s'indica en la imatge:</p>
+<p><img alt="Targets" src="../images/targets01.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pots afegir als targets un component sprite renderer per a veure'ls millor en l'escena. Recorda desactivar aquest component abans de posar en marxa el joc.</p>
+</div>
+<p>Assigna els 4 targets a l'array <strong>Targets</strong> del script <strong>GhostMovement</strong> del fantasma roig.</p>
+<p>Com estem treballant amb un array de punts de cerca, necessitem canviar la inicialització del primer objectiu dins del mètode <code>Start()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ai</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">IAstarAI</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ai</span><span class="p">.</span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targets</span><span class="p">[</span><span class="n">currentTargetIndex</span><span class="p">].</span><span class="n">position</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">destinationSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">AIDestinationSetter</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targets</span><span class="p">[</span><span class="n">currentTargetIndex</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">ResetState</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Per a actualitzar l'objectiu quan el fantasma arribe a un punt de cerca, actualitza el mètode <code>Update()</code> de la següent manera:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ai</span><span class="p">.</span><span class="n">reachedDestination</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">currentTargetIndex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">targets</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">){</span>
+<span class="w">            </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pacman</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">currentTargetIndex</span><span class="o">++</span><span class="p">;</span>
+<span class="w">            </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targets</span><span class="p">[</span><span class="n">currentTargetIndex</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En aquest mètode, comprovem si el fantasma ha arribat a la seva destinació actual. Si és així, verifiquem si l'índex del punt de cerca actual és l'últim de l'array. Si ho és, ha arribat al final de l'array i establim l'objectiu a Pacman. Si no ho és, incrementem l'índex del punt de cerca i actualitzem l'objectiu al següent punt de cerca de l'array.</p>
+<p>Posa en marxa el joc i comprova que el fantasma es mou pels punts de cerca abans de perseguir el Pacman.</p>
+<p>Per finalitzar, hem de fer que el destí s'actualitze després de la mort del Pacman, quan es torne a iniciar el joc. Creem el mètode <code>ResetDestination()</code> que s'encarregarà de reiniciar l'índex del punt de cerca i establir el destí al primer punt de cerca:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ResetDestination</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">currentTargetIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targets</span><span class="p">[</span><span class="n">currentTargetIndex</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Aquest mètode es cridarà des del script <strong>Ghost.cs</strong>, dins del mètode <code>ResetState()</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -530,23 +691,62 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPathComplete</span><span class="p">(</span><span class="n">Path</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// The path is now calculated!</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">//Ghost.cs</span>
 
-<span class="w">    </span><span class="c1">//Check for errors</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">error</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="s">&quot;Error calculating path: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">errorLog</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ResetState</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">gameObject</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">movement</span><span class="p">.</span><span class="n">ResetState</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">frightened</span><span class="p">.</span><span class="n">Disable</span><span class="p">();</span>
+<span class="w">    </span><span class="n">chase</span><span class="p">.</span><span class="n">Disable</span><span class="p">();</span>
+<span class="w">    </span><span class="n">scatter</span><span class="p">.</span><span class="n">Enable</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">movement</span><span class="p">.</span><span class="n">ResetDestination</span><span class="p">();</span><span class="w"> </span><span class="c1">//Afegeix esta línia</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">home</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">initialBehavior</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">home</span><span class="p">.</span><span class="n">Disable</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// Store the calculated path</span>
-<span class="w">    </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset waypoint index</span>
-
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initialBehavior</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">initialBehavior</span><span class="p">.</span><span class="n">Enable</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>En l'inspector de Unity, assigna el Pacman a la propietat <strong>Target</strong> del fantasma. Posa en marxa el joc i comprova que es dibuixa el camí des del fantasma fins al Pacman. Però de moment aquest no s'actualitza.</p>
+<p>Per últim, comprova que, en l'script GameManager.cs, dins del mètode <code>ResetState()</code>, es crida el mètode <code>ResetState()</code> del Pacman abans que el dels fantasmes, per evitar errors:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">//GameManager.cs</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ResetState</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">pacman</span><span class="p">.</span><span class="n">ResetState</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ghosts</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ghosts</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ResetState</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Ja està! Posa en marxa el joc i comprova que, després de la mort del Pacman, els fantasma roig torna a moure's pels punts de cerca abans de perseguir-lo de nou.</p>
+<h2 id="tasques">Tasques</h2>
+<ul>
+<li>Crea la lògica per a que quan el Pacman menge una pastilla de poder, el fantasma roig fugi d'ell.</li>
+<li>Crea els punts de cerca i la lògica de moviment per als altres fantasmes.</li>
+<li>Assigna a cada fantasma un comportament diferent, segons la IA original del joc: <a href="https://www.3djuegos.com/juegos/pac-man-world-rally/noticias/el-secreto-de-pacman-y-su-efectiva-inteligencia-artificial-un-caso-de-exito-200522-1877">IA del Pacman</a></li>
+</ul>
 
 
 

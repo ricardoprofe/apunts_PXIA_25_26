@@ -11,10 +11,8 @@
       
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../2.2.%20Pathfinding%202D/">
       
-      
-        <link rel="next" href="../2.2.%20Pathfinding%202D/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Unitat 2.1. Introducció al pathfinding - Programació en Xarxa i Intel·ligència Artificial</title>
+        <title>Unitat 2.3. Pathfinding 2D amb físiques - Programació en Xarxa i Intel·ligència Artificial</title>
       
     
     
@@ -75,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#21-introduccio-al-pathfinding" class="md-skip">
+        <a href="#23-pathfinding-2d-amb-fisiques" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Unitat 2.1. Introducció al pathfinding
+              Unitat 2.3. Pathfinding 2D amb físiques
             
           </span>
         </div>
@@ -253,29 +251,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Unitat 2.1. Introducció al pathfinding
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -284,54 +262,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#algorismes-de-pathfinding" class="md-nav__link">
-    Algorismes de pathfinding
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grafs-i-nodes" class="md-nav__link">
-    Grafs i nodes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#algorisme-de-dijkstra" class="md-nav__link">
-    Algorisme de Dijkstra
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#algorisme-a" class="md-nav__link">
-    Algorisme A*
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -361,9 +291,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Unitat 2.3. Pathfinding 2D amb físiques
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -372,6 +322,54 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-projecte" class="md-nav__link">
+    Configuració del projecte
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afegir-component-de-pathfinding" class="md-nav__link">
+    Afegir component de pathfinding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d-amb-fisiques" class="md-nav__link">
+    2D amb físiques
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    Tasques
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -411,29 +409,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorismes-de-pathfinding" class="md-nav__link">
-    Algorismes de pathfinding
+  <a href="#configuracio-del-projecte" class="md-nav__link">
+    Configuració del projecte
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#grafs-i-nodes" class="md-nav__link">
-    Grafs i nodes
+  <a href="#afegir-component-de-pathfinding" class="md-nav__link">
+    Afegir component de pathfinding
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#algorisme-de-dijkstra" class="md-nav__link">
-    Algorisme de Dijkstra
+  <a href="#2d-amb-fisiques" class="md-nav__link">
+    2D amb físiques
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#algorisme-a" class="md-nav__link">
-    Algorisme A*
+  <a href="#tasques" class="md-nav__link">
+    Tasques
   </a>
   
 </li>
@@ -453,55 +451,83 @@
                   
 
 
-<h1 id="21-introduccio-al-pathfinding">2.1 Introducció al pathfinding</h1>
-<p>El <strong>pathfinding</strong> és una tècnica utilitzada en intel·ligència artificial per a determinar la millor ruta entre dos punts en un entorn. Aquesta tècnica és especialment útil en videojocs, on els personatges controlats per l'ordinador (NPCs) necessiten moure's de manera eficient i realista dins del món del joc.</p>
-<h2 id="algorismes-de-pathfinding">Algorismes de pathfinding</h2>
-<p>Hi ha diversos algorismes de pathfinding, però els més comuns són:</p>
-<ol>
-<li><strong>Dijkstra</strong>: Un algorisme que troba el camí més curt en un graf, encara que pot ser menys eficient que A* en entorns grans.</li>
-<li><strong>Algorisme A*</strong>: Un dels algorismes més populars i eficients. Utilitza una heurística per guiar la cerca de camins.</li>
-</ol>
-<h2 id="grafs-i-nodes">Grafs i nodes</h2>
-<p>Un graf és una estructura de dades composta per <strong>nodes</strong> (o vèrtexs) i <strong>arestes</strong> (o connexions) que representen les relacions entre els nodes. En el context del pathfinding, els nodes representen <strong>punts en l'espai</strong>, i les arestes representen les <strong>connexions</strong> possibles entre aquests punts.</p>
-<p><img alt="Grafs" src="../images/grafo%20simple.jpg" /></p>
-<p>Existeixen diferents tipus de grafs:</p>
+<h1 id="23-pathfinding-2d-amb-fisiques">2.3 Pathfinding 2D amb físiques</h1>
+<p>En aquesta secció, implementarem el pathfinding 2D utilitzant el paquet A* Pathfinding Project vist anteriorment, però aquesta vegada aprofitant les capacitats de les físiques 2D de Unity per a la detecció d'obstacles.</p>
+<h2 id="configuracio-del-projecte">Configuració del projecte</h2>
+<h2 id="afegir-component-de-pathfinding">Afegir component de pathfinding</h2>
+<p>Per afegir el component de pathfinding al vostre escenari, primer creem un <em>GameObject</em> buit. Nomeneu-lo <strong>"A*"</strong>.</p>
+<p>Seleccioneu el <em>GameObject</em> <strong>"A*"</strong> i feu click a "Add Component". Cerqueu "Pathfinder" i afegiu-lo.</p>
+<p>Dins del component <strong>Pathfinder</strong>, feu click a <em>Graphs -&gt; Add New Graph -&gt; Grid Graph</em>.</p>
+<p>Dins de les propietats del <strong>Grid Graph</strong>, ajusteu els següents paràmetres:</p>
 <ul>
-<li><strong>Grafs etiquetats</strong>: On les arestes tenen pesos associats que representen el cost de moure's entre nodes.</li>
-<li><strong>Grafs dirigits</strong>: On les connexions entre nodes tenen una direcció específica.</li>
+<li>Grid Graph 2D: activat</li>
 </ul>
-<p><img alt="Graf etiquetat" src="../images/grafo_etiquetado.png" /></p>
-<p><img alt="Graf dirigit" src="../images/grafo_dir.webp" /></p>
-<p>Un graf pot estar etiquetat i ser dirigit al mateix temps:</p>
-<p><img alt="Graf dirigit i etiquetat" src="../images/grafo_etiquetado_dir.png" /></p>
-<p>Una aplicació comuna de la teòria de grafs és el càlcul de rutes en sistemes de navegació, on els nodes representen interseccions i les arestes representen carreteres amb diferents costos (distàncies, temps de viatge, etc.).</p>
-<p><img alt="Graf de rutes" src="../images/map.jpg" /></p>
-<p><img alt="Rutes videojoc" src="../images/map_game.webp" /></p>
-<h2 id="algorisme-de-dijkstra">Algorisme de Dijkstra</h2>
-<p>L'<strong>algorisme de Dijkstra</strong> és un algorisme de cerca de camins que troba el camí més curt des d'un node d'origen fins a tots els altres nodes en un graf amb pesos no negatius. Funciona assignant un cost acumulat a cada node i actualitzant aquest cost a mesura que es troben camins més curts.</p>
-<p>L'algorisme segueix aquests passos bàsics:</p>
-<ol>
-<li>Inicialitza tots els nodes amb un cost infinit, excepte el node d'origen que s'inicialitza amb un cost de zero.</li>
-<li>Marca tots els nodes com a no visitats.</li>
-<li>Selecciona el node no visitat amb el cost més baix com a node actual.</li>
-<li>Actualitza els costos dels nodes veïns del node actual.</li>
-<li>Marca el node actual com a visitat.</li>
-<li>Repeteix els passos 3-5 fins que tots els nodes hagin estat visitats.</li>
-</ol>
-<p><img alt="Dijkstra" src="../images/djistra.gif" /></p>
-<h2 id="algorisme-a">Algorisme A*</h2>
-<p>L'<strong>algorisme A*</strong> és una extensió de l'algorisme de Dijkstra que utilitza una heurística per guiar la cerca de camins. Aquesta heurística estima el cost restant des del node actual fins al node de destinació, permetent a l'algorisme prioritzar els nodes que semblen més prometedors.</p>
-<p>En el cas del pathfinding en un entorn 2D, una heurística comuna és la distància entre dos punts.</p>
-<p>L'algorisme A* segueix aquests passos bàsics:</p>
-<ol>
-<li>Inicialitza tots els nodes amb un cost infinit, excepte el node d'origen que s'inicialitza amb un cost de zero.</li>
-<li>Marca tots els nodes com a no visitats.</li>
-<li>Selecciona el node no visitat amb el cost total més baix (cost acumulat + <strong>heurística</strong>) com a node actual.</li>
-<li>Actualitza els costos dels nodes veïns del node actual.</li>
-<li>Marca el node actual com a visitat.</li>
-<li>Repeteix els passos 3-5 fins que s'arribe al node de destinació o no hi hagi més nodes per explorar.</li>
-</ol>
-<p><strong>Comparació entre Dijkstra i A*:</strong></p>
-<p><img alt="Dijkstra vs A*" src="../images/dijstra_astar.gif" /></p>
+<p>Ara apareixerà una graella sobre el vostre escenari. Ajusteu la mida i la posició de la graella perquè cobreixi tota l'àrea on voleu que els personatges es puguen moure, usant l'eina <em>scale</em>.</p>
+<p>Configureu també  les següents opcions:</p>
+<ul>
+<li><em>Connections</em>: Four. Això farà que cada quadrat de la graella estigui connectat només amb els seus 4 veïns (dalt, baix, esquerra, dreta).</li>
+<li><em>Use 2D Physics</em>: activat. Això farà que el pathfinding utilitzi la física 2D per detectar obstacles.</li>
+<li><em>Collider type</em>: <em>Sphere</em>.</li>
+<li><em>Diameter</em>: 0.5. Això defineix la mida de l'esfera que s'utilitzarà per detectar col·lisions amb obstacles.</li>
+<li><em>Obstacle layer mask</em>: Obstacle. Això farà que el pathfinding considere com a obstacles tots els objectes que estiguin en la capa "Obstacle".</li>
+<li><em>Height testing</em>: desactivat. Això desactiva la comprovació d'altura, ja que estem treballant en 2D.</li>
+</ul>
+<p><img alt="A* Configuració" src="../images/a_config1.png" /></p>
+<p>Un cop fet això, feu click a "Scan" per generar el graf de navegació. Us haurà generat una graella blava sobre l'escenari amb els possibles camins.</p>
+<p><img alt="Graella de navegació" src="../images/pacman2.png" /></p>
+<h2 id="2d-amb-fisiques">2D amb físiques</h2>
+<p>Després crearem propietats públiques per a l'objectiu (Pacman) i per al pròxim punt de cerca (distància a partir de la qual cercarà el pròxim punt):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3f</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>També necessitarem propietats privades per al camí (<code>Path</code>), per al punt actual del camí i un booleà per saber si hem arribat al final del camí. També necessitarem una referència al component <code>Seeker</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="n">Seeker</span><span class="w"> </span><span class="n">seeker</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reachedEndOfPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>A continuació, inicialitzarem la referència al <code>Seeker</code> dins del mètode <code>Start()</code> i començarem a cercar el camí cap a l'objectiu usant el mètode <code>StartPath()</code> on indiquem la posició inicial, la posició final i la funció que es cridarà quan s'acabe de calcular el camí:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">seeker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Seeker</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">seeker</span><span class="p">.</span><span class="n">StartPath</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">OnPathComplete</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Ara creem el mètode <code>OnPathComplete()</code> que s'encarregarà de rebre el camí calculat i assignar-lo a la propietat <code>path</code>. També reiniciarem l'índex del punt actual del camí:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPathComplete</span><span class="p">(</span><span class="n">Path</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// The path is now calculated!</span>
+
+<span class="w">    </span><span class="c1">//Check for errors</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">error</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="s">&quot;Error calculating path: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">errorLog</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// Store the calculated path</span>
+<span class="w">    </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset waypoint index</span>
+
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En l'inspector de Unity, assigna el Pacman a la propietat <strong>Target</strong> del fantasma. Posa en marxa el joc i comprova que es dibuixa el camí des del fantasma fins al Pacman. Però de moment aquest no s'actualitza.</p>
+<h2 id="tasques">Tasques</h2>
 
 
 
