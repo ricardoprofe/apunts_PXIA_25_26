@@ -346,6 +346,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#seguiment-sense-pathfinding" class="md-nav__link">
+    Seguiment sense pathfinding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#afegir-component-de-pathfinding" class="md-nav__link">
     Afegir component de pathfinding
   </a>
@@ -353,8 +360,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2d-amb-fisiques" class="md-nav__link">
-    2D amb físiques
+  <a href="#pathfinding-2d-amb-fisiques" class="md-nav__link">
+    Pathfinding 2D amb físiques
   </a>
   
 </li>
@@ -416,6 +423,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#seguiment-sense-pathfinding" class="md-nav__link">
+    Seguiment sense pathfinding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#afegir-component-de-pathfinding" class="md-nav__link">
     Afegir component de pathfinding
   </a>
@@ -423,8 +437,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2d-amb-fisiques" class="md-nav__link">
-    2D amb físiques
+  <a href="#pathfinding-2d-amb-fisiques" class="md-nav__link">
+    Pathfinding 2D amb físiques
   </a>
   
 </li>
@@ -454,8 +468,32 @@
 <h1 id="23-pathfinding-2d-amb-fisiques">2.3 Pathfinding 2D amb físiques</h1>
 <p>En aquesta secció, implementarem el pathfinding 2D utilitzant el paquet A* Pathfinding Project vist anteriorment, però aquesta vegada aprofitant les capacitats de les físiques 2D de Unity per a la detecció d'obstacles.</p>
 <h2 id="configuracio-del-projecte">Configuració del projecte</h2>
+<p>Descarregaa el projecte de Github des de <a href="https://github.com/ricardoprofe/pathfinding_fisiques_base_PXIA_25_26">aquest enllaç</a> i obriu-lo amb Unity.</p>
+<p><img alt="Adventure girl" src="../images/girl01.png" /></p>
+<p>Al igual que en el projecte anterior, hem d'instalar el paquet <strong>A* Pathfinding Project</strong>. Si no ho heu fet encara, seguiu els passos descrits en la secció anterior per a instal·lar-lo.</p>
+<h2 id="seguiment-sense-pathfinding">Seguiment sense pathfinding</h2>
+<p>Sense utilitzar algorismes de pathfinding, podem fer que un objecte seguisca a un altre.</p>
+<p>Obre l'script Enemigo.cs i afegeix la següent propietat pública per a l'objectiu (<em>Personaje</em>):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">player</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>En el mètode <code>Update()</code>, afegeix el següent codi per a moure l'enemic cap al jugador:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Vector3</span><span class="w"> </span><span class="n">targetPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">player</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">targetPosition</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w">    </span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>El mètode <code>Vector3.Lerp()</code> permet interpolar entre dues posicions. En aquest cas, mou l'enemic cap a la posició del jugador a una velocitat determinada per la variable <code>speed</code>.</p>
+</div>
+<p>Posa en marxa el joc. Veurà que, encara que l'enemic va cap al jugador, no pot evitar els obstacles i es queda atrapat.</p>
 <h2 id="afegir-component-de-pathfinding">Afegir component de pathfinding</h2>
-<p>Per afegir el component de pathfinding al vostre escenari, primer creem un <em>GameObject</em> buit. Nomeneu-lo <strong>"A*"</strong>.</p>
+<p>Anem a afegir el component de pathfinding al nostre escenari igual que en el cas anterior.Primer creem un <em>GameObject</em> buit. Nomeneu-lo <strong>"A*"</strong>.</p>
 <p>Seleccioneu el <em>GameObject</em> <strong>"A*"</strong> i feu click a "Add Component". Cerqueu "Pathfinder" i afegiu-lo.</p>
 <p>Dins del component <strong>Pathfinder</strong>, feu click a <em>Graphs -&gt; Add New Graph -&gt; Grid Graph</em>.</p>
 <p>Dins de les propietats del <strong>Grid Graph</strong>, ajusteu els següents paràmetres:</p>
@@ -465,35 +503,63 @@
 <p>Ara apareixerà una graella sobre el vostre escenari. Ajusteu la mida i la posició de la graella perquè cobreixi tota l'àrea on voleu que els personatges es puguen moure, usant l'eina <em>scale</em>.</p>
 <p>Configureu també  les següents opcions:</p>
 <ul>
-<li><em>Connections</em>: Four. Això farà que cada quadrat de la graella estigui connectat només amb els seus 4 veïns (dalt, baix, esquerra, dreta).</li>
+<li><em>Connections</em>: Eight. Això farà que cada quadrat de la graella estigui connectat només amb els seus 8 veïns (dalt, baix, esquerra, dreta i les 4 diagonals).</li>
+<li><em>Cut Corners</em>: activat. Això permetrà que els personatges puguin moure's en diagonal al voltant dels obstacles.</li>
 <li><em>Use 2D Physics</em>: activat. Això farà que el pathfinding utilitzi la física 2D per detectar obstacles.</li>
 <li><em>Collider type</em>: <em>Sphere</em>.</li>
-<li><em>Diameter</em>: 0.5. Això defineix la mida de l'esfera que s'utilitzarà per detectar col·lisions amb obstacles.</li>
-<li><em>Obstacle layer mask</em>: Obstacle. Això farà que el pathfinding considere com a obstacles tots els objectes que estiguin en la capa "Obstacle".</li>
+<li><em>Diameter</em>: 1.5. Això defineix la mida de l'esfera que s'utilitzarà per detectar col·lisions amb obstacles.</li>
 <li><em>Height testing</em>: desactivat. Això desactiva la comprovació d'altura, ja que estem treballant en 2D.</li>
 </ul>
-<p><img alt="A* Configuració" src="../images/a_config1.png" /></p>
 <p>Un cop fet això, feu click a "Scan" per generar el graf de navegació. Us haurà generat una graella blava sobre l'escenari amb els possibles camins.</p>
-<p><img alt="Graella de navegació" src="../images/pacman2.png" /></p>
-<h2 id="2d-amb-fisiques">2D amb físiques</h2>
-<p>Després crearem propietats públiques per a l'objectiu (Pacman) i per al pròxim punt de cerca (distància a partir de la qual cercarà el pròxim punt):</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3f</span><span class="p">;</span>
+<p>Ara, seleccioneu el pardal i afegiu-li els components <strong>Seeker</strong> i <strong>AIPath</strong>.</p>
+<p>En el component <strong>AIPath</strong>, configureu els següents paràmetres:</p>
+<ul>
+<li><em>Orientation</em>: <em>Y-axis forward (for 2D games)</em>.</li>
+<li><em>Max Speed</em>: 5.</li>
+<li><em>Enable rotation</em>: desactivat.</li>
+</ul>
+<p>Ara afegiu el component "AI Destination Setter" i afegiu-lo. Afegiu el gameobject Pacman al camp <strong>Target</strong> del component.</p>
+<p>En l'script <code>Enemigo.cs</code>, elimineu el codi del mètode <code>Update()</code> que havíem afegit anteriorment per a seguir al jugador. Poseu en marxa el joc. Veureu que el comportament del pardal és el mateix que abans. Això és perquè no hem indicat la capa d'obstacles als components de pathfinding.</p>
+<p>Seleccioneu les plataformes, els murs i el sòl i assegureu-vos que tenen el <em>Layer</em> assignat a <strong>Obstacle</strong>. Ara en el component <strong>Grid Graph</strong>, configureu els següents paràmetres addicionals:</p>
+<ul>
+<li><em>Obstacle layer mask</em>: Obstacle.</li>
+</ul>
+<p>Torna a fer click a "Scan" per actualitzar el graf de navegació amb la nova capa d'obstacles. Ajusta la graella si cal. Comprova que el pardal ara evita els obstacles quan segueix al personatge.</p>
+<p><img alt="Graella de navegació" src="../images/girl02.png" /></p>
+<h2 id="pathfinding-2d-amb-fisiques">Pathfinding 2D amb físiques</h2>
+<p>En aquest apartat usarem el nostre propi codi per a implementar el pathfinding 2D amb físiques.</p>
+<p>Fes una còpia de l'enemic i desactiva l'Enemic original. Treballarem amb la còpia. Deslliga la còpia del prefab original: selecciona la còpia i fes click dret -&gt; <em>Unpack Prefab Completely</em>.</p>
+<p>En la còpia, elimina els components <strong>AIPath</strong> i <strong>AI Destination Setter</strong>, però mentén el component <strong>Seeker</strong>.</p>
+<p>Posa en marxa el joc. El pardal hauria de estar estàtic perquè no té cap codi per a moure's ni gravetat.</p>
+<p>Obre l'script <code>Enemigo.cs</code> i afegeix la següent línia a la part superior per a incloure el namespace del paquet A* Pathfinding Project:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Pathfinding</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
-<p>També necessitarem propietats privades per al camí (<code>Path</code>), per al punt actual del camí i un booleà per saber si hem arribat al final del camí. També necessitarem una referència al component <code>Seeker</code>:</p>
+<p>Després crearem una propietat pública per al pròxim punt de cerca (distància a partir de la qual cercarà el pròxim punt), dins de la classe <code>Enemigo</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3f</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>També necessitarem propietats privades per al camí (<code>Path</code>), per al punt actual del camí i un booleà per saber si hem arribat al final del camí. També necessitarem una referència al component <code>Seeker</code> i al Rigidbody2D per a moure l'enemic:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">Rigidbody2D</span><span class="w"> </span><span class="n">rb</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="n">Seeker</span><span class="w"> </span><span class="n">seeker</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reachedEndOfPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
 <p>A continuació, inicialitzarem la referència al <code>Seeker</code> dins del mètode <code>Start()</code> i començarem a cercar el camí cap a l'objectiu usant el mètode <code>StartPath()</code> on indiquem la posició inicial, la posició final i la funció que es cridarà quan s'acabe de calcular el camí:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">seeker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Seeker</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="n">seeker</span><span class="p">.</span><span class="n">StartPath</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">OnPathComplete</span><span class="p">);</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody2D</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">seeker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Seeker</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">seeker</span><span class="p">.</span><span class="n">StartPath</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">player</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">OnPathComplete</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>Ara creem el mètode <code>OnPathComplete()</code> que s'encarregarà de rebre el camí calculat i assignar-lo a la propietat <code>path</code>. També reiniciarem l'índex del punt actual del camí:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -526,8 +592,96 @@
 
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>En l'inspector de Unity, assigna el Pacman a la propietat <strong>Target</strong> del fantasma. Posa en marxa el joc i comprova que es dibuixa el camí des del fantasma fins al Pacman. Però de moment aquest no s'actualitza.</p>
+<p>En l'inspector de Unity, assigna el Personatge a la propietat <strong>Target</strong> del pardal. Assigna també una <strong>velocitat</strong> de 100. Posa en marxa el joc i comprova que es dibuixa el camí des del pardal fins al personatge. Però de moment aquest no s'actualitza.</p>
+<p>Per a que es moga, hem de treballar en el mètode <code>Update()</code>. Afegim el següent codi per a moure l'enemic al llarg del camí:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>SI no tenim un camí, no seguim endavant.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">vectorPath</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">reachedEndOfPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">reachedEndOfPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Aquest codi serveix per a comprovar si hem arribat al final del camí. Si l'índex del punt actual és major o igual que el nombre de punts en el camí, hem arribat al final. Marquem <code>reachedEndOfPath</code> com a cert i sortim del mètode.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="n">Vector2</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">Vector2</span><span class="p">)</span><span class="n">path</span><span class="p">.</span><span class="n">vectorPath</span><span class="p">[</span><span class="n">currentWaypoint</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rb</span><span class="p">.</span><span class="n">position</span><span class="p">).</span><span class="n">normalized</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Vector2</span><span class="w"> </span><span class="n">force</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">speed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">rb</span><span class="p">.</span><span class="n">AddForce</span><span class="p">(</span><span class="n">force</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Ací estem calculant la direcció cap al següent punt del camí i aplicant una força al Rigidbody2D per a moure'l en aquesta direcció.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector2</span><span class="p">.</span><span class="n">Distance</span><span class="p">(</span><span class="n">rb</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">vectorPath</span><span class="p">[</span><span class="n">currentWaypoint</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">currentWaypoint</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Per últim, comprovem si hem arribat prou a prop del punt actual del camí. Si la distància és menor que <code>nextWaypointDistance</code>, incrementem l'índex del punt actual per a passar al següent punt del camí.</p>
+<p>Al posar en marxa el joc, el pardal hauria de moure's cap al personatge. Però no frena ni actualitza el camí quan canvia la posició del personatge. Per a solicionar el tema del moviment, canvia el valor de <strong>Linear Damping</strong> del Rigidbody2D a 1 o 2. Prova també amb diversos valors per a la velocitat.</p>
+<p>Per a actualitzar el camí, hem de cridar el mètode <code>StartPath()</code> del <code>seeker</code> periòdicament. Hem de crear una nova funció amb eixe propòsit:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">void</span><span class="w"> </span><span class="nf">UpdatePath</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">seeker</span><span class="p">.</span><span class="n">IsDone</span><span class="p">())</span>
+<span class="w">        </span><span class="n">seeker</span><span class="p">.</span><span class="n">StartPath</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">player</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">OnPathComplete</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Aquesta és la línia de codi que teniem en el mètode <code>Start()</code> (junt amb una comprovació del <code>seeker</code>), però ara la cridarem periòdicament. Per a fer-ho, podem utilitzar el mètode <code>InvokeRepeating()</code> dins del mètode <code>Start()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">InvokeRepeating</span><span class="p">(</span><span class="s">&quot;UpdatePath&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">0f</span><span class="p">,</span><span class="w"> </span><span class="m">0.2f</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Aquesta línia cridarà el mètode <code>UpdatePath()</code> cada 0.2 segons a partir del moment 0.</p>
+<p>Ara el pardal hauria de seguir al personatge evitant els obstacles i actualitzant el camí quan el personatge es mou.</p>
+<p>L'últim pas és assegurar-nos que el pardal gira en la direcció del moviment. Per a això, afegim el següent codi al final del mètode <code>Update()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rb</span><span class="p">.</span><span class="n">linearVelocityX</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="m">0.01f</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">rb</span><span class="p">.</span><span class="n">linearVelocityX</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.01f</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Aquest codi gira el pardal cap a l'esquerra o cap a la dreta segons la velocitat en l'eix X del Rigidbody2D.</p>
 <h2 id="tasques">Tasques</h2>
+<ul>
+<li>Afegir mode patrulla: Fes que l'enemic patrulle per una sèrie de punts (2 o 3) quan el personatge no està a prop. Quan el personatge s'acoste prou, que comence a seguir-lo utilitzant el pathfinding.</li>
+<li>Fes que l'enemic estiga en mode patrulla entre 2 punts. Quan passe un cert temps, canvieu el punt de destinació a un altre àrea de patrulla. Si en algun moment el personatge s'acosta prou, que l'enemic comence a seguir-lo. Si el personatge s'allunya, que l'enemic torne al mode patrulla.</li>
+</ul>
 
 
 
