@@ -14,6 +14,8 @@
         <link rel="prev" href="../2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/">
       
       
+        <link rel="next" href="../2.5.%20Machine%20Learning/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
@@ -450,6 +452,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.5.%20Machine%20Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.5. Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -589,7 +611,7 @@
 <p>Comprova també que tens el paquet <strong>AI Navigation</strong> instal·lat (<em>Window &gt; Package Manager &gt; Unity Registry &gt; AI Navigation</em>).</p>
 <p>Crearem un escenari bàsic amb un pla com a terra i algunes estructures, com a pilars i parets, utilitzant ProBuilder.</p>
 <p>Afegeix a les parets i pilars un <em>Rigidbody</em> i marca l'opció <em>Is Kinematic</em> per a que no siguen afectats per la física.</p>
-<p>Crea també 2 <em>empty objects</em> i anomena'ls <strong>Agent</strong> i <strong>Player</strong>. Crea dins de cada un cilindre. Afegeix un component <em>Rigidbody</em> a l'Agent i al Player. Congela la rotació del Player en X i Z.</p>
+<p>Crea també 2 <em>empty objects</em> i anomena'ls <strong>Agent</strong> i <strong>Player</strong>. Crea dins de cada una càpsula. Afegeix un component <em>Rigidbody</em> a l'Agent i al Player. Congela la rotació del Player en X i Z.</p>
 <p><img alt="Escenari bàsic" src="../images/nav_scenario.png" /></p>
 <p>Afegeix un script de moviment bàsic al <em>Player</em> per a que es puga moure per l'escenari. Anomena'l <code>PlayerMovement.cs</code> i afegeix el següent codi:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -732,7 +754,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>Agrega les referències d'<em>Input Actions</em> des de l'inspector, utilitzant les accions de moviment i salt que estan creades per defecte.</p>
+<p>Afegeix al player una component <strong>CharacterController</strong> i afegeix les referències d'<em>Input Actions</em> des de l'inspector, utilitzant les accions de moviment i salt que estan creades per defecte.</p>
 <h2 id="configuracio-de-la-navegacio">Configuració de la navegació</h2>
 <p>En la jerarquia, afegeix un element <strong>NavMesh Surface</strong> (<em>AI &gt; NavMesh Surface</em>). Això crearà un component que ens permetrà generar el NavMesh per a l'escena.</p>
 <p><img alt="NavMesh Surface" src="../images/nav_mesh01.png" /></p>
@@ -876,7 +898,7 @@
 
 <span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MovingWall</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPosition</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPosition</span><span class="p">;</span>
 <span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">endPosition</span><span class="p">;</span>
 <span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10f</span><span class="p">;</span>
 
@@ -909,7 +931,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>Assigna les posicions inicial i final des de l'inspector i ajusta la velocitat. Polsa Bake en el NavMesh Surface i posa en marxa l'escena. Veuràs que la paret es mou horitzontalment, però la malla de navegació no es veu afectada i l'agent pot travessar la paret.</p>
+<p>Assigna la posició final des de l'inspector i ajusta la velocitat. Polsa Bake en el NavMesh Surface i posa en marxa l'escena. Veuràs que la paret es mou horitzontalment, però la malla de navegació no es veu afectada i l'agent pot travessar la paret.</p>
 <p>Afegeix a la paret mòbil un component <strong>NavMesh Obstacle</strong>. Marca l'opció <em>Carve</em> per a que l'obstacle afecte al NavMesh i desmarca l'opció <em>Carve Only Stationary</em> per a que la malla es modifique segons el moviment de l'obstacle.</p>
 <p>Comprova que ara la malla de navegació s'actualitza en temps real segons la posició de la paret mòbil, i l'agent evita la paret quan es mou.</p>
 <h2 id="agents-voladors">Agents voladors</h2>
