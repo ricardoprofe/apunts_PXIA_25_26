@@ -17,11 +17,8 @@
         <link rel="next" href="../2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/">
       
       
-        
-      
-      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
     
     
       
@@ -29,10 +26,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
       
       
 
@@ -53,10 +50,11 @@
     
       <link rel="stylesheet" href="../../stylesheets/my.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -69,6 +67,7 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="amber">
   
+    
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -99,7 +98,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -122,35 +121,32 @@
     
     
     
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -161,7 +157,6 @@
     </div>
   </div>
 </div>
-      
     
     
   </nav>
@@ -204,21 +199,13 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Programació en xarxa i intel·ligència artificial
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -233,9 +220,6 @@
     
   
   
-  
-    
-    
     
     
     
@@ -243,22 +227,16 @@
       
         
         
+        
+        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
-          
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
-  
   <span class="md-ellipsis">
-    
-  
     U02.  IA i aprenentatge automàtic
-  
-
-    
   </span>
-  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -267,11 +245,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    U02.  IA i aprenentatge automàtic
-  
-
+            U02.  IA i aprenentatge automàtic
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -280,21 +254,13 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Unitat 2.1. Introducció al pathfinding
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -305,7 +271,6 @@
             
               
                 
-  
   
   
   
@@ -313,16 +278,9 @@
       <a href="../2.2.%20Pathfinding%202D/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Unitat 2.2. Pathfinding 2D
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -336,7 +294,6 @@
   
   
     
-  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -350,16 +307,9 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
-  
   <span class="md-ellipsis">
-    
-  
     Unitat 2.3. Pathfinding 2D amb físiques
-  
-
-    
   </span>
-  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -368,16 +318,9 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Unitat 2.3. Pathfinding 2D amb físiques
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -399,55 +342,35 @@
       
         <li class="md-nav__item">
   <a href="#configuracio-del-projecte" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuració del projecte
-      
-    </span>
+    Configuració del projecte
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#seguiment-sense-pathfinding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Seguiment sense pathfinding
-      
-    </span>
+    Seguiment sense pathfinding
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#afegir-component-de-pathfinding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Afegir component de pathfinding
-      
-    </span>
+    Afegir component de pathfinding
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#pathfinding-2d-amb-fisiques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pathfinding 2D amb físiques
-      
-    </span>
+    Pathfinding 2D amb físiques
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#tasques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tasques
-      
-    </span>
+    Tasques
   </a>
   
 </li>
@@ -466,21 +389,13 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Unitat 2.4. Pathfinding 3D amb AI Navigation
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -494,21 +409,13 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../2.5.%20Machine%20Learning/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Unitat 2.5. Machine Learning
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -552,55 +459,35 @@
       
         <li class="md-nav__item">
   <a href="#configuracio-del-projecte" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuració del projecte
-      
-    </span>
+    Configuració del projecte
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#seguiment-sense-pathfinding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Seguiment sense pathfinding
-      
-    </span>
+    Seguiment sense pathfinding
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#afegir-component-de-pathfinding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Afegir component de pathfinding
-      
-    </span>
+    Afegir component de pathfinding
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#pathfinding-2d-amb-fisiques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pathfinding 2D amb físiques
-      
-    </span>
+    Pathfinding 2D amb físiques
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#tasques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tasques
-      
-    </span>
+    Tasques
   </a>
   
 </li>
@@ -615,11 +502,9 @@
           
           
             <div class="md-content" data-md-component="content">
-              
               <article class="md-content__inner md-typeset">
                 
                   
-
 
 
 <h1 id="23-pathfinding-2d-amb-fisiques">2.3 Pathfinding 2D amb físiques</h1>
@@ -692,7 +577,7 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Pathfinding</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
 <p>Després crearem una propietat pública per al pròxim punt de cerca (distància a partir de la qual cercarà el pròxim punt), dins de la classe <code>Enemigo</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3f</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nextWaypointDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3f</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
 <p>També necessitarem propietats privades per al camí (<code>Path</code>), per al punt actual del camí i un booleà per saber si hem arribat al final del camí. També necessitarem una referència al component <code>Seeker</code> i al Rigidbody2D per a moure l'enemic:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -702,7 +587,7 @@
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">Rigidbody2D</span><span class="w"> </span><span class="n">rb</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="n">Seeker</span><span class="w"> </span><span class="n">seeker</span><span class="p">;</span>
-<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reachedEndOfPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
 <p>A continuació, inicialitzarem la referència al <code>Seeker</code> dins del mètode <code>Start()</code> i començarem a cercar el camí cap a l'objectiu usant el mètode <code>StartPath()</code> on indiquem la posició inicial, la posició final i la funció que es cridarà quan s'acabe de calcular el camí:</p>
@@ -745,7 +630,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// Store the calculated path</span>
-<span class="w">    </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset waypoint index</span>
+<span class="w">    </span><span class="n">currentWaypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset waypoint index</span>
 
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
@@ -812,7 +697,7 @@
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>Aquesta és la línia de codi que teniem en el mètode <code>Start()</code> (junt amb una comprovació del <code>seeker</code>), però ara la cridarem periòdicament. Per a fer-ho, podem utilitzar el mètode <code>InvokeRepeating()</code> dins del mètode <code>Start()</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">InvokeRepeating</span><span class="p">(</span><span class="s">&quot;UpdatePath&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">);</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">InvokeRepeating</span><span class="p">(</span><span class="s">&quot;UpdatePath&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">0f</span><span class="p">,</span><span class="w"> </span><span class="m">0.2f</span><span class="p">);</span>
 </code></pre></div></td></tr></table></div>
 <p>Aquesta línia cridarà el mètode <code>UpdatePath()</code> cada 0.2 segons a partir del moment 0.</p>
 <p>Ara el pardal hauria de seguir al personatge evitant els obstacles i actualitzant el camí quan el personatge es mou.</p>
@@ -824,13 +709,13 @@
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rb</span><span class="p">.</span><span class="n">linearVelocityX</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="mf">0.01f</span><span class="p">)</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rb</span><span class="p">.</span><span class="n">linearVelocityX</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="m">0.01f</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">rb</span><span class="p">.</span><span class="n">linearVelocityX</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.01f</span><span class="p">)</span>
+<span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">rb</span><span class="p">.</span><span class="n">linearVelocityX</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.01f</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>Aquest codi gira el pardal cap a l'esquerra o cap a la dreta segons la velocitat en l'eix X del Rigidbody2D.</p>
@@ -844,22 +729,11 @@
 
 
 
-
-
-  
-  
-
-
-
-
-
-
                 
               </article>
             </div>
           
           
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -887,14 +761,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-    
-    
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
       
     
   </body>
