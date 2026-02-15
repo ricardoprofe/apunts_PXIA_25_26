@@ -14,6 +14,8 @@
         <link rel="prev" href="../2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/">
       
       
+        <link rel="next" href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.1.%20Conceptes%20de%20Xarxes/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
@@ -511,6 +513,69 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.1.%20Conceptes%20de%20Xarxes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -788,7 +853,7 @@ pip install onnx==1.15.0
 <span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">moveX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actions</span><span class="p">.</span><span class="n">ContinuousActions</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
 <span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">moveZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actions</span><span class="p">.</span><span class="n">ContinuousActions</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
 <span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">movementSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5f</span><span class="p">;</span>
-<span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">localPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="n">moveX</span><span class="p">,</span><span class="w"> </span><span class="m">0f</span><span class="p">,</span><span class="w"> </span><span class="n">moveZ</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">movementSpeed</span><span class="p">;</span>
+<span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">localPosition</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="n">moveX</span><span class="p">,</span><span class="w"> </span><span class="m">0f</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">moveZ</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">movementSpeed</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>També hem d'importar el namespace <code>Unity.MLAgents.Actuators</code> per a poder utilitzar <code>ActionBuffers</code>:</p>

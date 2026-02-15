@@ -1,0 +1,772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ricardo Sánchez">
+      
+      
+      
+        <link rel="prev" href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.5.%20Machine%20Learning/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs - Programació en Xarxa i Intel·ligència Artificial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/my.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#31-conceptes-basics-de-xarxes-aplicats-a-videojocs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-header__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació en Xarxa i Intel·ligència Artificial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-nav__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    Programació en Xarxa i Intel·ligència Artificial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programació en xarxa i intel·ligència artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    U02.  IA i aprenentatge automàtic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            U02.  IA i aprenentatge automàtic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.1. Introducció al pathfinding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.2.%20Pathfinding%202D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.2. Pathfinding 2D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.3. Pathfinding 2D amb físiques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.4. Pathfinding 3D amb AI Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.5.%20Machine%20Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.5. Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#models-de-xarxes" class="md-nav__link">
+    Models de xarxes
+  </a>
+  
+    <nav class="md-nav" aria-label="Models de xarxes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xarxes-client-servidor" class="md-nav__link">
+    Xarxes client-servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xarxes-peer-to-peer-p2p" class="md-nav__link">
+    Xarxes peer-to-peer (P2P)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativa-dels-models" class="md-nav__link">
+    Comparativa dels models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models-dautoritat" class="md-nav__link">
+    Models d'autoritat
+  </a>
+  
+    <nav class="md-nav" aria-label="Models d'autoritat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-dautoritat-de-servidor" class="md-nav__link">
+    Model d'autoritat de servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-dautoritat-distribuida" class="md-nav__link">
+    Model d'autoritat distribuïda
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models-de-propietat" class="md-nav__link">
+    Models de propietat
+  </a>
+  
+    <nav class="md-nav" aria-label="Models de propietat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#propietat-en-una-topologia-client-servidor" class="md-nav__link">
+    Propietat en una topologia client-servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propietat-en-autoritat-distribuida" class="md-nav__link">
+    Propietat en autoritat distribuïda
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#models-de-xarxes" class="md-nav__link">
+    Models de xarxes
+  </a>
+  
+    <nav class="md-nav" aria-label="Models de xarxes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xarxes-client-servidor" class="md-nav__link">
+    Xarxes client-servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xarxes-peer-to-peer-p2p" class="md-nav__link">
+    Xarxes peer-to-peer (P2P)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativa-dels-models" class="md-nav__link">
+    Comparativa dels models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models-dautoritat" class="md-nav__link">
+    Models d'autoritat
+  </a>
+  
+    <nav class="md-nav" aria-label="Models d'autoritat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-dautoritat-de-servidor" class="md-nav__link">
+    Model d'autoritat de servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-dautoritat-distribuida" class="md-nav__link">
+    Model d'autoritat distribuïda
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models-de-propietat" class="md-nav__link">
+    Models de propietat
+  </a>
+  
+    <nav class="md-nav" aria-label="Models de propietat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#propietat-en-una-topologia-client-servidor" class="md-nav__link">
+    Propietat en una topologia client-servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propietat-en-autoritat-distribuida" class="md-nav__link">
+    Propietat en autoritat distribuïda
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="31-conceptes-basics-de-xarxes-aplicats-a-videojocs">3.1 Conceptes bàsics de xarxes aplicats a videojocs</h1>
+<p>En aquesta unitat, explorarem els conceptes bàsics de les xarxes en el context dels videojocs multijugador. Entendre com funcionen les xarxes és essencial per a desenvolupar jocs que permetin la interacció entre múltiples jugadors en línia.</p>
+<h2 id="models-de-xarxes">Models de xarxes</h2>
+<p>Hi ha diversos models de xarxes que es poden utilitzar en el desenvolupament de videojocs multijugador, però els més comuns són:</p>
+<ol>
+<li><strong>Model client-servidor</strong>: En aquest model, hi ha un servidor central que gestiona la lògica del joc i els clients es connecten a aquest servidor per participar en el joc. El servidor és responsable de mantenir l'estat del joc i coordinar les interaccions entre els clients.</li>
+<li><strong>Model peer-to-peer (P2P)</strong>: En aquest model, cada client es connecta directament amb els altres clients sense la necessitat d'un servidor central. Cada client és responsable de mantenir l'estat del joc i coordinar les interaccions amb els altres clients.</li>
+</ol>
+<h3 id="xarxes-client-servidor">Xarxes client-servidor</h3>
+<p>En un model de xarxa client-servidor, hi ha dos tipus principals d'entitats: el <strong>servidor</strong> i els <strong>clients</strong>. El servidor és responsable de gestionar la lògica del joc, mantenir l'estat del joc i coordinar les interaccions entre els clients. Els clients, d'altra banda, són les màquines dels jugadors que es connecten al servidor per participar en el joc.</p>
+<p><img alt="Model client-servidor" src="../images/server-client.png" /></p>
+<p>Aquest model utilitza un <strong>model d'autoritat de servidor</strong>, on el servidor té el control total sobre l'estat del joc i els clients només poden enviar sol·licituds al servidor per realitzar accions. Això ajuda a prevenir trampes i a mantenir la integritat del joc.</p>
+<p>Dins d'aquest model, hi ha 2 arquitectures principals:</p>
+<ul>
+<li><strong>Servidor dedicat</strong>: On el servidor és una <strong>màquina dedicada</strong> que només s'encarrega de gestionar el joc. Aquesta és la millor opció per a jocs amb molts jugadors, ja que el servidor pot manejar una gran quantitat de connexions i mantenir un rendiment estable.</li>
+<li><strong>Servidor no dedicat</strong>: On <strong>un dels clients actua com a servidor</strong>, gestionant el joc mentre també participa com a jugador. Aquesta opció és adequada per a jocs amb pocs jugadors, però pot tenir problemes de rendiment i seguretat si el client que actua com a servidor no és prou potent o si es produeixen desconnexions.</li>
+</ul>
+<h3 id="xarxes-peer-to-peer-p2p">Xarxes peer-to-peer (P2P)</h3>
+<p>En aquest model, <strong>cada client es connecta directament amb els altres clients sense la necessitat d'un servidor central</strong>. Cada client és responsable de mantenir l'estat del joc i coordinar les interaccions amb els altres clients.</p>
+<p><img alt="Model peer-to-peer" src="../images/p2p.png" /></p>
+<p>Aquest model utilitza un <strong>model d'autoritat distribuïda</strong>, on cada client té el control sobre una part de l'estat del joc i coordina les interaccions amb els altres clients. Això pot ser més eficient en termes de latència, ja que les comunicacions es realitzen directament entre els clients, però pot ser més difícil de gestionar i mantenir la integritat del joc, especialment si hi ha molts jugadors o si es produeixen desconnexions.</p>
+<p>Un altre disadvantage del model P2P és que pot ser més vulnerable a trampes i a atacs de seguretat, ja que no hi ha un servidor central que puga supervisar i controlar les accions dels clients.</p>
+<h3 id="comparativa-dels-models">Comparativa dels models</h3>
+<p>Les majors diferències entre aquests dos models es poden resumir en els següents punts:</p>
+<ul>
+<li><strong>Cost</strong>: El model client-servidor pot ser més costós de implementar i mantenir, ja que requereix un servidor dedicat i una infraestructura de xarxa robusta. El model P2P pot ser més econòmic, ja que no requereix un servidor central, però pot tenir problemes de rendiment i seguretat.</li>
+<li><strong>Seguretat</strong>: El model client-servidor és més segur, ja que el servidor té el control total sobre l'estat del joc i pot prevenir trampes i atacs. El model P2P és més vulnerable a trampes i atacs, ja que no hi ha un servidor central que supervise les accions dels clients.</li>
+<li><strong>Latència</strong>: El model P2P pot oferir una latència més baixa, ja que les comunicacions es realitzen directament entre els clients. El model client-servidor pot tenir una latència més alta, ja que les comunicacions han de passar pel servidor. Depenent de la ubicació dels jugadors i del servidor, aquesta latència pot variar significativament. També depèn de la capacitat i connexió del servidor.</li>
+</ul>
+<h2 id="models-dautoritat">Models d'autoritat</h2>
+<p>Els jocs multijugador són jocs que es juguen entre moltes instàncies de joc diferents. Cada <strong>instància de joc</strong> té la seva pròpia còpia del món del joc i dels comportaments dins d'aquest món del joc. Per tenir una experiència de joc compartida, <strong>cada objecte en xarxa ha de tenir una autoritat</strong>.</p>
+<p><strong>L'autoritat d'un objecte en xarxa té el poder final per prendre decisions definitives sobre aquest objecte</strong>. Cada objecte ha de tenir una i només una autoritat. L'autoritat té el control final sobre tot l'estat i el comportament d'aquest objecte.</p>
+<p>La <strong>instància de joc autoritària</strong> és la instància de joc que té autoritat sobre un objecte en xarxa determinat. Aquesta instància de joc <strong>és responsable de simular el comportament del joc en xarxa</strong>. L'autoritat és capaç de mediar els efectes del retard de la xarxa i és responsable de reconciliar el comportament si molts jugadors intenten interactuar simultàniament amb el mateix objecte.</p>
+<h3 id="model-dautoritat-de-servidor">Model d'autoritat de servidor</h3>
+<p>El <strong>model d'autoritat del servidor té una única instància de joc</strong> que es defineix com el <strong>servidor</strong>. Aquesta instància de joc és responsable d'executar la simulació principal i de gestionar tots els aspectes de l'execució del joc en xarxa. L'autoritat del servidor és el model d'autoritat utilitzat per a jocs <strong>client-servidor</strong>.</p>
+<p>El model d'autoritat del servidor té la força de proporcionar una <strong>autoritat centralitzada per gestionar qualsevol possible conflicte d'estat del joc</strong>. Això permet la implementació de sistemes com ara la reversió de l'estat del joc i la predicció competitiva de clients. Tanmateix, això pot tenir com a cost afegir <strong>latències</strong>, perquè tots els canvis d'estat s'han d'enviar a la instància del joc del servidor, processar-los i després enviar-los a altres instàncies del joc.</p>
+<p>Els jocs d'autoritat del servidor també <strong>poden consumir molts recursos</strong>. El servidor executa la simulació per a tot el món del joc, de manera que el servidor ha de ser prou potent per gestionar la simulació i la creació de xarxes de tots els clients de joc connectats. Aquest requisit de recursos pot arribar a ser car.</p>
+<p>L'autoritat del servidor s'utilitza principalment en <strong>jocs sensibles al rendiment</strong>, com ara els jocs de dispars en primera persona (<em>First Person Shooter</em>) o els jocs competitius on cal tenir una autoritat de servidor central per minimitzar les trampes i els efectes dels mals actors.</p>
+<h3 id="model-dautoritat-distribuida">Model d'autoritat distribuïda</h3>
+<p><strong>El model d'autoritat distribuïda comparteix l'autoritat entre instàncies de joc</strong>. Cada instància de joc és l'autoritat per a una <strong>subdivisió dels objectes en xarxa del joc</strong> i és responsable d'executar la simulació per a la seva subdivisió d'objectes. Les actualitzacions es comparteixen des d'altres instàncies de joc per a la resta de la simulació.</p>
+<p>L'autoritat de cada objecte en xarxa és responsable de simular el comportament i gestionar qualsevol aspecte de l'execució del joc en xarxa que es relacione amb els objectes dels quals té autoritat.</p>
+<p>Com que els jocs d'autoritat distribuïda comparteixen la simulació entre cada client connectat, <strong>consumeixen menys recursos</strong>. Cada màquina connectada al joc processa una subdivisió de la simulació, de manera que cap màquina individual necessita tindre la capacitat de processar tota la simulació. Això resulta en una experiència de joc multijugador que es pot executar en màquines més econòmiques i que consumeix menys recursos.</p>
+<h2 id="models-de-propietat">Models de propietat</h2>
+<p>Entendre com funciona la propietat d'objectes en xarxa és essencial per a entendre l'<strong>autoritat</strong>.</p>
+<p>Per defecte, Netcode per a GameObjects assumeix una <strong>topologia client-servidor</strong>, en què el servidor és propietari de tots els objectes (amb algunes excepcions) i té l'autoritat final sobre el generació i la desaparició.</p>
+<p>Netcode per a GameObjects també admet la creació de jocs amb una topologia d'autoritat distribuïda, que proporciona més opcions de propietat i autoritat.</p>
+<h3 id="propietat-en-una-topologia-client-servidor">Propietat en una topologia client-servidor</h3>
+<p>En una topologia client-servidor, <strong>el servidor té l'autoritat definitiva sobre tots els objectes de xarxa</strong>. Els clients poden sol·licitar la propietat d'objectes específics, però el servidor té l'última paraula sobre si concedeix o denega aquestes sol·licituds.</p>
+<h3 id="propietat-en-autoritat-distribuida">Propietat en autoritat distribuïda</h3>
+<p>En un entorn d'autoritat distribuïda, l'autoritat sobre els objectes de xarxa no està lligada a un únic servidor, sinó que es distribueix entre els clients en funció de la <strong>configuració de permisos de propietat d'un objecte de xarxa</strong>. Els objectes de xarxa amb <strong>permisos distribuïbles</strong> es distribueixen automàticament entre els clients a mesura que es connecten i es desconnecten.</p>
+<p>Per exemple, un client que inicia una sessió d'autoritat distribuïda es converteix en el propietari dels seus objectes de xarxa, com el player, i crea una sèrie d'objectes de xarxa distribuïbles. A mesura que altres clients s'uneixen, aquests objectes es distribueixen entre els clients connectats, de manera que cada client té autoritat sobre una part dels objectes de xarxa del joc.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>
