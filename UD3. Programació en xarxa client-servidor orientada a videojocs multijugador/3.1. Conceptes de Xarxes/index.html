@@ -14,6 +14,8 @@
         <link rel="prev" href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.5.%20Machine%20Learning/">
       
       
+        <link rel="next" href="../3.2.%20Joc%20en%20xarxa%20amb%20Netcode/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
@@ -529,10 +531,85 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#complements-de-unity-per-a-la-creacio-de-jocs-en-xarxa" class="md-nav__link">
+    Complements de Unity per a la creació de jocs en xarxa
+  </a>
+  
+    <nav class="md-nav" aria-label="Complements de Unity per a la creació de jocs en xarxa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprensio-de-lecosistema-multijugador" class="md-nav__link">
+    Comprensió de l'ecosistema multijugador
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unity-netcode-per-a-gameobjects-ngo" class="md-nav__link">
+    Unity Netcode per a GameObjects (NGO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mirror" class="md-nav__link">
+    Mirror
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#photon-fusion-pun" class="md-nav__link">
+    Photon Fusion / PUN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triar-el-marc-de-treball-adequat-un-desglossament-practic" class="md-nav__link">
+    Triar el marc de treball adequat: un desglossament pràctic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fishnet-lestrella-emergent" class="md-nav__link">
+    FishNet: L'estrella emergent
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.2.%20Joc%20en%20xarxa%20amb%20Netcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.2. Joc en xarxa amb Netcode
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -659,6 +736,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#complements-de-unity-per-a-la-creacio-de-jocs-en-xarxa" class="md-nav__link">
+    Complements de Unity per a la creació de jocs en xarxa
+  </a>
+  
+    <nav class="md-nav" aria-label="Complements de Unity per a la creació de jocs en xarxa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprensio-de-lecosistema-multijugador" class="md-nav__link">
+    Comprensió de l'ecosistema multijugador
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unity-netcode-per-a-gameobjects-ngo" class="md-nav__link">
+    Unity Netcode per a GameObjects (NGO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mirror" class="md-nav__link">
+    Mirror
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#photon-fusion-pun" class="md-nav__link">
+    Photon Fusion / PUN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triar-el-marc-de-treball-adequat-un-desglossament-practic" class="md-nav__link">
+    Triar el marc de treball adequat: un desglossament pràctic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fishnet-lestrella-emergent" class="md-nav__link">
+    FishNet: L'estrella emergent
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -725,6 +857,121 @@
 <h3 id="propietat-en-autoritat-distribuida">Propietat en autoritat distribuïda</h3>
 <p>En un entorn d'autoritat distribuïda, l'autoritat sobre els objectes de xarxa no està lligada a un únic servidor, sinó que es distribueix entre els clients en funció de la <strong>configuració de permisos de propietat d'un objecte de xarxa</strong>. Els objectes de xarxa amb <strong>permisos distribuïbles</strong> es distribueixen automàticament entre els clients a mesura que es connecten i es desconnecten.</p>
 <p>Per exemple, un client que inicia una sessió d'autoritat distribuïda es converteix en el propietari dels seus objectes de xarxa, com el player, i crea una sèrie d'objectes de xarxa distribuïbles. A mesura que altres clients s'uneixen, aquests objectes es distribueixen entre els clients connectats, de manera que cada client té autoritat sobre una part dels objectes de xarxa del joc.</p>
+<h2 id="complements-de-unity-per-a-la-creacio-de-jocs-en-xarxa">Complements de Unity per a la creació de jocs en xarxa</h2>
+<p>Existeixen varis complements de Unity que faciliten la creació de jocs en xarxa. Però abans de triar un complement, és important considerar les necessitats específiques del teu joc i les característiques que ofereix cada complement. </p>
+<h3 id="comprensio-de-lecosistema-multijugador">Comprensió de l'ecosistema multijugador</h3>
+<p>L'arquitectura multijugador és inherentment complexa perquè implica molt més que simplement connectar jugadors a través d'una xarxa. Cada decisió que prens en dissenyar el teu joc multijugador afecta aspectes crítics com la gestió de la latència, la sincronització d'objectes, la seguretat, l'emparellament, la persistència de la sessió i l'experiència general del jugador.</p>
+<p>Per tant, la conversa no és sobre quina eina és objectivament "millor", sinó quin marc de treball s'alinea amb els requisits del teu projecte, com:</p>
+<ul>
+<li><strong>Gènere de joc</strong>: Els jocs <strong>FPS</strong> o <strong>MOBA</strong> de ritme ràpid requereixen actualitzacions de baixa latència i alta freqüència, mentre que els jocs d'aventura per torns o cooperatius poden prioritzar la consistència de l'estat per damunt de la velocitat.</li>
+<li><strong>Requisits d'escala</strong>: Un joc que admet pocs jugadors enfront d'un altre que admet milers d'usuaris concurrents exigeix diferents estratègies de xarxa, arquitectures de servidor i enfocaments d'optimització.</li>
+<li><strong>Models d'autoritat de xarxa</strong>: Triar entre configuracions autoritàries de servidor o client afecta la prevenció de trampes, la resolució de conflictes i la sincronització.</li>
+<li><strong>Pressupost i al calendari</strong>: Les solucions propietàries gestionades estalvien esforç de desenvolupament però costen més, mentre que els marcs de codi obert com <em>Mirror</em> necessiten més temps però permeten una personalització completa.</li>
+<li><strong>Allotjament de servidors</strong>: les configuracions dedicades, al núvol o híbrides han de coincidir amb la concurrència dels jugadors, les necessitats de latència i la distribució geogràfica.</li>
+<li><strong>Necessitats de XR o multiplataforma</strong>: els jocs en ecosistemes de realitat virtual, realitat augmentada o multiplataforma introdueixen restriccions addicionals, com ara la sincronització física, la predicció de moviment i la gestió de la latència específica del dispositiu.</li>
+</ul>
+<p>El disseny de la xarxa afecta directament la jugabilitat i l'experiència del jugador. Una latència mal gestionada pot causar teletransportació de personatges, accions retardades o estats d'objectes inconsistents, cosa que redueix la retenció del jugador. Una atenció acurada a l'autoritat client/servidor, la sincronització i els mecanismes de reversió és essencial per a una experiència multijugador fluida i fiable.</p>
+<p>Passem a veure els marcs de treball més populars per a jocs multijugador a Unity, començant per la solució oficial de Unity.</p>
+<h3 id="unity-netcode-per-a-gameobjects-ngo">Unity Netcode per a GameObjects (NGO)</h3>
+<p><strong>Ideal per a</strong>: fluxos de treball natius d'Unity, jocs cooperatius menuts, integració estreta del motor.</p>
+<p><strong>Unity Netcode for Game Objects (NGO)</strong> és el marc de xarxa oficial d'Unity dissenyat per a una integració estreta amb el motor. Prioritza la simplicitat, la modularitat i el control de baix nivell. En conseqüència, els equips que busquen una solució nativa del motor compatible amb Unity sovint consideren Netcode abans de res.</p>
+<p><strong>Punts forts de NGO</strong></p>
+<ul>
+<li><strong>Integració estreta del motor</strong>: es sincronitza de forma natural amb el cicle de vida d'Unity, els sistemes d'entrada, la gestió d'escenes i els fluxos de treball dels components.</li>
+<li><strong>Model autoritatiu predictible</strong>: fomenta l'arquitectura autoritativa del servidor, adequada per a jocs competitius i cooperatius que requereixen actualitzacions d'estat validades.</li>
+<li><strong>Ideal per a multijugador a petita escala</strong>: és adequat per a jocs <strong>de 2 a 10 jugadors</strong> que requereixen accions sincronitzades, objectes compartits i un rendiment predictible.</li>
+</ul>
+<p><strong>Limitacions de NGO</strong></p>
+<ul>
+<li>Suport limitat a gran escala sense una personalització significativa</li>
+<li>Requereix <strong>coneixements profunds de xarxes per a mecàniques complexes</strong>.</li>
+<li>Cicles d'iteració més lents a causa de les dependències de l'ecosistema Unity</li>
+<li>Menys Recursos d'aprenentatge que Photon o Mirror</li>
+<li>Menys provat per a jocs competitius PvP o MMO</li>
+</ul>
+<p><strong>Enllaç:</strong> <a href="https://docs.unity3d.com/Packages/com.unity.netcode.gameobjects@2.9/manual/index.html">Unity Netcode for GameObjects</a></p>
+<h3 id="mirror">Mirror</h3>
+<p><strong>Ideal per a</strong>: Arquitectures flexibles, transports personalitzats, fluxos de treball de codi obert, projectes impulsats per la comunitat.</p>
+<p><img alt="Mirror" src="../images/mirror.png" /></p>
+<p>Mirror s'utilitza àmpliament a la comunitat multijugador indie i de mitjana escala per la seva flexibilitat i naturalesa de codi obert. Amplia el llegat d'<em>UNet</em> alhora que reconstrueix els seus punts febles en una pila de xarxa modular i de bon rendiment.</p>
+<p><strong>Punts forts clau de Mirror</strong></p>
+<ul>
+<li><strong>Codi obert i impulsat per la comunitat</strong>: Actualitzacions freqüents, pegats i optimitzacions de col·laboradors actius.</li>
+<li><strong>Capes de transport altament flexibles</strong>: Admet múltiples transports i permet integrar servidors personalitzats.</li>
+<li><strong>Ideal per a jocs en temps real de mitjana escala</strong>: Adoptat en aventures cooperatives, jocs multijugador basats en sessions, experiències de realitat virtual i prototips competitius.</li>
+</ul>
+<p><strong>Limitacions de Mirror</strong></p>
+<ul>
+<li>Requereix més esforç d'enginyeria per a projectes grans</li>
+<li>La qualitat de la documentació varia</li>
+<li>No hi ha serveis al núvol integrats; es necessiten sistemes externs per a emparellament, relays i escalat.</li>
+</ul>
+<p><strong>Enllaç:</strong> <a href="https://mirror-networking.com/">Mirror</a></p>
+<h3 id="photon-fusion-pun">Photon Fusion / PUN</h3>
+<p><strong>Ideal per a</strong>: Multijugador ràpid, acció en temps real, gran concurrència, escalabilitat multiplataforma.</p>
+<p><img alt="Photon" src="../images/photon.png" /></p>
+<p>Photon és una de les solucions de xarxa més adoptades a nivell mundial. Proporciona un ecosistema complet que inclou <strong>allotjament</strong>, <strong>xarxes de retransmissió (relay)</strong>, <strong>emparellament</strong>, <strong>gestió de sessions</strong> i <strong>anàlisi</strong>.</p>
+<p><strong>Punts forts clau de Photon</strong></p>
+<ul>
+<li><strong>Infraestructura allotjada al núvol i optimitzada globalment</strong>: Redueix la càrrega d'enginyeria alhora que proporciona una latència predictible entre regions.</li>
+<li><strong>Optimitzat per a multijugador d'alta velocitat</strong>: Photon Fusion ofereix compensació de <em>lag</em>, <em>rollback</em>, sistemes de predicció i sincronització d'estat determinista.</li>
+<li><strong>Escalabilitat multiplataforma</strong>: Admet mòbils, PC, consoles, AR/VR i WebGL.</li>
+</ul>
+<p><strong>Limitacions de Photon</strong></p>
+<ul>
+<li>Els costos escalen amb el nombre de jugadors</li>
+<li>Menys personalitzable en comparació amb Mirror</li>
+<li>Alguns desenvolupadors se senten lligats a la infraestructura de Photon</li>
+<li>Els comportaments avançats són de pagament</li>
+</ul>
+<p><strong>Enllaç:</strong> <a href="https://www.photonengine.com/PUN">Photon Engine</a></p>
+<h3 id="triar-el-marc-de-treball-adequat-un-desglossament-practic">Triar el marc de treball adequat: un desglossament pràctic</h3>
+<p><strong>Seleccioneu Unity Netcode si:</strong></p>
+<ul>
+<li>El joc és a petita escala (2-10 jugadors)</li>
+<li>Voleu el suport propi d'Unity</li>
+<li>La preferència és un flux de treball simplificat</li>
+<li>Crear experiències cooperatives en lloc d'acció competitiva en temps real</li>
+<li>Voleu un control total sobre l'allotjament del servidor</li>
+</ul>
+<p><strong>Trieu Mirror si:</strong></p>
+<ul>
+<li>Necessiteu una capa de xarxa totalment personalitzable</li>
+<li>Preferiu ecosistemes de codi obert</li>
+<li>Us sentiu còmodes construint el vostre propi backend o transports personalitzats</li>
+<li>Necessiteu més rendiment i flexibilitat que Netcode</li>
+<li>Voleu controlar l'optimització i l'ús de l'ample de banda</li>
+</ul>
+<p><strong>Trieu Photon si:</strong></p>
+<ul>
+<li>Una solució llesta per a la producció amb allotjament inclòs.</li>
+<li>Crear jocs PvP ràpids o multijugador d'alta freqüència</li>
+<li>Escalar globalment sense gestionar servidors</li>
+<li>Preferiu un flux de treball estable, documentat i de nivell empresarial</li>
+<li>Dirigit al multijugador multiplataforma</li>
+</ul>
+<p>En definitiva, l'elecció depèn de les vostres necessitats de rendiment, l'estructura de l'equip, amplada de banda d'enginyeria, gènere i objectius d'escalabilitat a llarg termini.</p>
+<h3 id="fishnet-lestrella-emergent">FishNet: L'estrella emergent</h3>
+<p>FishNet està guanyant terreny el 2025 pel seu enfocament ric en funcions, eficient en ample de banda i de codi obert. Ofereix funcions avançades com la <strong>gestió d'escenes</strong>, la <strong>predicció del costat del client</strong> i la <strong>compensació de retard</strong>, cosa que el fa ideal per a <strong>jocs d'acció en temps real</strong>.</p>
+<p><img alt="FishNet" src="../images/fishnet.png" /></p>
+<p><strong>Característiques principals:</strong></p>
+<ul>
+<li>Gestor d'escenes per a la càrrega i visibilitat del costat del client</li>
+<li>Ús eficient de l'ample de banda</li>
+<li>Gratuït i de codi obert, amb suport actiu</li>
+</ul>
+<p><strong>Avantatges:</strong></p>
+<ul>
+<li>Menor amplada de banda i millor escalabilitat que alguns competidors</li>
+<li>Fàcil d'ampliar i personalitzar</li>
+<li>Sense quotes de llicència</li>
+</ul>
+<p><strong>Contres:</strong></p>
+<ul>
+<li>Comunitat més petita que Photon o Mirror</li>
+<li>Menys serveis de backend integrats (matchmaking, relay)</li>
+</ul>
+<p>Enllaç: <a href="https://fish-networking.com/#FishNet">FishNet</a></p>
 
 
 
