@@ -710,9 +710,7 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
-
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
 
 <span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GameStateManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
 <span class="p">{</span>
@@ -762,7 +760,11 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_connectedPlayers</span><span class="p">;</span><span class="w"> </span><span class="c1">// Creem una variable per comptar el nombre de jugadors connectats</span>
 
 <span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnNetworkSpawn</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">base</span><span class="p">.</span><span class="n">OnNetworkSpawn</span><span class="p">();</span>
@@ -805,7 +807,7 @@
 <span class="w">    </span><span class="n">OnGameStateChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">_gameState</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>El mètode <code>StartWaitingClientRpc()</code> és un RPC que s'executa en tots els clients i en el host. En aquest mètode, canviem l'estat del joc a <code>Waiting</code> i invoquem l'event <code>OnGameStateChanged</code> per notificar a tots els listeners que l'estat ha canviat. </p>
+<p>El mètode <code>StartWaitingClientRpc()</code> és un RPC que s'executa en tots els clients i en el host. En aquest mètode, canviem l'estat del joc a <code>Waiting</code> i invoquem l'event <code>OnGameStateChanged</code> per notificar a tots els listeners que l'estat ha canviat.</p>
 <p>Per últim, hem de desuscriure'ns dels esdeveniments quan el <code>GameStateManager</code> es destrueix per evitar possibles errors:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>

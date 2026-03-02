@@ -1139,7 +1139,7 @@ Però només TÚ pots escriure en ella (<code>WritePermission.Owner</code>)</p>
 <span class="w">                </span><span class="c1">// Animació de patada local</span>
 <span class="w">                </span><span class="n">animator</span><span class="p">.</span><span class="n">SetTrigger</span><span class="p">(</span><span class="n">Kick</span><span class="p">);</span>
 <span class="w">                </span><span class="c1">// Notificar al servidor per a que informe als altres jugadors</span>
-<span class="w">                </span><span class="n">KickServerRpc</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServerRpcParams</span><span class="p">());</span>
+<span class="w">                </span><span class="n">KickClientRpc</span><span class="p">();</span>
 <span class="w">            </span><span class="p">}</span>
 
 <span class="w">            </span><span class="c1">// Apply gravity</span>
@@ -1229,23 +1229,15 @@ Però només TÚ pots escriure en ella (<code>WritePermission.Owner</code>)</p>
     R-&gt;&gt;R: 5. OnSpeedChanged() es crida
     R-&gt;&gt;AA: 6. SetFloat("Speed", value)
     Note over AA: Animació remota sincronitzada </code></pre>
-<p>Ens queda per analitzar les animacions de patada, però el procés és el mateix: el propietari envia un RPC al servidor (<code>KickServerRpc</code>), el qual reenvia la informació a tots els clients, excepte al propietari (<code>KickClientRpc</code>) perquè actualitzen les seues animacions de patada.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="na">[Rpc(SendTo.Server)]</span>
-<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">KickServerRpc</span><span class="p">()</span><span class="w"> </span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">KickClientRpc</span><span class="p">();</span>
-<span class="p">}</span>
+<p>Ens queda per analitzar les animacions de patada, però el procés és el mateix: el propietari envia un RPC a tots els clients, excepte al propietari (<code>KickClientRpc</code>) perquè actualitzen les seues animacions de patada.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// CharacterMovement.cs</span>
 
 <span class="na">[Rpc(SendTo.NotOwner)]</span>
 <span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">KickClientRpc</span><span class="p">()</span>
