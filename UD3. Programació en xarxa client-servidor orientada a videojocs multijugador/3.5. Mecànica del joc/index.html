@@ -1,0 +1,1279 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ricardo Sánchez">
+      
+      
+      
+        <link rel="prev" href="../3.4.%20Estats%20del%20joc/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Unitat 3.5 Mecànica del joc - Programació en Xarxa i Intel·ligència Artificial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/my.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#35-mecanica-del-joc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-header__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació en Xarxa i Intel·ligència Artificial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unitat 3.5 Mecànica del joc
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-nav__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    Programació en Xarxa i Intel·ligència Artificial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programació en xarxa i intel·ligència artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    U02.  IA i aprenentatge automàtic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            U02.  IA i aprenentatge automàtic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.1. Introducció al pathfinding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.2.%20Pathfinding%202D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.2. Pathfinding 2D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.3. Pathfinding 2D amb físiques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.4. Pathfinding 3D amb AI Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.5.%20Machine%20Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.5. Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1.%20Conceptes%20de%20Xarxes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.2.%20Joc%20en%20xarxa%20amb%20Netcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.2. Joc en xarxa amb Netcode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.3.%20Netcode%20RPCs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.3 Netcode i RPCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.4.%20Estats%20del%20joc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.4 Estats del joc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Unitat 3.5 Mecànica del joc
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.5 Mecànica del joc
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ostres-pilotes" class="md-nav__link">
+    Ostres pilotes!
+  </a>
+  
+    <nav class="md-nav" aria-label="Ostres pilotes!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#millorant-les-fisiques" class="md-nav__link">
+    Millorant les físiques
+  </a>
+  
+    <nav class="md-nav" aria-label="Millorant les físiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurar-networkrigidbody" class="md-nav__link">
+    Configurar NetworkRigidbody
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deteccio-de-collisions-en-la-pilota" class="md-nav__link">
+    Detecció de col·lisions en la pilota
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gols-i-puntuacio" class="md-nav__link">
+    Gols i puntuació
+  </a>
+  
+    <nav class="md-nav" aria-label="Gols i puntuació">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marcador-de-puntuacio" class="md-nav__link">
+    Marcador de puntuació
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mostrant-el-propi-marcador-amb-un-color-diferent" class="md-nav__link">
+    Mostrant el propi marcador amb un color diferent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reubicant-la-pilota-despres-dun-gol" class="md-nav__link">
+    Reubicant la pilota després d'un gol
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ostres-pilotes" class="md-nav__link">
+    Ostres pilotes!
+  </a>
+  
+    <nav class="md-nav" aria-label="Ostres pilotes!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#millorant-les-fisiques" class="md-nav__link">
+    Millorant les físiques
+  </a>
+  
+    <nav class="md-nav" aria-label="Millorant les físiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurar-networkrigidbody" class="md-nav__link">
+    Configurar NetworkRigidbody
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deteccio-de-collisions-en-la-pilota" class="md-nav__link">
+    Detecció de col·lisions en la pilota
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gols-i-puntuacio" class="md-nav__link">
+    Gols i puntuació
+  </a>
+  
+    <nav class="md-nav" aria-label="Gols i puntuació">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marcador-de-puntuacio" class="md-nav__link">
+    Marcador de puntuació
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mostrant-el-propi-marcador-amb-un-color-diferent" class="md-nav__link">
+    Mostrant el propi marcador amb un color diferent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reubicant-la-pilota-despres-dun-gol" class="md-nav__link">
+    Reubicant la pilota després d'un gol
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="35-mecanica-del-joc">3.5 Mecànica del joc</h1>
+<p>En aquesta secció, implementarem la mecànica del joc, que inclou la lògica de la pilota, dels gols i la puntuació.</p>
+<h2 id="ostres-pilotes">Ostres pilotes!</h2>
+<p>Dins de l'escena de joc, creem un nou Empty GameObject anomenat "BallManager". A aquest objecte, li afegim un component <code>NetworkObject</code> i un script anomenat <code>BallManager</code>. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// BallManager.cs</span>
+
+<span class="k">using</span><span class="w"> </span><span class="nn">Unity.Netcode</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">BallManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">BallManager</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">ballPrefab</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nf">Destroy</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">GameStateChangedCallback</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">base</span><span class="p">.</span><span class="n">OnDestroy</span><span class="p">();</span>
+<span class="w">        </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">GameStateChangedCallback</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Fins ací tot és conegut: creem la classe <code>BallManager</code> com a singleton i ens subscrivim a l'esdeveniment de canvi d'estat del joc. Ara, implementarem la lògica per crear la pilota quan el joc comenci, creant el mètode <code>GameStateChangedCallback</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GameStateChangedCallback</span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Game</span><span class="p">:</span>
+<span class="w">                </span><span class="n">SpawnBall</span><span class="p">();</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnBall</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Ball</span><span class="w"> </span><span class="n">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instantiate</span><span class="p">(</span><span class="n">ballPrefab</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="p">.</span><span class="n">identity</span><span class="p">).</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Ball</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">NetworkObject</span><span class="o">&gt;</span><span class="p">().</span><span class="n">Spawn</span><span class="p">();</span>
+<span class="w">            </span><span class="n">ball</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Posició inicial de la pilota</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En aquest codi, quan el joc canvia a l'estat <code>Game</code>, es crida al mètode <code>SpawnBall()</code>, que només s'executa al servidor. Aquest mètode instància la pilota a la posició (0, 1, 0) i la fa aparèixer a tots els clients mitjançant <code>NetworkObject.Spawn()</code>.</p>
+<p>Assegura't que tant el prefab de la pilota com el BallManager tinguen el component <code>NetworkObject</code>. La pilota també haurà de tindre un component <code>NetworkRigidbody</code>.</p>
+<p>En aquest punt, ja tenim la pilota apareixent a l'escena quan el joc comença. Segurament hauràs de fer ajustos quant a les físiques dels peus del jugador o el Step Offset per a que no pujen a la pilota, però això ja és qüestió de proves i errors.</p>
+<h3 id="millorant-les-fisiques">Millorant les físiques</h3>
+<p>Les físiques en jocs en xarxa poden ser complicades, especialment quan es tracta de col·lisions. Per a millorar la resposta de la pilota podem fer varis ajustos a les propietats del Rigidbody de la pilota.</p>
+<p>Abans d'entrar en les físiques de la pilota, convé conèxer les propietats del NetworkRigidbodyi el seu funcionament.</p>
+<p><strong>NetworkRigidbody</strong> és un component que estableix el Rigidbody del GameObject <strong>en mode cinemàtic en totes les instàncies no autoritàries</strong>. L'autoritat es determina pel component NetworkTransform (obligatori) adjunt al mateix GameObject que el NetworkRigidbody. Tant si el NetworkTransform és <strong>Server o Owner Authoritative</strong>, el model d'autoritat es replica als clients. D'aquesta manera, la simulació física s'executa a la instància autoritativa i les posicions resultants sincronitzen a les instàncies no autoritatives, cadascuna amb el seu <strong>RigidBody cinemàtic</strong>, sense cap interferència.</p>
+<h4 id="configurar-networkrigidbody">Configurar NetworkRigidbody</h4>
+<p>El NetworkRigidbody a la vista Inspectorté 3 valors configurables:</p>
+<ul>
+<li><strong>Use Rigid Body for Motion</strong>: Quan està habilitat i s'utilitza un NetworkTransform, el NetworkTransform utilitza la posició i la rotació de físiques per sincronitzar els canvis durant la fase d'actualització del bucle <em>FixedUpdate</em>.</li>
+<li><strong>Auto Update Kinematic State</strong>: Quan està habilitat, NetworkRigidbody determina automàticament si la instància actual ha de ser cinemàtica o no cinemàtica.</li>
+<li><strong>Auto Set Kinematic On Despawn</strong>: Quan està habilitada, aquesta opció fa que el cos rígid siga cinemàtic quan desapareix (despawn).</li>
+</ul>
+<p>Nosaltres activarem la primera i la tercera opció i desactivarem la segona, ja que no volem que el rigidbody siga cinemàtic als clients. Per a que això funcione hem de mantindre el NetworkTransform en mode autoritat del servidor, ja que és el que determina l'autoritat del NetworkRigidbody.</p>
+<p><img alt="Ball Physics" src="../images/ball_config.png" /></p>
+<p>També desactivem la interpolació del Rigidbody i posarem la detecció de col·lisions a Continuous Dynamic per a millorar la resposta de les col·lisions.</p>
+<p><img alt="Ball Rigidbody Config" src="../images/ball_rigidbody.png" /></p>
+<p>Ara el problema que tenim és que alguns esdeveniments de col·lisió no es disparen quan s'utilitza NetworkRigidBody:</p>
+<p>Al servidor, tots els esdeveniments de col·lisió i activació (com ara OnCollisionEnter) es disparen com s'esperava i podeu accedir (i canviar) els valors del Rigidbody (com ara la velocitat).</p>
+<p>Als clients, Rigidbody és cinemàtic. Els esdeveniments activació encara es disparen, però els esdeveniments de col·lisió no es dispararan quan col·lisionen amb altres instàncies de Rigidbody en xarxa si la configuració física del vostre projecte està definida als parells de contacte predeterminats (<strong>Contact Pairs Mode</strong>). </p>
+<p>Per a canviar aquesta configuració hem d'anar a Project Settings &gt; Physics &gt; Setting &gt; Game Object &gt; Contact Pairs Mode i canviar-lo a <strong>Enable All Contact Pairs</strong>.</p>
+<p><img alt="Enable contact pairs" src="../images/enable_contact_pairs.png" /></p>
+<h4 id="deteccio-de-collisions-en-la-pilota">Detecció de col·lisions en la pilota</h4>
+<p>Ara ja podem detectar les col·lisions de la pilota tant al servidor com als clients. Per a això, modifiquem l'script Ball per a que utilitze el mètode <code>OnCollisionEnter</code> per a detectar les col·lisions amb els jugadors i aplicar una força a la pilota en la direcció del jugador que ha col·lisionat. </p>
+<p>Important: Afwegeix el tag "Player" tant al prefab del jugador com al collider dels peus per a que funcione.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Ball.cs</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Ball</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+
+<span class="w">    </span><span class="na">[SerializeField ]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">bounceStrength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5f</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Rigidbody</span><span class="w"> </span><span class="n">rb</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnCollisionEnter</span><span class="p">(</span><span class="n">Collision</span><span class="w"> </span><span class="n">collision</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">collision</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Calculate bounce velocity based on collision</span>
+<span class="w">            </span><span class="n">rb</span><span class="p">.</span><span class="n">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collision</span><span class="p">.</span><span class="n">GetContact</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="n">normal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bounceStrength</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="gols-i-puntuacio">Gols i puntuació</h2>
+<p>Per a detectar els gols, usarem l'script Ball que ja tenim. Afegirem un nou event, <code>OnGoal</code>, que es dispararà quan la pilota entre a una de les porteries.</p>
+<p>Abans, canvia els tags de cadascuna de les porteries a "GoalTeam1" per a la porteria sud i "GoalTeam2" per a la porteria nord. Després, implementa el següent codi a l'script <code>Ball</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Ball.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Ball</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OnGoal</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;GoalTeam1&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Goal for Team 2!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnGoal</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;GoalTeam2&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Goal for Team 1!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnGoal</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="marcador-de-puntuacio">Marcador de puntuació</h3>
+<p>Fem el marcador en el panel <strong>GamePanel</strong>. Creem dos nous <code>TextMeshProUGUI</code> anomenats "ScoreTeam1" i "ScoreTeam2" i els col·loquem a la part superior central del panell.</p>
+<p>Afegim al GameObject <code>Managers</code> un nou Empty GameObject anomenat <code>ScoreManager</code> i li afegim un component <code>NetworkObject</code>.</p>
+<p>Després, creem un nou script anomenat <code>ScoreManager</code> i l'afegim al <code>ScoreManager</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// ScoreManager.cs</span>
+
+<span class="k">using</span><span class="w"> </span><span class="nn">TMPro</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Unity.Netcode</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ScoreManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">team1Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">team2Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">TextMeshProUGUI</span><span class="w"> </span><span class="n">team1ScoreText</span><span class="p">;</span>
+<span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">TextMeshProUGUI</span><span class="w"> </span><span class="n">team2ScoreText</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnNetworkSpawn</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">base</span><span class="p">.</span><span class="n">OnNetworkSpawn</span><span class="p">();</span>
+<span class="w">        </span><span class="n">UpdateScoreClientRpc</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">OnServerStarted</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">NetworkManager_OnServerStarted</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">base</span><span class="p">.</span><span class="n">OnDestroy</span><span class="p">();</span>
+<span class="w">        </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">OnServerStarted</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">NetworkManager_OnServerStarted</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Ball</span><span class="p">.</span><span class="n">OnGoal</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">BallOnGoalCallback</span><span class="p">;</span>
+<span class="w">            </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NetworkManager_OnServerStarted</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Ball</span><span class="p">.</span><span class="n">OnGoal</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">BallOnGoalCallback</span><span class="p">;</span>
+<span class="w">            </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GameStateManagerCallback</span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Game</span><span class="p">:</span>
+<span class="w">                </span><span class="n">ResetScores</span><span class="p">();</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ResetScores</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">team1Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">team2Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UpdateScoreClientRpc</span><span class="p">(</span><span class="n">team1Score</span><span class="p">,</span><span class="w"> </span><span class="n">team2Score</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">BallOnGoalCallback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">team</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">team</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team2Score</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">team</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team1Score</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UpdateScoreClientRpc</span><span class="p">(</span><span class="n">team1Score</span><span class="p">,</span><span class="w"> </span><span class="n">team2Score</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Rpc(SendTo.ClientsAndHost)]</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdateScoreClientRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">team1Score</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">team2Score</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">team1Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">team1Score</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">team2Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">team2Score</span><span class="p">;</span>
+<span class="w">        </span><span class="n">team1ScoreText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Team 1: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">team1Score</span><span class="p">;</span>
+<span class="w">        </span><span class="n">team2ScoreText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Team 2: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">team2Score</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Primer, ens subscrivim a l'esdeveniment <code>OnGoal</code> de la classe <code>Ball</code> i a l'esdeveniment de canvi d'estat del joc, només al servidor.</p>
+<p>Quan el joc comença, resetejem les puntuacions usant el mètode <code>ResetScores()</code>, el qual crida a <code>UpdateScoreClientRpc</code> per a actualitzar les puntuacions a tots els clients.</p>
+<p>Quan es marca un gol, es crida al callback <code>BallOnGoalCallback</code>, que actualitza la puntuació de l'equip i després crida a <code>UpdateScoreClientRpc</code> per a actualitzar les puntuacions a tots els clients.</p>
+<p>El RPC <code>UpdateScoreClientRpc</code> actualitza les variables de puntuació i els textos del marcador a cada client.</p>
+<p>Recorda assignar els referències dels textos del marcador a les variables <code>team1ScoreText</code> i <code>team2ScoreText</code> des de l'Inspector.</p>
+<h3 id="mostrant-el-propi-marcador-amb-un-color-diferent">Mostrant el propi marcador amb un color diferent</h3>
+<p>Per a mostrar el marcador del propi equip amb un color diferent, podem modificar el mètode <code>UpdateScoreClientRpc</code> per a canviar el color del text segons l'equip al qual pertany el jugador local.</p>
+<p>Però abans hem de determinar a quin equip pertany el jugador local. Això ho farem a l'script GameStateManager, on ja tenim la lògica per a assignar els jugadors als equips. Afegim una nova variable <code>_localTeam</code> i la seua propietat pública <code>LocalTeam</code> que s'actualitzarà quan el jugador local s'uneix a un equip:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_localTeam</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LocalTeam</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_localTeam</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AssignTeamAndSpawnClientRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">team</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">spawnPosition</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="w"> </span><span class="n">spawnRotation</span><span class="p">,</span><span class="w"> </span><span class="n">RpcParams</span><span class="w"> </span><span class="n">rpcParams</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Codi existetnt...</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">localPlayer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">localPlayer</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawnPosition</span><span class="p">;</span>
+<span class="w">            </span><span class="n">localPlayer</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawnRotation</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_localTeam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">team</span><span class="p">;</span><span class="w"> </span><span class="c1">// Afegeix esta línia</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span>
+<span class="w">        </span><span class="c1">// Resta de codi...</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Ara, al mètode <code>UpdateScoreClientRpc</code> del <code>ScoreManager</code>, podem canviar el color del text segons l'equip del jugador local:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// ScoreManager.cs</span>
+
+<span class="w">    </span><span class="na">[Rpc(SendTo.ClientsAndHost)]</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdateScoreClientRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">team1Score</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">team2Score</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">team1Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">team1Score</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">team2Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">team2Score</span><span class="p">;</span>
+<span class="w">        </span><span class="n">team1ScoreText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Team 1: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">team1Score</span><span class="p">;</span>
+<span class="w">        </span><span class="n">team2ScoreText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Team 2: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">team2Score</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LocalTeam</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team1ScoreText</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LocalTeam</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team2ScoreText</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="reubicant-la-pilota-despres-dun-gol">Reubicant la pilota després d'un gol</h3>
+<p>Per a tornar a posar la pilota al centre del camp després d'un gol, utilitzarem una corrutina al <code>BallManager</code> que es cridarà des del callback de gol a <code>ScoreManager</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// BallManager.cs</span>
+
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">BallManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Ball</span><span class="w"> </span><span class="n">ball</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">GameStateChangedCallback</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Ball</span><span class="p">.</span><span class="n">OnGoal</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">BallOnGoalCallback</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">BallOnGoalCallback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">ResetBall</span><span class="p">(</span><span class="m">2f</span><span class="p">));</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">ResetBall</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">angularVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ball</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">....</span>
+
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En aquest codi, quan es marca un gol, es crida al callback <code>BallOnGoalCallback</code>, que inicia la corrutina <code>ResetBall</code>. Aquesta corrutina espera uns segons (en aquest cas, 2 segons) i després reinicia la velocitat de la pilota a zero i la col·loca de nou al centre del camp.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

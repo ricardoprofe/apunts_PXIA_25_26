@@ -1,0 +1,1377 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ricardo Sánchez">
+      
+      
+      
+        <link rel="prev" href="../3.3.%20Netcode%20RPCs/">
+      
+      
+        <link rel="next" href="../3.5.%20Mec%C3%A0nica%20del%20joc/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Unitat 3.4 Estats del joc - Programació en Xarxa i Intel·ligència Artificial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/my.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#34-estats-del-joc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-header__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació en Xarxa i Intel·ligència Artificial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unitat 3.4 Estats del joc
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-nav__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    Programació en Xarxa i Intel·ligència Artificial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programació en xarxa i intel·ligència artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    U02.  IA i aprenentatge automàtic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            U02.  IA i aprenentatge automàtic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.1. Introducció al pathfinding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.2.%20Pathfinding%202D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.2. Pathfinding 2D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.3. Pathfinding 2D amb físiques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.4. Pathfinding 3D amb AI Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.5.%20Machine%20Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.5. Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1.%20Conceptes%20de%20Xarxes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.2.%20Joc%20en%20xarxa%20amb%20Netcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.2. Joc en xarxa amb Netcode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.3.%20Netcode%20RPCs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.3 Netcode i RPCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Unitat 3.4 Estats del joc
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.4 Estats del joc
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gamestatemanager" class="md-nav__link">
+    GameStateManager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waiting-state" class="md-nav__link">
+    Waiting state
+  </a>
+  
+    <nav class="md-nav" aria-label="Waiting state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-de-la-camera" class="md-nav__link">
+    Configuració de la cámera
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spawn-de-jugadors" class="md-nav__link">
+    Spawn de jugadors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.%20Mec%C3%A0nica%20del%20joc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.5 Mecànica del joc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gamestatemanager" class="md-nav__link">
+    GameStateManager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waiting-state" class="md-nav__link">
+    Waiting state
+  </a>
+  
+    <nav class="md-nav" aria-label="Waiting state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-de-la-camera" class="md-nav__link">
+    Configuració de la cámera
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spawn-de-jugadors" class="md-nav__link">
+    Spawn de jugadors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="34-estats-del-joc">3.4 Estats del joc</h1>
+<p>En aquesta secció, crearem la lògica per gestionar els diferents estats del joc, com ara el menú principal, la pantalla de joc, etc. Utilitzarem una màquina d'estats per controlar les transicions entre aquests estats i assegurar-nos que el joc funcione de manera fluida.</p>
+<h2 id="gamestatemanager">GameStateManager</h2>
+<p>Dins de la escena GameScene, crearem un GameObject anomenat <strong><code>GameStateManager</code></strong>, dins de <code>Managers</code> que serà responsable de gestionar els diferents estats del joc. Aquest objecte tindrà una variable per emmagatzemar l'estat actual i mètodes per canviar d'estat.</p>
+<p>En primer lloc creem l'script <strong><code>GameStateManager.cs</code></strong> i el vinculem al GameObject <code>GameStateManager</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Unity.Netcode</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GameStateManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Singleton</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">GameStateManager</span><span class="w"> </span><span class="n">_instance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Singleton configuration</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="n">_instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nf">Destroy</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Fem que el <code>GameStateManager</code> siga un singleton per assegurar-nos que només hi hagi una instància d'aquest objecte a la nostra escena. Això ens permetrà accedir al <code>GameStateManager</code> des de qualsevol altre script de manera senzilla.</p>
+<p>Al fer que herete de <code>NetworkBehaviour</code> ens demanarà afegir el component <code>NetworkObject</code> al GameObject <code>GameStateManager</code>. Aquest component és necessari per a qualsevol objecte que vulguem sincronitzar a través de la xarxa.</p>
+<p>A continuació afegim els estats del joc, amb un <code>enum</code>, i els mètodes per canviar d'estat:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GameStateManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//Game states</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Menu</span><span class="p">,</span><span class="w"> </span><span class="n">Waiting</span><span class="p">,</span><span class="w"> </span><span class="n">Game</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">_gameState</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Event that notifies changes in game state</span>
+<span class="w">    </span><span class="na">[Header(&quot;Events&quot;)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OnGameStateChanged</span><span class="p">;</span>
+
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Show menu before all</span>
+<span class="w">        </span><span class="n">_gameState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">State</span><span class="p">.</span><span class="n">Menu</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetGameState</span><span class="p">(</span><span class="n">State</span><span class="w"> </span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_gameState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
+<span class="w">        </span><span class="n">OnGameStateChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">st</span><span class="p">);</span><span class="w"> </span><span class="c1">// Notify all listeners about the state change</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En aquest codi, hem definit un <code>enum</code> anomenat <code>State</code> que conté els diferents estats del joc: <code>Menu</code>, <code>Waiting</code> i <code>Game</code>. També hem creat una variable privada <code>_gameState</code> per emmagatzemar l'estat actual del joc.</p>
+<p>En el mètode <code>Start()</code>, inicialitzem l'estat del joc a <code>Menu</code>, de manera que quan el joc comence, es mostrarà el menú principal.</p>
+<p>El mètode <code>SetGameState(State st)</code> és el responsable de canviar l'estat del joc. Quan es canvia l'estat, s'invoca l'event <code>OnGameStateChanged</code> per notificar a tots els listeners que l'estat ha canviat. Això permet que altres scripts puguen reaccionar als canvis d'estat del joc de manera sincronitzada a través de la xarxa.</p>
+<p>El següent pas serà subscriurens a l'esdeveniment <code>OnGameStateChanged</code> quan els clients es connecten al servidor:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnNetworkSpawn</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">base</span><span class="p">.</span><span class="n">OnNetworkSpawn</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Event subscription</span>
+<span class="w">    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">OnServerStarted</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">NetworkManager_OnServerStarted</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NetworkManager_OnServerStarted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IsServer</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Event subscription to new clients</span>
+<span class="w">    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">OnClientConnectedCallback</span><span class="w"> </span><span class="o">+=</span>
+<span class="w">        </span><span class="n">Singleton_OnClientConnectedCallback</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Singleton_OnClientConnectedCallback</span><span class="p">(</span><span class="kt">ulong</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">_connectedPlayers</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Connected players: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">_connectedPlayers</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_connectedPlayers</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">        </span><span class="n">StartWaitingClientRpc</span><span class="p">();</span><span class="w"> </span><span class="c1">// Wait for more players</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>El mètode <code>OnNetworkSpawn()</code> s'executa quan el <code>GameStateManager</code> es crea a la xarxa. En aquest mètode, ens subscrivim a l'esdeveniment <code>NetworkManager_OnServerStarted</code>, que s'executa quan el servidor comença a funcionar. Quan el servidor comença, ens subscrivim a l'esdeveniment <code>Singleton_OnClientConnectedCallback</code>, que s'executa cada vegada que un client es connecta al servidor. En aquest esdeveniment, incrementem el nombre de jugadors connectats i, si el nombre de jugadors és igual o superior a 2, invoquem el mètode <code>StartWaitingClientRpc()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="na">[Rpc(SendTo.ClientsAndHost)]</span>
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartWaitingClientRpc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;On StartWaitingClientRpc&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">_gameState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">State</span><span class="p">.</span><span class="n">Waiting</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Event launcher</span>
+<span class="w">    </span><span class="n">OnGameStateChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">_gameState</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>El mètode <code>StartWaitingClientRpc()</code> és un RPC que s'executa en tots els clients i en el host. En aquest mètode, canviem l'estat del joc a <code>Waiting</code> i invoquem l'event <code>OnGameStateChanged</code> per notificar a tots els listeners que l'estat ha canviat. </p>
+<p>Per últim, hem de desuscriure'ns dels esdeveniments quan el <code>GameStateManager</code> es destrueix per evitar possibles errors:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">base</span><span class="p">.</span><span class="n">OnDestroy</span><span class="p">();</span>
+<span class="w">    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">OnServerStarted</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">NetworkManager_OnServerStarted</span><span class="p">;</span>
+<span class="w">    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">OnClientConnectedCallback</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Singleton_OnClientConnectedCallback</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<pre class="mermaid"><code>flowchart TD
+  A[Awake] --&gt; B[Start]
+  B --&gt; C[OnNetworkSpawn]
+  C --&gt; D[NetworkManager_OnServerStarted *si és servidor*]
+  D --&gt; E[Singleton_OnClientConnectedCallback]
+  E --&gt; F[StartWaitingClientRpc]
+  F --&gt; G[Estat = Waiting / OnGameStateChanged]
+</code></pre>
+<h2 id="waiting-state">Waiting state</h2>
+<p>Ara anem a configurar el UIManager per a respondre als canvis d'estat del joc. En aquest cas, volem mostrar una pantalla de "Waiting..." quan l'estat del joc sigui <code>Waiting</code> i un botó per a començar el joc quan hi haja suficients jugadors connectats.</p>
+<p>El text de <em>Waiting</em> ja el tenim al <code>WaitingPanel</code>, així que només ens falta afegir el botó de <code>StartGame</code>.</p>
+<p>Ara, en l'script <code>UIManager.cs</code>, ens subscrivim a l'event <code>OnGameStateChanged</code> per mostrar o amagar els elements de la UI segons l'estat del joc:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+
+<span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ShowConnPannel</span><span class="p">();</span>
+<span class="w">    </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GameStateManagerCallback</span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Waiting</span><span class="p">:</span>
+<span class="w">        </span><span class="n">ShowWaitPannel</span><span class="p">();</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Observa com també ens desuscrivim de l'event <code>OnGameStateChanged</code> en el mètode <code>OnDestroy()</code> per evitar possibles errors quan el <code>UIManager</code> es destrueix.</p>
+<p>A continuació, creem un callback per al botó <code>StartGame</code> que canviarà l'estat del joc a <code>Game</code>. Per a això hem de crear un nou mètode en el <code>GameStateManager</code> que canvie l'estat a <code>Game</code> i invoque a un nou RPC creat per a aquest propòsit:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="c1">// Exposem el singleton per a altres scripts</span>
+<span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">GameStateManager</span><span class="w"> </span><span class="n">Instance</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_instance</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartGame</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">StartGameClientRpc</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="na">[Rpc(SendTo.ClientsAndHost)]</span>
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartGameClientRpc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;On StartGameClientRpc&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">_gameState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">State</span><span class="p">.</span><span class="n">Game</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Event launcher</span>
+<span class="w">    </span><span class="n">OnGameStateChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">_gameState</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GameStateManagerCallback</span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Waiting</span><span class="p">:</span>
+<span class="w">        </span><span class="n">ShowWaitPannel</span><span class="p">();</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Game</span><span class="p">:</span><span class="w"> </span><span class="c1">// Afegim el cas per a l&#39;estat de joc</span>
+<span class="w">        </span><span class="n">ShowGamePannel</span><span class="p">();</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartButtonCallback</span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">StartGame</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Assigna el callback al <code>StartButton</code> i ja tindrem la lògica per canviar d'estat quan es prem el botó de començar el joc. Comprova que quan es prem el botó de començar el joc, es canvia l'estat a <code>Game</code> i desapareix la pantalla de <em>Waiting</em>.</p>
+<p>El problema ara és que el botó de <code>StartGame</code> es pot prèmer inclós si només hi ha un jugador connectat, així que hem de desactivar el botó fins que hi haja suficients jugadors connectats. Per a això, hem de crear un nou esdeveniment que notifique el nombre de jugadors connectats i subscriure'ns a aquest esdeveniment per activar o desactivar el botó de començar el joc:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="c1">// Exposar el nombre de jugadors connectats</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_connectedPlayers</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ConnectedPlayers</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_connectedPlayers</span><span class="p">;</span>
+
+<span class="c1">// Event que notifica el canvi en el nombre de jugadors connectats</span>
+<span class="na">[Header(&quot;Events&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OnPlayerCountChanged</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Singleton_OnClientConnectedCallback</span><span class="p">(</span><span class="kt">ulong</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">_connectedPlayers</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Connected players: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">_connectedPlayers</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Sincronitzar el nombre de jugadors connectats a tots els clients</span>
+<span class="w">    </span><span class="n">UpdatePlayerCountClientRpc</span><span class="p">(</span><span class="n">_connectedPlayers</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_connectedPlayers</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">_gameState</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">State</span><span class="p">.</span><span class="n">Menu</span><span class="p">)</span>
+<span class="w">        </span><span class="n">StartWaitingClientRpc</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="na">[Rpc(SendTo.ClientsAndHost)]</span>
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdatePlayerCountClientRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">playerCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">_connectedPlayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">playerCount</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Updated player count via RPC: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">_connectedPlayers</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Notificar a tots els listeners que el nombre de jugadors ha canviat</span>
+<span class="w">    </span><span class="n">OnPlayerCountChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">_connectedPlayers</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>També hem afegit el RPC <code>UpdatePlayerCountClientRpc</code> per sincronitzar el nombre de jugadors connectats a tots els clients. Quan un nou client es connecta, s'incrementa el nombre de jugadors i s'invoca aquest RPC per actualitzar el nombre de jugadors en tots els clients. A més, s'invoca l'event <code>OnPlayerCountChanged</code> per notificar a tots els listeners que el nombre de jugadors ha canviat.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+
+
+<span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ShowConnPannel</span><span class="p">();</span>
+<span class="w">    </span><span class="n">startButton</span><span class="p">.</span><span class="n">interactable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// Deshabilita el startButton a l&#39;inici</span>
+
+<span class="w">    </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnPlayerCountChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">PlayerCountChangedCallback</span><span class="p">;</span><span class="w"> </span><span class="c1">//Afegim la subscripció a l&#39;esdeveniment de canvi en el nombre de jugadors</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PlayerCountChangedCallback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">playerCount</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">StartButton</span><span class="p">.</span><span class="n">interactable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">playerCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Habilita el botó amb 2 o més players connectats</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnPlayerCountChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">PlayerCountChangedCallback</span><span class="p">;</span><span class="w"> </span><span class="c1">// Desuscriure&#39;s de l&#39;esdeveniment</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Ara, el botó de <code>StartGame</code> només estarà habilitat quan hi haja 2 o més jugadors connectats. Quan un nou jugador es connecta, el nombre de jugadors es sincronitza a tots els clients i el botó de començar el joc s'activa o desactiva segons el nombre de jugadors connectats. Prova amb més de 2 jugadors connectats i comprova que el botó de començar el joc s'activa correctament.</p>
+<h3 id="configuracio-de-la-camera">Configuració de la cámera</h3>
+<p>En aquest punt, el nostre joc ja té la lògica per gestionar els diferents estats del joc i sincronitzar el nombre de jugadors connectats a través de la xarxa. El següent pas serà configurar la càmera per a que segueixi al jugador local quan estem en l'estat de joc.</p>
+<p>Usarem una càmera de tipus Follow Camera de Cinemachine, que ens permetrà seguir al jugador local de manera suau i amb una configuració més avançada que la càmera estàndard de Unity. Per a això, primer la hem d'importar des del Package Manager, "Cinemachine".</p>
+<p>Elimina o desactiva la camera que té el prefab del player i crea una nova càmera de tipus <em>Cinemachine &gt; Targeted Cameras &gt; Follow Camera</em>. Aquesta càmera ens permetrà seguir al jugador local de manera suau i amb una configuració més avançada que la càmera estàndard de Unity.</p>
+<p>Per a configurar la càmera de seguiment, hem de vincular-la al jugador local quan el joc comença. Però de moment la vinculem al prefab del player per a configurar alguns paràmetres. Una volta vinculada hem de canviar els següents paràmetres de la càmera:</p>
+<ul>
+<li>Follow Offset: Y 2, Z -2</li>
+<li>Screen Position: X 0, Y 0.4</li>
+</ul>
+<p><img alt="Cinemachine Camera" src="../images/cinemachine.png" /></p>
+<p>Més endavant podem ajustar-los millor.</p>
+<p>També hem d'afegir el component <strong>NetworkObject</strong> a la càmera de seguiment per a que es sincronitze a través de la xarxa.</p>
+<p>Per a que la càmera seguisca al player quan apareix a la xarxa, crearem un nou script anomenat <code>CameraController.cs</code> i el vincularem a la càmera principal de la nostra escena. En aquest script, ens subscrivirem a l'esdeveniment <code>OnGameStateChanged</code> per activar o desactivar el seguiment de la càmera segons l'estat del joc:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// CameraController.cs</span>
+
+<span class="k">using</span><span class="w"> </span><span class="nn">Unity.Cinemachine</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Unity.Netcode</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CameraController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">_target</span><span class="p">;</span><span class="w"> </span><span class="c1">// Objectiu a seguir (jugador local)</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">CinemachineCamera</span><span class="w"> </span><span class="n">_camera</span><span class="p">;</span><span class="w"> </span><span class="c1">// Referencia a la càmera Cinemachine</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Obtenir referencia a la càmera Cinemachine d&#39;aquest GameObject</span>
+<span class="w">        </span><span class="n">_camera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">CinemachineCamera</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GameStateManagerCallback</span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Menu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Quan el joc comença, busquem el jugador local i configurem la càmera per seguir-lo</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">localPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">LocalClient</span><span class="p">.</span><span class="n">PlayerObject</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">localPlayer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">localPlayer</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span>
+
+<span class="w">                </span><span class="c1">// Configurar el target de la càmera Cinemachine</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_camera</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_camera</span><span class="p">.</span><span class="n">Target</span><span class="p">.</span><span class="n">TrackingTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_target</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="s">&quot;CameraController: _camera és null&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;CameraController: No s&#39;ha trobat el jugador local&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// En altres estats, desactivem el seguiment de la càmera</span>
+<span class="w">            </span><span class="n">_target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_camera</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_camera</span><span class="p">.</span><span class="n">Target</span><span class="p">.</span><span class="n">TrackingTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">GameStateManagerCallback</span><span class="p">;</span>
+<span class="w">        </span><span class="k">base</span><span class="p">.</span><span class="n">OnDestroy</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En aquest script, primer obtenim una referència a la càmera Cinemachine. També ens subscrivim a l'esdeveniment <code>OnGameStateChanged</code> en OnStart() i ens desuscrivim en OnDestroy() per evitar possibles errors quan el <code>CameraController</code> es destrueix. Ací, OnDestroy hem d'invocar-lo amb new perquè estem heretant de <code>NetworkBehaviour</code> i aquest té el seu propi <code>OnDestroy()</code> que hem de cridar amb <code>base.OnDestroy()</code>.</p>
+<p>El mètode <code>GameStateManagerCallback</code> s'executa cada vegada que l'estat del joc canvia. Quan l'estat del joc no és <code>Menu</code>, busquem el jugador local i configurem la càmera per seguir-lo (<code>_camera.Target.TrackingTarget = _target;</code>). Si el jugador local no es troba, mostrem un missatge d'advertència. En altres estats, desactivem el seguiment de la càmera.</p>
+<p>Prova a iniciar el joc i comprova que la càmera segueix al jugador local quan el joc comença.</p>
+<h2 id="spawn-de-jugadors">Spawn de jugadors</h2>
+<p>Per a fer el spawn dels jugadors quan es connecten a la xarxa, segurem els següents aassos:</p>
+<ol>
+<li>Establir el nombre màxim de jugadors en el <code>GamestateManager</code>. De moment farem una constant de 4 MAX_PLAYERS = 4.</li>
+<li>Establim 2 equips, team 1 i team 2.</li>
+<li>Afegim al <code>GamestateManager</code> un array serialitzat amb 4 transforms que seran els punts de spawn dels jugadors.</li>
+<li>Quan el primer jugador es connecta, el posem en el team 1 i el fem spawnar en el primer punt de spawn, posició 0 de l'array. Quan el segon jugador es connecta, el posem en el team 2 i el fem spawnar en el segon punt de spawn. Quan el tercer jugador es connecta, el posem en el team 1 i el fem spawnar en el tercer punt de spawn. Quan el quart jugador es connecta, el posem en el team 2 i el fem spawnar en el quart punt de spawn.</li>
+<li>El NetworkManager es farà càrrec de fer el spawn dels jugadors en els punts de spawn corresponents segons el nombre de jugadors connectats i l'equip al que pertanyen.</li>
+</ol>
+<p>Modifiquens el <code>GameStateManager</code> per a implementar aquesta lògica:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GameStateManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_PLAYERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nombre màxim de jugadors</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="p">[]</span><span class="w"> </span><span class="n">spawnPoints</span><span class="p">;</span><span class="w"> </span><span class="c1">// Array de punts de spawn per als jugadors</span>
+
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Singleton_OnClientConnectedCallback</span><span class="p">(</span><span class="kt">ulong</span><span class="w"> </span><span class="n">clientId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_connectedPlayers</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Sync player count with all clients via RPC</span>
+<span class="w">        </span><span class="n">UpdatePlayerCountClientRpc</span><span class="p">(</span><span class="n">_connectedPlayers</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_connectedPlayers</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">_gameState</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">State</span><span class="p">.</span><span class="n">Menu</span><span class="p">)</span>
+<span class="w">            </span><span class="n">StartWaitingClientRpc</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Assignar equip i punt de spawn al nou jugador</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">playerIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">clientId</span><span class="p">);</span><span class="w"> </span><span class="c1">// Índex del jugador basat en el clientId</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">playerIndex</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Assignar equip segons l&#39;índex del jugador (1 o 2)</span>
+<span class="w">            </span><span class="n">Transform</span><span class="w"> </span><span class="n">spawnPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawnPoints</span><span class="p">[</span><span class="n">playerIndex</span><span class="p">];</span><span class="w"> </span><span class="c1">// Obtenir el punt de spawn corresponent</span>
+
+<span class="w">            </span><span class="c1">// Fer el spawn del jugador en el punt de spawn corresponent</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">playerObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">ConnectedClients</span><span class="p">[</span><span class="n">clientId</span><span class="p">].</span><span class="n">PlayerObject</span><span class="p">;</span>
+<span class="w">            </span><span class="n">playerObject</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawnPoint</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
+<span class="w">            </span><span class="n">playerObject</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawnPoint</span><span class="p">.</span><span class="n">rotation</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// crida RPC per informar al client del seu equip i punt de spawn</span>
+<span class="w">            </span><span class="n">AssignTeamAndSpawnClientRpc</span><span class="p">(</span><span class="n">team</span><span class="p">,</span><span class="w"> </span><span class="n">spawnPoint</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">spawnPoint</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTarget</span><span class="p">.</span><span class="n">Single</span><span class="p">(</span><span class="n">clientId</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="p">.</span><span class="n">Temp</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Després de crear la constant <code>MAX_PLAYERS</code> i l'array de <code>spawnPoints</code>, modifiquem el mètode <code>Singleton_OnClientConnectedCallback</code> per assignar un equip i un punt de spawn al nou jugador que es connecta. El jugador es fa spawnar en el punt de spawn corresponent segons el seu índex basat en el <code>clientId</code>. També cridem un RPC per informar al client del seu equip i punt de spawn.</p>
+<p>La crida al RPC <code>AssignTeamAndSpawnClientRpc</code> s'ha de fer amb <code>RpcTarget.Single(clientId)</code> per assegurar-nos que només s'envia al client que s'ha connectat. Així, cada jugador rebrà la informació del seu equip i punt de spawn de manera individual. El segon paràmetre <code>RpcTargetUse.Temp</code> és necessari per a especificar que aquest RPC s'ha d'enviar només al client que s'ha connectat, ja que el <code>clientId</code> és un identificador temporal que només existeix en el moment de la connexió.</p>
+<p>El codi del Rpc <code>AssignTeamAndSpawnClientRpc</code> seria el següent:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="na">[Rpc(SendTo.SpecifiedInParams)]</span>
+<span class="c1">// RPC per informar al client del seu equip i punt de spawn</span>
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AssignTeamAndSpawnClientRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">team</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">spawnPosition</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="w"> </span><span class="n">spawnRotation</span><span class="p">,</span><span class="w"> </span><span class="n">RpcParams</span><span class="w"> </span><span class="n">rpcParams</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Aquí el client pot configurar el seu jugador segons l&#39;equip i punt de spawn assignats</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&quot;Assignat a l&#39;equip {team} i spawnejat en {spawnPosition}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Implementar la lògica per configurar el jugador local segons l&#39;equip i punt de spawn</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">localPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">LocalClient</span><span class="p">.</span><span class="n">PlayerObject</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">localPlayer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">localPlayer</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawnPosition</span><span class="p">;</span>
+<span class="w">        </span><span class="n">localPlayer</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawnRotation</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;AssignTeamAndSpawnClientRpc: No s&#39;ha trobat el jugador local&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En aquest RPC, el client rep la informació del seu equip i punt de spawn assignats. Posicionem el jugador local en el punt de spawn assignat, però es pot ampliar aquesta lògica per configurar altres aspectes del jugador segons l'equip (per exemple, color, habilitats, etc.).</p>
+<p>Acó no estem usant el paràmetre <code>rpcParams</code>, però el necessitem per a especificar que aquest RPC s'ha d'enviar només al client que s'ha connectat (<code>RpcTarget.Single(clientId)</code>).</p>
+<p>Crea un Empty GameObject a la nostra escena i anomena'l <code>SpawnPoints</code>. Dins d'aquest GameObject, crea 4 Empty GameObjects que seran els punts de spawn dels jugadors. Col·loca aquests punts de spawn en diferents posicions del mapa i assigna'ls a l'array <code>spawnPoints</code> del <code>GameStateManager</code> en l'ordre que vulgues que els jugadors facen spawn.</p>
+<p>Comprova que ara podem connectar fins a 4 jugadors i que cada jugador fa spawn en el punt de spawn corresponent segons el seu equip.</p>
+<p><img alt="Spawn Points" src="../images/4players.png" /></p>
+<p>Per últim, falta la lògica per a permetre només el màxim de jugadors connectats. </p>
+<p>Primer, exportem la constant <code>MAX_PLAYERS</code> per a que es puga llegir des d'altres scripts:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GameStateManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MaxPlayers</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">MAX_PLAYERS</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Després, en l'script <code>UIManager.cs</code>, modifiquem el mètode PlayerCountChangedCallback per desactivar el botó de començar el joc quan s'arriba al nombre màxim de jugadors connectats. També canviem el missatge de "Waiting..." per a mostrar el nombre de jugadors connectats i aununciar que s'ha arribat al màxim de jugadors:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PlayerCountChangedCallback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">playerCount</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;PlayerCountChangedCallback: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">playerCount</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">playerCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">playerCount</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">MaxPlayers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">startButton</span><span class="p">.</span><span class="n">interactable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">playerCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">playerCount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">MaxPlayers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">waitText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Players waiting: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">playerCount</span><span class="p">;</span>
+<span class="w">      </span><span class="n">waitText</span><span class="p">.</span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">32</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">playerCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">MaxPlayers</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">waitText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Players waiting: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">playerCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\nReached the maximum number of players.&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="n">waitText</span><span class="p">.</span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">waitText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Waiting...&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="n">waitText</span><span class="p">.</span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">36</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

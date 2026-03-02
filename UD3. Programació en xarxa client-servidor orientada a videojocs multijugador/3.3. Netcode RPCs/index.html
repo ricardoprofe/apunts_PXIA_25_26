@@ -1,0 +1,1323 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ricardo Sánchez">
+      
+      
+      
+        <link rel="prev" href="../3.2.%20Joc%20en%20xarxa%20amb%20Netcode/">
+      
+      
+        <link rel="next" href="../3.4.%20Estats%20del%20joc/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Unitat 3.3 Netcode i RPCs - Programació en Xarxa i Intel·ligència Artificial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/my.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#33-netcode-i-rpcs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-header__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació en Xarxa i Intel·ligència Artificial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unitat 3.3 Netcode i RPCs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-nav__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    Programació en Xarxa i Intel·ligència Artificial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programació en xarxa i intel·ligència artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    U02.  IA i aprenentatge automàtic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            U02.  IA i aprenentatge automàtic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.1. Introducció al pathfinding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.2.%20Pathfinding%202D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.2. Pathfinding 2D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.3. Pathfinding 2D amb físiques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.4. Pathfinding 3D amb AI Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.5.%20Machine%20Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.5. Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1.%20Conceptes%20de%20Xarxes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.2.%20Joc%20en%20xarxa%20amb%20Netcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.2. Joc en xarxa amb Netcode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Unitat 3.3 Netcode i RPCs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.3 Netcode i RPCs
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#controlant-cada-transform-per-separat" class="md-nav__link">
+    Controlant cada transform per separat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpcs" class="md-nav__link">
+    RPCs
+  </a>
+  
+    <nav class="md-nav" aria-label="RPCs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#targets-rpc" class="md-nav__link">
+    Targets RPC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificant-el-tipus-de-networkobject" class="md-nav__link">
+    Identificant el tipus de NetworkObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets-personalitzats" class="md-nav__link">
+    Targets personalitzats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esdeveniments-events" class="md-nav__link">
+    Esdeveniments (Events)
+  </a>
+  
+    <nav class="md-nav" aria-label="Esdeveniments (Events)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declarant-i-invocant-esdeveniments" class="md-nav__link">
+    Declarant i invocant esdeveniments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animant-cada-player-per-separat" class="md-nav__link">
+    Animant cada player per separat
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.4.%20Estats%20del%20joc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.4 Estats del joc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.%20Mec%C3%A0nica%20del%20joc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.5 Mecànica del joc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#controlant-cada-transform-per-separat" class="md-nav__link">
+    Controlant cada transform per separat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpcs" class="md-nav__link">
+    RPCs
+  </a>
+  
+    <nav class="md-nav" aria-label="RPCs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#targets-rpc" class="md-nav__link">
+    Targets RPC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificant-el-tipus-de-networkobject" class="md-nav__link">
+    Identificant el tipus de NetworkObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets-personalitzats" class="md-nav__link">
+    Targets personalitzats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esdeveniments-events" class="md-nav__link">
+    Esdeveniments (Events)
+  </a>
+  
+    <nav class="md-nav" aria-label="Esdeveniments (Events)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declarant-i-invocant-esdeveniments" class="md-nav__link">
+    Declarant i invocant esdeveniments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animant-cada-player-per-separat" class="md-nav__link">
+    Animant cada player per separat
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="33-netcode-i-rpcs">3.3 Netcode i RPCs</h1>
+<p>En aquesta secció, explorarem el concepte de <strong>Remote Procedure Calls (RPCs)</strong> en el context de Netcode for GameObjects. Les RPCs són una eina essencial per a la comunicació entre clients i servidors en jocs multijugador, permetent que les funcions es cridin remotament a través de la xarxa.</p>
+<h2 id="controlant-cada-transform-per-separat">Controlant cada transform per separat</h2>
+<p>En primer lloc anem a sol·lucionar el problema de que el host controle ambdos personatges.</p>
+<p>La solució passa per fer el Network Trnaform del Player Owner Athoritative. Això vol dir que cada client controla el seu propi transform i el servidor només sincronitza les dades.</p>
+<p><img alt="Player Owner Athoritative" src="../images/networktransformplayer02.png" /></p>
+<p>Comprova que ara cada player només controla el seu propi transform. Encara tenim el problema de que les animacions no es sincronitzen, però això ho solucionarem més endavant.</p>
+<h2 id="rpcs">RPCs</h2>
+<p>Qualsevol procés es pot comunicar amb qualsevol altre procés enviant una <strong>crida a procediment remot (RPC, Remote Procedure Call)</strong>. L'atribut <code>Rpc</code> és l'atribut recomanat per utilitzar en declarar mètodes RPC i els seus paràmetres defineixen els receptors i els drets d'execució del mètode RPC.</p>
+<p><img alt="Server RPC" src="../images/ServerRPCs.png" /></p>
+<p><img alt="Client RPC" src="../images/ClientRPCs.png" /></p>
+<p>Es pot declarar un RPC marcant un mètode amb l'<strong>atribut [Rpc]</strong> i incloent-hi el <strong>sufix Rpc</strong> al nom del mètode. Els RPC tenen diversos objectius possibles que es poden declarar tant en temps d'execució com en temps de compilació, però cal passar un valor per defecte a l'atribut [Rpc]. Per exemple, per crear un RPC que s'executarà en un servidor:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="na">[Rpc(SendTo.Server)]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PingRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pingCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="na">[Rpc(SendTo.NotServer)]</span>
+<span class="k">void</span><span class="w"> </span><span class="nf">PongRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pingCount</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Si s'omet el sufix Rpc, el mètode no es reconeixerà com a RPC i no es podrà cridar remotament.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="na">[Rpc(SendTo.Server)]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Ping</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pingCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// Error. No es reconeixerà com a RPC</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Els RPC es poden invocar com una funció qualsevol:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">PingRpc</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+<span class="n">PongRpc</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello from the client!&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="targets-rpc">Targets RPC</h3>
+<p>Hi ha diverses destinacions (<em>targets</em>) predeterminades. Algunes d'aquestes només estan disponibles en contextos client-servidor.</p>
+<p>Tot i que les RPC de client a client es poden executar, és important tenir en compte que no hi ha connexions directes entre clients. Quan s'envia una RPC de client a client, la RPC s'envia al servidor que reenvia el mateix missatge RPC a tots els clients de destinació.</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Descripció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SendTo.Server</code></td>
+<td>Envia al servidor, independentment del propietari. S'executa localment si s'invoca al servidor.</td>
+</tr>
+<tr>
+<td><code>SendTo.NotServer</code></td>
+<td>Només client-servidor Envia a tothom excepte al servidor. No s'enviarà a un servidor que s'executa en mode host; encara es tracta com a servidor. Si voleu enviar als servidors quan són host, però no quan són servidors dedicats, utilitzeu <code>SendTo.ClientsAndHost</code>. S'executa localment si s'invoca en un client. No s'executa localment si s'invoca en un servidor que s'executa en mode host.</td>
+</tr>
+<tr>
+<td><code>SendTo.Owner</code></td>
+<td>Envia al propietari actual de l'objecte de xarxa. S'executa localment si el procés local és el propietari.</td>
+</tr>
+<tr>
+<td><code>SendTo.NotOwner</code></td>
+<td>Envia a tothom excepte al propietari actual. S'executa localment si el procés local no és el propietari. En mode host, l'amfitrió rep aquest missatge dues vegades: una vegada al client host, una vegada al servidor host.</td>
+</tr>
+<tr>
+<td><code>SendTo.Me</code></td>
+<td>Executa aquest RPC localment. Normalment, això no és diferent d'una crida de funció estàndard.</td>
+</tr>
+<tr>
+<td><code>SendTo.NotMe</code></td>
+<td>Envia aquest RPC a tothom excepte a la màquina local.</td>
+</tr>
+<tr>
+<td><code>SendTo.Everyone</code></td>
+<td>Envia aquest RPC a tothom. S'executa localment.</td>
+</tr>
+<tr>
+<td><code>SendTo.ClientsAndHost</code></td>
+<td>Envia aquest RPC a tots els clients, inclòs el <em>host</em>, si existeix un <em>host</em>. Si el servidor s'executa en mode <em>host</em>, això és el mateix que <code>SendTo.Everyone</code>. Si el servidor s'executa en mode de servidor dedicat, això és el mateix que <code>SendTo.NotServer</code>.</td>
+</tr>
+<tr>
+<td><code>SendTo.SpecifiedInParams</code></td>
+<td>Aquest RPC no es pot enviar sense passar un objectiu a RpcSendParams.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Atributs RPC antics</p>
+<p>En versions anteriors de Netcode for GameObjects, es feia servir l'atribut <code>ServerRpc</code> per a les crides al servidor i <code>ClientRpc</code> per a les crides als clients. Aquestes encara són compatibles, però es recomana utilitzar l'atribut <code>Rpc</code> amb els paràmetres de destinació per a una major flexibilitat i claredat.</p>
+</div>
+<h3 id="identificant-el-tipus-de-networkobject">Identificant el tipus de NetworkObject</h3>
+<p>En alguns casos, pot ser útil identificar el tipus de <code>NetworkObject</code> que està cridant un RPC. Per exemple, si tens diferents tipus de personatges o objectes en el teu joc, pots voler executar lògiques específiques basades en el tipus d'objecte que està enviant la RPC.</p>
+<p>Per fer això tenim els següents mètodes:</p>
+<table>
+<thead>
+<tr>
+<th>Mètode</th>
+<th>Descripció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IsServer()</code></td>
+<td>Retorna <code>true</code> si el procés actual és un servidor.</td>
+</tr>
+<tr>
+<td><code>IsClient()</code></td>
+<td>Retorna <code>true</code> si el procés actual és un client.</td>
+</tr>
+<tr>
+<td><code>IsHost()</code></td>
+<td>Retorna <code>true</code> si el procés actual és un host</td>
+</tr>
+<tr>
+<td><code>IsOwner()</code></td>
+<td>Retorna <code>true</code> si el procés actual és el propietari de l'objecte de red.</td>
+</tr>
+<tr>
+<td><code>IsSpawned()</code></td>
+<td>Retorna <code>true</code> si l'objecte de red està actualment a la xarxa.</td>
+</tr>
+</tbody>
+</table>
+<p>Aquest mètodes pertanyen a la classe <code>NetworkBehaviour</code> de la qual hauria d'heretar el nostre script. </p>
+<p>Exemple:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Example</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="na">[Rpc(SendTo.Server)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ExampleRpc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Lògica específica del servidor</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsClient</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">IsSpawned</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Lògica específica del client quan ha aparegut</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="targets-personalitzats">Targets personalitzats</h3>
+<p>Si necessiteu enviar a un ID de client específic o a una llista d'IDs de client que no estan coberts per cap dels targets existents, podeu utilitzar els mètodes següents:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Envia a un ID de client específic. </span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Single</span><span class="p">(</span><span class="kt">ulong</span><span class="w"> </span><span class="n">clientId</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// Envia a tothom EXCEPTE un ID de client específic.</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Not</span><span class="p">(</span><span class="kt">ulong</span><span class="w"> </span><span class="n">excludedClientId</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// Envia a un grup d&#39;IDs de client.</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Group</span><span class="p">(</span><span class="n">NativeArray</span><span class="o">&lt;</span><span class="kt">ulong</span><span class="o">&gt;</span><span class="w"> </span><span class="n">clientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Group</span><span class="p">(</span><span class="n">NativeList</span><span class="o">&lt;</span><span class="kt">ulong</span><span class="o">&gt;</span><span class="w"> </span><span class="n">clientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Group</span><span class="p">(</span><span class="kt">ulong</span><span class="p">[]</span><span class="w"> </span><span class="n">clientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="n">Group</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">clientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">ulong</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// Envia a tothom EXCEPTE un grup d&#39;IDs de client.</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Not</span><span class="p">(</span><span class="n">NativeArray</span><span class="o">&lt;</span><span class="kt">ulong</span><span class="o">&gt;</span><span class="w"> </span><span class="n">excludedClientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Not</span><span class="p">(</span><span class="n">NativeList</span><span class="o">&lt;</span><span class="kt">ulong</span><span class="o">&gt;</span><span class="w"> </span><span class="n">excludedClientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="nf">Not</span><span class="p">(</span><span class="kt">ulong</span><span class="p">[]</span><span class="w"> </span><span class="n">excludedClientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="n">BaseRpcTarget</span><span class="w"> </span><span class="n">Not</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">excludedClientIds</span><span class="p">,</span><span class="w"> </span><span class="n">RpcTargetUse</span><span class="w"> </span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">ulong</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="esdeveniments-events">Esdeveniments (Events)</h2>
+<p>En Unity podem utilitzar els <strong>esdeveniments (Events)</strong> de C# per a gestionar la comunicació entre diferents components del nostre joc, sense necessitat de que cada component tinga una refewrència d'un altre component. Això és especialment útil en jocs multijugador, on diferents objectes poden necessitar reaccionar a esdeveniments específics que ocorren en el joc.</p>
+<ul>
+<li>
+<p><strong>Esdeveniment (Event)</strong>; són declaracions dins d'una classe que defineixen un tipus d'esdeveniment. Per exemple:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">event</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">OnPlayerDeath</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p><strong>Delegats (Delegates)</strong>; són tipus de dades que <strong>representen referències a mètodes</strong>. Permeten que els mètodes es passen com a paràmetres o s'assignin a variables. Per exemple:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPlayerDied</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p><strong>Suscriptors i publicadors</strong>: els components que volen reaccionar a un esdeveniment es converteixen en <strong>suscriptors</strong>, mentre que el component que genera l'esdeveniment és el <strong>publicador</strong>. Per exemple:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">Player</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="n">OnPlayerDeath</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">HandlePlayerDeath</span><span class="p">;</span><span class="w"> </span><span class="c1">// Subscripció a l&#39;esdeveniment</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">HandlePlayerDeath</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Lògica per quan el jugador mor</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="n">OnPlayerDeath</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">HandlePlayerDeath</span><span class="p">;</span><span class="w"> </span><span class="c1">// Desubscripció a l&#39;esdeveniment per evitar fugues de memòria</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</li>
+</ul>
+<h3 id="declarant-i-invocant-esdeveniments">Declarant i invocant esdeveniments</h3>
+<p>En Unity, els esdeveniments es poden declarar i invocar de diferents formes.</p>
+<p><strong>1. Declarar un delegat i un esdeveniment:</strong>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPlayerScored</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">points</span><span class="p">);</span><span class="w"> </span><span class="c1">// Declaració del delegat</span>
+<span class="k">public</span><span class="w"> </span><span class="k">event</span><span class="w"> </span><span class="n">OnPlayerScored</span><span class="w"> </span><span class="n">PlayerScoredEvent</span><span class="p">;</span><span class="w"> </span><span class="c1">// Declaració de l&#39;esdeveniment basat en el delegat</span>
+</code></pre></div></td></tr></table></div></p>
+<p><strong>2. Declarar un event utilitzant <code>Action</code>:</strong>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">event</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">PlayerScoredEvent</span><span class="p">;</span><span class="w"> </span><span class="c1">// Declaració de l&#39;esdeveniment utilitzant Action</span>
+</code></pre></div></td></tr></table></div>
+<strong>2. Declarar un event amb paràmetres utilitzant <code>Action</code>:</strong>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">event</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PlayerScoredEvent</span><span class="p">;</span><span class="w"> </span><span class="c1">// Declaració de l&#39;esdeveniment utilitzant Action amb un paràmetre de tipus int</span>
+</code></pre></div></td></tr></table></div></p>
+<div class="admonition info">
+<p class="admonition-title">Action</p>
+<p><code>Action</code> és un tipus de delegat genèric que es pot utilitzar per a esdeveniments sense paràmetres o amb paràmetres. Per exemple, <code>Action</code> és un delegat que no té paràmetres, mentre que <code>Action&lt;int&gt;</code> és un delegat que accepta un paràmetre de tipus <code>int</code>.</p>
+<p>Per usar <code>Action</code> en el teu codi, assegura't d'incloure el <em>namespace</em> <code>System</code> (<code>using System;</code>).</p>
+</div>
+<h2 id="animant-cada-player-per-separat">Animant cada player per separat</h2>
+<p>Per a animar cada player per separat, primer hem d'afegir el component <code>NetworkAnimator</code> al player. Aquest component s'encarrega de sincronitzar les animacions entre el client i el servidor.</p>
+<p>Si ara poses en marxa el joc, veuràs que encara tenim el mateix problema:</p>
+<ul>
+<li>Jugador 1 (local) es mou i l'animació funciona perfectament en la meua pantalla</li>
+<li>Jugador 2 (el remot) es mou, però jo NO veig la seua animació a la meua pantalla</li>
+</ul>
+<p><strong>Per què?</strong> Perquè la informació del moviment (l'<em>input</em> que fa) no viatja per la xarxa automàticament. Hem de fer-ho nosaltres.</p>
+<p>El primer que hem de fer és canviar l'herència del nostre script de moviment perquè herete de <code>NetworkBehaviour</code> en lloc de <code>MonoBehaviour</code>. Això ens permetrà utilitzar les funcions de xarxa que ens ofereix Netcode for GameObjects.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Unity.Netcode</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerMovement</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>PAS 1: Crear una VARIABLE DE XARXA (<code>NetworkVariable</code>)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">NetworkVariable</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">netSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NetworkVariable</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span>
+<span class="w">    </span><span class="n">NetworkVariableReadPermission</span><span class="p">.</span><span class="n">Everyone</span><span class="p">,</span><span class="w">      </span><span class="c1">// TOTS poden llegir</span>
+<span class="w">    </span><span class="n">NetworkVariableWritePermission</span><span class="p">.</span><span class="n">Owner</span><span class="p">);</span><span class="w">       </span><span class="c1">// NOMÉS el propietari pot escriure</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Què significa això?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Terme</th>
+<th>Significat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NetworkVariable&lt;float&gt;</code></td>
+<td>Una variable que es sincronitza per xarxa automàticament</td>
+</tr>
+<tr>
+<td><code>0f</code></td>
+<td>Valor inicial (0)</td>
+</tr>
+<tr>
+<td><code>ReadPermission.Everyone</code></td>
+<td>Tots els jugadors poden rebre els canvis</td>
+</tr>
+<tr>
+<td><code>WritePermission.Owner</code></td>
+<td>NOMÉS el jugador propietari del personatge pot enviar canvis</td>
+</tr>
+</tbody>
+</table>
+<p>Es com una pantalla compartida en línia<br />
+Tots veuen la pantalla (<code>ReadPermission.Everyone</code>)<br />
+Però només TÚ pots escriure en ella (<code>WritePermission.Owner</code>)</p>
+<p><strong>Per què WritePermission.Owner?:</strong> Així evitem que els hackers envien valors falsos pel seu compte. NOMÉS el propietari pot moure el seu personatge.</p>
+<p><strong>PAS 2: Subscriure's als CANVIS de la variable</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnNetworkSpawn</span><span class="p">()</span><span class="w">  </span><span class="c1">// Es crida quan el personatge apareix en la xarxa</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">base</span><span class="p">.</span><span class="n">OnNetworkSpawn</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// REGISTRA una funció que s&#39;executa CADA VOLTA que netSpeed canvia</span>
+<span class="w">    </span><span class="n">netSpeed</span><span class="p">.</span><span class="n">OnValueChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">OnSpeedChanged</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><code>OnNetworkSpawn()</code> és un mètode que s'executa automàticament quan el personatge apareix en la xarxa. </p>
+<p>Cada vegada que <code>netSpeed</code> canvia (el jugador remot envia un nou valor), automàticament es crida la funció <code>OnSpeedChanged()</code>.</p>
+<p>També hem de desfer la subscrició quan el personatge desapareix per evitar problemes de memòria:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnNetworkDespawn</span><span class="p">()</span><span class="w">  </span><span class="c1">// Es crida quan el personatge desapareix</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">base</span><span class="p">.</span><span class="n">OnNetworkDespawn</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// DESREGISTRA la funció (important per evitar memory leaks)</span>
+<span class="w">    </span><span class="n">netSpeed</span><span class="p">.</span><span class="n">OnValueChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">OnSpeedChanged</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><code>OnNetworkDespawn()</code> es crida quan el personatge desapareix de la xarxa.</p>
+<p><strong>PAS 3: Actualitzar el ANIMATOR</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnSpeedChanged</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">previous</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">current</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// previous = valor vell</span>
+<span class="w">    </span><span class="c1">// current = valor nou que ha enviat el propietari</span>
+
+<span class="w">    </span><span class="c1">// ACTUALITZA l&#39;animator amb el nou valor</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">animator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">animator</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&quot;Speed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Com funciona?</strong>:</p>
+<ul>
+<li>El propietari envia <code>netSpeed.Value = 0.5f</code> (està corrent)</li>
+<li>Tots els altres reben automatalment este canvi</li>
+<li>S'executa <code>OnSpeedChanged(previous=0f, current=0.5f)</code></li>
+<li>L'animator canvia: <code>SetFloat("Speed", 0.5f)</code></li>
+<li>L'animació canvia automàticament al clip de córrer</li>
+</ul>
+<p><strong>PAS 4: El propietari ENVIA la informació</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ... codi previ ...</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsOwner</span><span class="p">)</span><span class="w"> </span><span class="c1">// Només el propietari controla el moviment i les animacions</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Kick</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">kickAction</span><span class="p">.</span><span class="n">action</span><span class="p">.</span><span class="n">triggered</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Animació de patada local</span>
+<span class="w">                </span><span class="n">animator</span><span class="p">.</span><span class="n">SetTrigger</span><span class="p">(</span><span class="n">Kick</span><span class="p">);</span>
+<span class="w">                </span><span class="c1">// Notificar al servidor per a que informe als altres jugadors</span>
+<span class="w">                </span><span class="n">KickServerRpc</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServerRpcParams</span><span class="p">());</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Apply gravity</span>
+<span class="w">            </span><span class="n">playerVelocity</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">gravityValue</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1">// Combine horizontal and vertical movement</span>
+<span class="w">            </span><span class="n">moveDirection</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">playerVelocity</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">            </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">rotation</span><span class="p">);</span>
+<span class="w">            </span><span class="n">controller</span><span class="p">.</span><span class="n">Move</span><span class="p">(</span><span class="n">moveDirection</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// Actualitza l&#39;animator amb la velocitat local (sense esperar xarxa)</span>
+<span class="w">            </span><span class="n">animator</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&quot;Speed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// Canviar la variable de xarxa perquè els altres jugadors la reben i actualitzen les seues animacions</span>
+<span class="w">            </span><span class="n">netSpeed</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// No propietari: el moviment es gestiona a través de NetworkTransform (si està present) i les animacions s&#39;actualitzen a través de netSpeed.OnValueChanged</span>
+<span class="w">            </span><span class="c1">// Res a fer aquí cada frame</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Per què ho fem així?:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Acció</th>
+<th>On es fa</th>
+<th>Explicació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animator.SetTrigger(Kick)</code></td>
+<td>LOCAL</td>
+<td>El meu personatge pateja al moment</td>
+</tr>
+<tr>
+<td><code>KickServerRpc()</code></td>
+<td>XARXA</td>
+<td>S'envia el RPC al servidor perquè els altres jugadors el reben i actualitzen les seues animacions</td>
+</tr>
+<tr>
+<td><code>animator.SetFloat("Speed", input.y)</code></td>
+<td>LOCAL</td>
+<td>Sense retard, el meu personatge es mou al moment</td>
+</tr>
+<tr>
+<td><code>netSpeed.Value = input.y</code></td>
+<td>XARXA</td>
+<td>Els altres reben la informació</td>
+</tr>
+</tbody>
+</table>
+<p>Si la xarxa és lenta, les animacions locals es veuen a l'instant, mentre que les remotes poden tindre un poc de retard.</p>
+<p><strong>PAS 5: Els REMOTS reben automàticament:</strong></p>
+<pre class="mermaid"><code>graph TD
+    A["&lt;b&gt;JUGADOR 1&lt;/b&gt; (Jo)&lt;br/&gt;━━━━━━━━━━━━&lt;br/&gt;• Prem moure (input.y = 1)&lt;br/&gt;• SetFloat('Speed', 1) - LOCAL&lt;br/&gt;• netSpeed.Value = 1 - PER XARXA"]
+
+    B["&lt;b&gt;JUGADOR 2&lt;/b&gt; (Remot)&lt;br/&gt;━━━━━━━━━━━━&lt;br/&gt;• Rep netSpeed = 1&lt;br/&gt;• S'executa: OnSpeedChanged()&lt;br/&gt;• SetFloat('Speed', 1) - AUTOMÀTIC&lt;br/&gt;• Veu l'animació del rival"]
+
+    A --&gt;| xarxa | B
+
+    style A fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+    style B fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff</code></pre>
+<p><strong>RESUM: Els 5 PASSOS per sincronitzar animacions</strong>:</p>
+<ol>
+<li><code>NetworkVariable&lt;float&gt; netSpeed</code>: Crear variable de xarxa</li>
+<li><code>netSpeed.OnValueChanged += OnSpeedChanged;</code> Subscriure's a les actualitzacions de la variable per rebre els canvis</li>
+<li><code>OnSpeedChanged(float prev, float curr)</code>: Actualitzar animator quan canvia</li>
+<li><code>netSpeed.Value = input.y</code> Enviar el valor per xarxa</li>
+<li>Automàtic: Els remots reben i actualitzen</li>
+</ol>
+<pre class="mermaid"><code>sequenceDiagram
+    actor P as PROPIETARI
+    participant A as Animator Local
+    participant N as netSpeed (Xarxa)
+    participant R as REMOTS
+    participant AA as Animator Remot
+
+    P-&gt;&gt;P: 1. Lee input (moveAction)
+    P-&gt;&gt;A: 2. SetFloat("Speed", value)
+    Note over A: Animació local instant
+
+    P-&gt;&gt;N: 3. netSpeed.Value = input.y
+    N--&gt;&gt;R: 4. Sincronització per xarxa
+    R-&gt;&gt;R: 5. OnSpeedChanged() es crida
+    R-&gt;&gt;AA: 6. SetFloat("Speed", value)
+    Note over AA: Animació remota sincronitzada </code></pre>
+<p>Ens queda per analitzar les animacions de patada, però el procés és el mateix: el propietari envia un RPC al servidor (<code>KickServerRpc</code>), el qual reenvia la informació a tots els clients, excepte al propietari (<code>KickClientRpc</code>) perquè actualitzen les seues animacions de patada.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="na">[Rpc(SendTo.Server)]</span>
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">KickServerRpc</span><span class="p">()</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">KickClientRpc</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="na">[Rpc(SendTo.NotOwner)]</span>
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">KickClientRpc</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Run on remote clients (not owner)</span>
+<span class="w">    </span><span class="n">animator</span><span class="p">.</span><span class="n">SetTrigger</span><span class="p">(</span><span class="n">Kick</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Owner as PROPIETARI&lt;br/&gt;(Client)
+    participant Server as SERVIDOR
+    participant OtherClient as ALTRES CLIENTS&lt;br/&gt;(Remots)
+
+    Owner-&gt;&gt;Owner: 1. kickAction.action.triggered
+    Note over Owner: L'usuari prem el botó de patada
+
+    Owner-&gt;&gt;Owner: 2. animator.SetTrigger(Kick)
+    Note over Owner: L'animació de patada es veu localment
+
+    Owner-&gt;&gt;Server: 3. KickServerRpc()
+    Note over Owner,Server: RPC cridat: SendTo.Server
+
+    Server-&gt;&gt;Server: 4. Procesa KickServerRpc()
+    Note over Server: El servidor rep la petició
+
+    Server-&gt;&gt;OtherClient: 5. KickClientRpc()
+    Note over Server,OtherClient: RPC cridat: SendTo.NotOwner
+
+    OtherClient-&gt;&gt;OtherClient: 6. animator.SetTrigger(Kick)
+    Note over OtherClient: L'animació de patada es veu als remots</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>
