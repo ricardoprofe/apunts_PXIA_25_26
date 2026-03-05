@@ -595,6 +595,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#victoria-i-derrota" class="md-nav__link">
+    Victòria i derrota
+  </a>
+  
+    <nav class="md-nav" aria-label="Victòria i derrota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detectant-la-victoria" class="md-nav__link">
+    Detectant la victòria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panells-de-victoria-i-derrota" class="md-nav__link">
+    Panells de victòria i derrota
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -702,6 +729,33 @@
           <li class="md-nav__item">
   <a href="#reubicant-la-pilota-despres-dun-gol" class="md-nav__link">
     Reubicant la pilota després d'un gol
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#victoria-i-derrota" class="md-nav__link">
+    Victòria i derrota
+  </a>
+  
+    <nav class="md-nav" aria-label="Victòria i derrota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detectant-la-victoria" class="md-nav__link">
+    Detectant la victòria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panells-de-victoria-i-derrota" class="md-nav__link">
+    Panells de victòria i derrota
   </a>
   
 </li>
@@ -936,12 +990,12 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;GoalTeam1&quot;</span><span class="p">))</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Goal for Team 2!&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="n">OnGoal</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnGoal</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;GoalTeam2&quot;</span><span class="p">))</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Goal for Team 1!&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="n">OnGoal</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnGoal</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1200,7 +1254,17 @@
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// BallManager.cs</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// BallManager.cs</span>
 
 <span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span>
 
@@ -1222,16 +1286,284 @@
 <span class="w">    </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">ResetBall</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">);</span>
-<span class="w">        </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
-<span class="w">        </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">angularVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
-<span class="w">        </span><span class="n">ball</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="w">            </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">angularVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="w">            </span><span class="n">ball</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="p">....</span>
 
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">base</span><span class="p">.</span><span class="n">OnDestroy</span><span class="p">();</span>
+<span class="w">        </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">OnGameStateChanged</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">GameStateChangedCallback</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Ball</span><span class="p">.</span><span class="n">OnGoal</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">BallOnGoalCallback</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>En aquest codi, quan es marca un gol, es crida al callback <code>BallOnGoalCallback</code>, que inicia la corrutina <code>ResetBall</code>. Aquesta corrutina espera uns segons (en aquest cas, 2 segons) i després reinicia la velocitat de la pilota a zero i la col·loca de nou al centre del camp.</p>
+<p>També ens hem de desubscriure de l'esdeveniment <code>OnGoal</code> a l'mètode <code>OnDestroy</code> per a evitar possibles errors quan el <code>BallManager</code> es destruïsca.</p>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Implementa Crea la lògica per a que quan es marque gol, els jugadors tornen a les seues posicions d'inici. <strong>Consell</strong>: Implementa un <code>PlayerManager</code> que mantinga una llista de tots els jugadors i les seues posicions d'inici.</p>
+</div>
+<h2 id="victoria-i-derrota">Victòria i derrota</h2>
+<p>Per a finalitzar la mecànica del joc, implementarem la lògica de victòria i derrota. </p>
+<h3 id="detectant-la-victoria">Detectant la victòria</h3>
+<p>Per a detectar la victòria, podem afegir una nova variable <code>winningScore</code> al <code>ScoreManager</code> que determinarà quina puntuació és necessària per a guanyar el joc. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// ScoreManager.cs</span>
+
+<span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">WIN_SCORE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">BallOnGoalCallback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">team</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">team</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team2Score</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">team</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team1Score</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UpdateScoreClientRpc</span><span class="p">(</span><span class="n">team1Score</span><span class="p">,</span><span class="w"> </span><span class="n">team2Score</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">team1Score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">WIN_SCORE</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Team 1 wins</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">team2Score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">WIN_SCORE</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Team 2 wins</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Més tard, implementarem la lògica per a canviar l'estat del joc.</p>
+<h3 id="panells-de-victoria-i-derrota">Panells de victòria i derrota</h3>
+<p>Cream dos nous panells al Canvas anomenats <code>WinPanel</code> i <code>LosePanel</code>. Aquests panells es mostraran quan un equip guanye o perda el joc.</p>
+<p>Cada panell tindra un <em>TextMeshProUGUI</em> que mostrarà un missatge de victòria o derrota i un botó per a tornar al menú principal amb el text Next Game.</p>
+<p><img alt="Win and Lose Panels" src="../images/win_lose_panels.png" /></p>
+<p>L'objectiu del botó Next Game serà recargar la escena del joc i apagar el NetworkManager, perquè si és el host necessitem apagar-ho per a poder crear un joc nou i si és un client perquè necessita deixar el servidor per a poder unir-se a un altre joc.</p>
+<p>A continuació, en l'script UIManager, implementarem la lògica per a mostrar els panells de victòria i derrota quan el joc acabe. Primer afegim 2 noves variables per a referenciar els panells:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+
+<span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">winPannel</span><span class="p">;</span>
+<span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">losePannel</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>Després, creem dos nous mètodes per a mostrar els panells de victòria i derrota:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+
+<span class="c1">// Modifiquem també els mètodes anteriors per a ocultar </span>
+<span class="c1">// els pannels winPannel i losePannel</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ShowWinPannel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">connPannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">waitPannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gamePannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">winPannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">losePannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ShowLosePannel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">connPannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">waitPannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gamePannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">winPannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">losePannel</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Mantenim el <code>gamePannel</code> actiu perquè volem que el marcador de puntuació siga visible tant al panell de victòria com al de derrota.</p>
+<p>Afegim la lògica per a canviar de panell al <code>GameStateManagerCallback</code> del <code>UIManager</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GameStateManagerCallback</span><span class="p">(</span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Casos anteriors...</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Win</span><span class="p">:</span>
+<span class="w">        </span><span class="n">ShowWinPannel</span><span class="p">();</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">Lose</span><span class="p">:</span>
+<span class="w">        </span><span class="n">ShowLosePannel</span><span class="p">();</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Els nous estats els hem d'afegir a l'enum <code>State</code> del <code>GameStateManager</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Menu</span><span class="p">,</span><span class="w"> </span><span class="n">Waiting</span><span class="p">,</span><span class="w"> </span><span class="n">Game</span><span class="p">,</span><span class="w"> </span><span class="n">Win</span><span class="p">,</span><span class="w"> </span><span class="n">Lose</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Per últim afegim al <code>UIManager</code> el callback per a canviar l'estat del joc quan un equip guanye:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine.SceneManagement</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UIManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Codi existent...</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NextButtonCallback</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">SceneManager</span><span class="p">.</span><span class="n">LoadScene</span><span class="p">(</span><span class="n">SceneManager</span><span class="p">.</span><span class="n">GetActiveScene</span><span class="p">().</span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">Shutdown</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>A l'inspector, afegim els panells de victòria i derrota a les variables <code>winPannel</code> i <code>losePannel</code> del <code>UIManager</code> i assignem el mètode <code>NextButtonCallback</code> al botó <em>Next Game</em> de cada panell.</p>
+<p>Com la victòria i/o derrota es detecta al <code>ScoreManager</code>, necessitem una manera de canviar l'estat del joc des d'aquest script. Verifica que tens el següent mètode al <code>GameStateManager</code> per a canviar l'estat del joc, si no, afegeix-lo:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetGameState</span><span class="p">(</span><span class="n">State</span><span class="w"> </span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">_gameState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
+<span class="w">    </span><span class="n">OnGameStateChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">st</span><span class="p">);</span><span class="w"> </span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>També creem un mètode públic que cride a un RPC al <code>GameStateManager</code> per a canviar l'estat del joc depenent de quin equip ha obtés la victòria:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// GameStateManager.cs</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EndGame</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">winningTeam</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Enviar l&#39;RPC a tots els clients perquè sàpiguen qui va guanyar</span>
+<span class="w">        </span><span class="n">EndGameClientRpc</span><span class="p">(</span><span class="n">winningTeam</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Rpc(SendTo.ClientsAndHost)]</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EndGameClientRpc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">winningTeam</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&quot;EndGame called: Winning team is {winningTeam}, Local team is {_localTeam}&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">winningTeam</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">_localTeam</span><span class="p">)</span>
+<span class="w">            </span><span class="n">SetGameState</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Win</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nf">SetGameState</span><span class="p">(</span><span class="n">State</span><span class="p">.</span><span class="n">Lose</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Aquest RPC s'encarrega de canviar l'estat del joc a Win o Lose segons quin equip ha guanyat i quin equip és el del jugador local.</p>
+<p>Ara, al <code>ScoreManager</code>, cridem al mètode <code>EndGame</code> del <code>GameStateManager</code> quan un equip arribe a la puntuació de victòria:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// ScoreManager.cs</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">BallOnGoalCallback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">team</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">team</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team2Score</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">team</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="w">            </span><span class="n">team1Score</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UpdateScoreClientRpc</span><span class="p">(</span><span class="n">team1Score</span><span class="p">,</span><span class="w"> </span><span class="n">team2Score</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">team1Score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">WIN_SCORE</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EndGame</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">team2Score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">WIN_SCORE</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">GameStateManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EndGame</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Ací estem comunicant al <code>GameStateManager</code> quin equip ha guanyat perquè puga canviar l'estat del joc i mostrar el panell de victòria o derrota corresponent a cada client.</p>
+<p>Comprova que tot funcione correctament: quan un equip arribe a la puntuació de victòria, hauria de mostrar-se el panell de victòria als jugadors d'aquest equip i el panell de derrota als jugadors de l'equip contrari. A més, el botó <em>Next Game</em> hauria de recarregar la escena i apagar el NetworkManager per a permetre crear o unir-se a un nou joc.</p>
 
 
 
