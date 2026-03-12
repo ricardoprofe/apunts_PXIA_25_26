@@ -1024,8 +1024,12 @@
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine.UI</span><span class="p">;</span>
 
+<span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="n">startButton</span><span class="p">;</span><span class="w"> </span>
 
 <span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ShowConnPannel</span><span class="p">();</span>
@@ -1037,7 +1041,7 @@
 
 <span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PlayerCountChangedCallback</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">playerCount</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">StartButton</span><span class="p">.</span><span class="n">interactable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">playerCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Habilita el botó amb 2 o més players connectats</span>
+<span class="w">    </span><span class="n">startButton</span><span class="p">.</span><span class="n">interactable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">playerCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Habilita el botó amb 2 o més players connectats</span>
 <span class="p">}</span>
 
 <span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
