@@ -842,9 +842,9 @@
 
 <span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">BallManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">BallManager</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
-
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">BallManager</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span><span class="w">    </span>
 <span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">ballPrefab</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Ball</span><span class="w"> </span><span class="n">ball</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
@@ -899,7 +899,7 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Ball</span><span class="w"> </span><span class="n">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instantiate</span><span class="p">(</span><span class="n">ballPrefab</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="p">.</span><span class="n">identity</span><span class="p">).</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Ball</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="n">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instantiate</span><span class="p">(</span><span class="n">ballPrefab</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="p">.</span><span class="n">identity</span><span class="p">).</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Ball</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">            </span><span class="n">ball</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">NetworkObject</span><span class="o">&gt;</span><span class="p">().</span><span class="n">Spawn</span><span class="p">();</span>
 <span class="w">            </span><span class="n">ball</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Posició inicial de la pilota</span>
 <span class="w">        </span><span class="p">}</span>
