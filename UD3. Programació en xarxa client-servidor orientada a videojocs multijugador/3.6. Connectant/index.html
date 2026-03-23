@@ -1,0 +1,1009 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ricardo Sánchez">
+      
+      
+      
+        <link rel="prev" href="../3.5.%20Mec%C3%A0nica%20del%20joc/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Unitat 3.6 Connectant - Programació en Xarxa i Intel·ligència Artificial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/my.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#36-connectant" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-header__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació en Xarxa i Intel·ligència Artificial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unitat 3.6 Connectant
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació en Xarxa i Intel·ligència Artificial" class="md-nav__button md-logo" aria-label="Programació en Xarxa i Intel·ligència Artificial" data-md-component="logo">
+      
+  <img src="../../stylesheets/logo_me_blanc.png" alt="logo">
+
+    </a>
+    Programació en Xarxa i Intel·ligència Artificial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programació en xarxa i intel·ligència artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    U02.  IA i aprenentatge automàtic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            U02.  IA i aprenentatge automàtic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.1. Introducció al pathfinding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.2.%20Pathfinding%202D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.2. Pathfinding 2D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.3. Pathfinding 2D amb físiques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.4. Pathfinding 3D amb AI Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../U02.%20%20IA%20i%20aprenentatge%20autom%C3%A0tic/2.5.%20Machine%20Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 2.5. Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD3. Programació en xarxa client servidor orientada a videojocs multijugador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1.%20Conceptes%20de%20Xarxes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.2.%20Joc%20en%20xarxa%20amb%20Netcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.2. Joc en xarxa amb Netcode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.3.%20Netcode%20RPCs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.3 Netcode i RPCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.4.%20Estats%20del%20joc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.4 Estats del joc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.%20Mec%C3%A0nica%20del%20joc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.5 Mecànica del joc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Unitat 3.6 Connectant
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 3.6 Connectant
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptes-basics-de-xarxes-tcpip" class="md-nav__link">
+    Conceptes bàsics de xarxes TCP/IP
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptes bàsics de xarxes TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipus-de-xarxes" class="md-nav__link">
+    Tipus de xarxes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adreces-ip" class="md-nav__link">
+    Adreces IP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    Ports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectant-el-nostre-joc" class="md-nav__link">
+    Connectant el nostre joc
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptes-basics-de-xarxes-tcpip" class="md-nav__link">
+    Conceptes bàsics de xarxes TCP/IP
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptes bàsics de xarxes TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipus-de-xarxes" class="md-nav__link">
+    Tipus de xarxes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adreces-ip" class="md-nav__link">
+    Adreces IP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    Ports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectant-el-nostre-joc" class="md-nav__link">
+    Connectant el nostre joc
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="36-connectant">3.6 Connectant</h1>
+<p>En aquesta secció, aprendrem a connectar el nostre joc multijugador a través d'una xarxa. Però primer veurem alguns conceptes bàsics sobre xarxes i com funcionen les connexions entre clients i servidors.</p>
+<h2 id="conceptes-basics-de-xarxes-tcpip">Conceptes bàsics de xarxes TCP/IP</h2>
+<p>Avui en dia la majoria de les xarxes, tant local com Internet, utilitzen el <strong>protocol TCP/IP</strong> per a la comunicació. <strong>TCP</strong> (<em>Transmission Control Protocol</em>) és un protocol orientat a connexió que garanteix que les dades arribin correctament al seu destí, mentre que <strong>IP</strong> (<em>Internet Protocol</em>) s'encarrega de l'adreçament i l'encaminament de les dades a través de la xarxa.</p>
+<h3 id="tipus-de-xarxes">Tipus de xarxes</h3>
+<ul>
+<li><strong>LAN (Local Area Network)</strong>: <strong>Xarxa local</strong> que connecta dispositius dins d'una àrea limitada, com una casa o una oficina. Les xarxes local poden ser <strong>cablejades</strong> (<em>Ethernet</em>), <strong>sense fils</strong> (<em>Wi-Fi</em>) o mixtes (<em>Ethernet + Wi-Fi</em>).</li>
+<li><strong>WAN (Wide Area Network)</strong>: Xarxa que cobreix una àrea geogràfica més gran, com Internet.</li>
+</ul>
+<h3 id="adreces-ip">Adreces IP</h3>
+<p>Cada dispositiu en una xarxa té una adreça IP única que l'identifica. Les adreces IP es poden classificar en:</p>
+<ul>
+<li><strong>IPv4</strong> (format numèric, com <code>192.168.1.1</code>)</li>
+<li><strong>IPv6</strong> (format hexadecimal, com <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">IPv6</p>
+<p>La versió 6 del protocol IP es va crear per solucionar el problema de l'esgotament d'adreces IPv4, ja que IPv6 ofereix un nombre molt més gran d'adreces disponibles.</p>
+<p>Encara que IPv6 és el futur de les adreces IP, la majoria de les xarxes encara utilitzen IPv4. En aquesta unitat, ens centrarem en IPv4 per a la connexió del nostre joc.</p>
+</div>
+<p>Les IPs versió 4 espoden classificar en <strong>públiques</strong> i <strong>privades</strong>. Les adreces IP privades són utilitzades dins de xarxes locals i no són accessibles des d'Internet, mentre que les adreces IP públiques són assignades a dispositius que es connecten directament a Internet.</p>
+<p>Per a que una IP siga privada, ha de pertànyer a un dels següents rangs:</p>
+<ul>
+<li><code>10.0.0.0</code> - <code>10.255.255.255</code>: totes les IP que comencen per <code>10.</code>.</li>
+<li><code>172.16.0.0</code> - <code>172.31.255.255</code>: totes les IP que comencen per <code>172.16.</code> fins a <code>172.31.</code>.</li>
+<li><code>192.168.0.0</code> - <code>192.168.255.255</code>: totes les IP que comencen per <code>192.168.</code>.</li>
+</ul>
+<h3 id="ports">Ports</h3>
+<p>A més de l'adreça IP, les connexions de xarxa també utilitzen <strong>ports</strong> per a identificar els serveis o aplicacions específiques que s'executen en un dispositiu. Un port és un número de 16 bits que va des del <code>0</code> fins al <code>65535</code>. Els ports es classifiquen en:</p>
+<ul>
+<li><strong>Ports coneguts</strong> (0-1023): Utilitzats per serveis i aplicacions conegudes, com el port <code>80</code> per a HTTP o el port <code>443</code> per a HTTPS.</li>
+<li><strong>Ports registrats</strong> (1024-49151): Utilitzats per aplicacions i serveis que no són tan comuns.</li>
+<li><strong>Ports dinàmics o privats</strong> (49152-65535): Utilitzats per aplicacions que necessiten un port temporal per a la seva comunicació.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Resum</p>
+<ul>
+<li><strong>Adreça IP</strong>: Identifica un dispositiu en una xarxa.</li>
+<li><strong>Port</strong>: Identifica un servei o aplicació específica en un dispositiu.</li>
+</ul>
+<p>Un exemple de connexió seria <code>192.168.1.1:8080</code>, és a dir, el dispositiu amb IP <code>192.168.1.1</code> i el servei que està corrent en el port <code>8080</code>.</p>
+</div>
+<h2 id="connectant-el-nostre-joc">Connectant el nostre joc</h2>
+<p>Al nostre joc multijugador, necessitem que els client es connecten a la IP del host. Per a a ixò primer hem de modificar el panell de connexió del nostre joc per a que el host mostre la seua IP i els clients puguen introduir la IP del host al que volen connectar-se. </p>
+<p>Crea al panel de connexió un nou <strong>InputField(TexMeshPro)</strong> i un <strong>TextMeshPro</strong> anomenats <strong>IPInputField</strong> i <strong>IPText</strong> respectivament.</p>
+<p>A dins del GameObject Managers crea un nou GameObject anomenat <strong>IPManager</strong> i afegeix-li el següent script:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// IPManager.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">TMPro</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">IPManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IPManager</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">TextMeshProUGUI</span><span class="w"> </span><span class="n">ipText</span><span class="p">;</span>
+<span class="w">    </span><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">TMP_InputField</span><span class="w"> </span><span class="n">ipInput</span><span class="p">;</span>
+
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nf">Destroy</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ipText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetLocalIPs</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetInputIP</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ipInput</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetInputIP</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">ip</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ipInput</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ip</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En primer lloc creem un singleton per a que puguem accedir a aquest objecte, usant el procediment que ja coneixem. </p>
+<p>També creem 2 mètodes per a obtenir i establir el valor de l'InputField.</p>
+<p>El mètode <code>Start()</code> crida al mètode <code>GetLocalIPs()</code>, que té el següent codi:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// IPManager.cs</span>
+
+<span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetLocalIPs</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ipList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// El host pot tindre més d&#39;una IP</span>
+<span class="w">        </span><span class="n">IPAddress</span><span class="p">[]</span><span class="w"> </span><span class="n">addressList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dns</span><span class="p">.</span><span class="n">GetHostAddresses</span><span class="p">(</span><span class="n">Dns</span><span class="p">.</span><span class="n">GetHostName</span><span class="p">());</span>
+<span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">addressList</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="n">AddressFamily</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Sockets</span><span class="p">.</span><span class="n">AddressFamily</span><span class="p">.</span><span class="n">InterNetwork</span><span class="p">)</span><span class="w"> </span><span class="c1">// Només IPv4</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">ipList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ipList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ipList</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;No IP found&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Aquest mètode obté totes les adreces IP associades al dispositiu local i les filtra per a mostrar només les adreces IPv4. Si el dispositiu té més d'una IP, les mostrarà totes separades per comes.</p>
+<p>Arrosseguem el InputField i el TextMeshPro al script per a que es mostren les IPs del host i els clients puguen introduir la IP del host al que volen connectar-se. Comprova que al iniciar el joc es mostren les IPs del host al panell de connexió.</p>
+<p>També hem de modificar el UIManager per a que el botó de connectar cride al mètode <code>GetInputIP()</code> del IPManager i utilitze aquesta IP per a connectar-se al host:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Unity.Netcode</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Unity.Netcode.Transports.UTP</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UIManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">UnityTransport</span><span class="w"> </span><span class="n">utp</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// codi existent...</span>
+<span class="w">        </span><span class="n">utp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">UnityTransport</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsValidIP</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">ip</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">IPAddress</span><span class="w"> </span><span class="n">address</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">HostButtonCallback</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IPManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">GetInputIP</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">IsValidIP</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">IPManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">SetInputIP</span><span class="p">(</span><span class="s">&quot;Invalid IP&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">utp</span><span class="p">.</span><span class="n">SetConnectionData</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="m">7777</span><span class="p">);</span>
+<span class="w">        </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">StartHost</span><span class="p">();</span>
+<span class="w">        </span><span class="n">ShowWaitPannel</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Ací agafem una referència al component <strong>UnityTransport</strong> del nostre NetworkManager, que és el sistema de transport que estem utilitzant per a les connexions de xarxa.</p>
+<p>Al mètode <code>HostButtonCallback()</code>, obtenim la IP introduïda per l'usuari a través del mètode <code>GetInputIP()</code> del IPManager. Comprovem que la IP és vàlida utilitzant el mètode <code>IsValidIP()</code>, que utilitza la classe <code>IPAddress</code> per a validar el format de la IP. Si la IP no és vàlida, mostrem un missatge d'error a l'InputField. Si la IP és vàlida, utilitzem el mètode <code>SetConnectionData()</code> del UnityTransport per a establir la IP i el port al que el host escoltarà les connexions entrants, i després iniciem el host amb <code>StartHost()</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>El port <code>7777</code> és el port per defecte que utilitza Unity Transport, però pots canviar-lo a qualsevol port disponible si ho desitges. Això pots fer-ho al component UnityTransport del teu NetworkManager a l'Inspector. També pots canviar-ho des del codi.</p>
+</div>
+<p>Si ara poses en marxa el joc, veuràs que el panell de connexió mostra la IP. Si introduïxes aquesta IP en el InputField i tries l'opció de host, veurà que al NetworkManager li has establert aquesta IP com a adreça de connexió, i els clients podran connectar-se a aquesta IP per a unir-se al joc multijugador.</p>
+<p>Per a que els client puguen connectar-se al host, hem de modificar també el mètode <code>ClientButtonCallback()</code> del UIManager per a que utilitze la IP introduïda per l'usuari:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UIManager.cs</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClientButtonCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IPManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">GetInputIP</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">IsValidIP</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span><span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">IPManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">SetInputIP</span><span class="p">(</span><span class="s">&quot;Invalid IP&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">utp</span><span class="p">.</span><span class="n">SetConnectionData</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="m">7777</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Singleton</span><span class="p">.</span><span class="n">StartClient</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ShowWaitPannel</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Com pots comprovar, el codi és molt similar al del host, però en aquest cas cridem a <code>StartClient()</code> en lloc de <code>StartHost()</code>. Això farà que el client intente connectar-se a la IP i port especificats per a unir-se al joc multijugador.</p>
+<p>Per a fer les comprovacions finals, compila el joc copia'l a un altre dispositiu de la mateixa xarxa local.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>
