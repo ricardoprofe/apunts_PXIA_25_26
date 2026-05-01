@@ -14,6 +14,8 @@
         <link rel="prev" href="../3.5.%20Mec%C3%A0nica%20del%20joc/">
       
       
+        <link rel="next" href="../../UD4.%20Serveis%20d%27Internet%20per%20a%20videojocs%20en%20l%C3%ADnia/4.1.%20Serveis%20d%27Internet%20per%20a%20Videojocs%20en%20xarxa/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
@@ -598,6 +600,89 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD4. Serveis d'Internet per a videojocs en línia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            UD4. Serveis d'Internet per a videojocs en línia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4.%20Serveis%20d%27Internet%20per%20a%20videojocs%20en%20l%C3%ADnia/4.1.%20Serveis%20d%27Internet%20per%20a%20Videojocs%20en%20xarxa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 4.1. Serveis d'Internet per a Videojocs en xarxa
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4.%20Serveis%20d%27Internet%20per%20a%20videojocs%20en%20l%C3%ADnia/4.2.%20Connexi%C3%B3%20remota%20amb%20codi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unitat 4.2 Connexió remota amb codi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -689,6 +774,7 @@
 <li><strong>LAN (Local Area Network)</strong>: <strong>Xarxa local</strong> que connecta dispositius dins d'una àrea limitada, com una casa o una oficina. Les xarxes local poden ser <strong>cablejades</strong> (<em>Ethernet</em>), <strong>sense fils</strong> (<em>Wi-Fi</em>) o mixtes (<em>Ethernet + Wi-Fi</em>).</li>
 <li><strong>WAN (Wide Area Network)</strong>: Xarxa que cobreix una àrea geogràfica més gran, com Internet.</li>
 </ul>
+<p><img alt="LAN vs WAN" src="../images/lan-wan.webp" /></p>
 <h3 id="adreces-ip">Adreces IP</h3>
 <p>Cada dispositiu en una xarxa té una adreça IP única que l'identifica. Les adreces IP es poden classificar en:</p>
 <ul>
@@ -700,6 +786,7 @@
 <p>La versió 6 del protocol IP es va crear per solucionar el problema de l'esgotament d'adreces IPv4, ja que IPv6 ofereix un nombre molt més gran d'adreces disponibles.</p>
 <p>Encara que IPv6 és el futur de les adreces IP, la majoria de les xarxes encara utilitzen IPv4. En aquesta unitat, ens centrarem en IPv4 per a la connexió del nostre joc.</p>
 </div>
+<p><img alt="IPv4 vs IPv6" src="../images/IPv4-vs-IPv6-ES.webp" /></p>
 <p>Les IPs versió 4 espoden classificar en <strong>públiques</strong> i <strong>privades</strong>. Les adreces IP privades són utilitzades dins de xarxes locals i no són accessibles des d'Internet, mentre que les adreces IP públiques són assignades a dispositius que es connecten directament a Internet.</p>
 <p>Per a que una IP siga privada, ha de pertànyer a un dels següents rangs:</p>
 <ul>
@@ -707,6 +794,7 @@
 <li><code>172.16.0.0</code> - <code>172.31.255.255</code>: totes les IP que comencen per <code>172.16.</code> fins a <code>172.31.</code>.</li>
 <li><code>192.168.0.0</code> - <code>192.168.255.255</code>: totes les IP que comencen per <code>192.168.</code>.</li>
 </ul>
+<p><img alt="IP Privada vs Pública" src="../images/ip_pub.webp" /></p>
 <h3 id="ports">Ports</h3>
 <p>A més de l'adreça IP, les connexions de xarxa també utilitzen <strong>ports</strong> per a identificar els serveis o aplicacions específiques que s'executen en un dispositiu. Un port és un número de 16 bits que va des del <code>0</code> fins al <code>65535</code>. Els ports es classifiquen en:</p>
 <ul>
@@ -720,8 +808,10 @@
 <li><strong>Adreça IP</strong>: Identifica un dispositiu en una xarxa.</li>
 <li><strong>Port</strong>: Identifica un servei o aplicació específica en un dispositiu.</li>
 </ul>
-<p>Un exemple de connexió seria <code>192.168.1.1:8080</code>, és a dir, el dispositiu amb IP <code>192.168.1.1</code> i el servei que està corrent en el port <code>8080</code>.</p>
+<p>Un exemple de connexió seria <code>192.168.1.1:8080</code>, és a dir, el dispositiu amb IP <code>192.168.1.1</code> i el servei que està corrent en el port <code>8080</code>.
+Aquesta combinació de IP i port també s'anomena <strong>socket</strong>.</p>
 </div>
+<p><img alt="Adreça IP i Port" src="../images/IP-Address-Vs.-Port-Number.webp" /></p>
 <h2 id="connectant-el-nostre-joc">Connectant el nostre joc</h2>
 <p>Al nostre joc multijugador, necessitem que els client es connecten a la IP del host. Per a a ixò primer hem de modificar el panell de connexió del nostre joc per a que el host mostre la seua IP i els clients puguen introduir la IP del host al que volen connectar-se. </p>
 <p>Crea al panel de connexió un nou <strong>InputField(TexMeshPro)</strong> i un <strong>TextMeshPro</strong> anomenats <strong>IPInputField</strong> i <strong>IPText</strong> respectivament.</p>
