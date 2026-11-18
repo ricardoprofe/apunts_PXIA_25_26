@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,8 +10,6 @@
       
         <link rel="prev" href="../2.1.%20Introducci%C3%B3%20al%20pathfinding%20copy/">
       
-      
-        <link rel="next" href="../2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -42,8 +37,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -57,7 +52,17 @@
     
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -98,7 +103,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -121,43 +126,6 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
     
   </nav>
   
@@ -175,7 +143,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -192,7 +160,7 @@
     Programació en Xarxa i Intel·ligència Artificial
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -229,7 +197,7 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -247,7 +215,7 @@
             <span class="md-nav__icon md-icon"></span>
             U02.  IA i aprenentatge automàtic
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -318,7 +286,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#configuracio-del-projecte" class="md-nav__link">
@@ -371,312 +339,6 @@
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2.3.%20Pathfinding%202D%20amb%20f%C3%ADsiques%20copy/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 2.3. Pathfinding 2D amb físiques
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2.4.%20Pathfinding%203D%20amb%20AI%20Navigation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 2.4. Pathfinding 3D amb AI Navigation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2.5.%20Machine%20Learning/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 2.5. Machine Learning
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    UD3. Programació en xarxa client servidor orientada a videojocs multijugador
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            UD3. Programació en xarxa client servidor orientada a videojocs multijugador
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.1.%20Conceptes%20de%20Xarxes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 3.1. Conceptes bàsics de xarxes aplicats a videojocs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.2.%20Joc%20en%20xarxa%20amb%20Netcode/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 3.2. Joc en xarxa amb Netcode
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.3.%20Netcode%20RPCs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 3.3 Netcode i RPCs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.4.%20Estats%20del%20joc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 3.4 Estats del joc
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.5.%20Mec%C3%A0nica%20del%20joc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 3.5 Mecànica del joc
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD3.%20Programaci%C3%B3%20en%20xarxa%20client-servidor%20orientada%20a%20videojocs%20multijugador/3.6.%20Connectant/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 3.6 Connectant
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    UD4. Serveis d'Internet per a videojocs en línia
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            UD4. Serveis d'Internet per a videojocs en línia
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD4.%20Serveis%20d%27Internet%20per%20a%20videojocs%20en%20l%C3%ADnia/4.1.%20Serveis%20d%27Internet%20per%20a%20Videojocs%20en%20xarxa/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 4.1. Serveis d'Internet per a Videojocs en xarxa
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UD4.%20Serveis%20d%27Internet%20per%20a%20videojocs%20en%20l%C3%ADnia/4.2.%20Connexi%C3%B3%20remota%20amb%20codi/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Unitat 4.2 Connexió remota amb codi
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -692,7 +354,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -708,7 +370,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#configuracio-del-projecte" class="md-nav__link">
@@ -772,14 +434,14 @@
 <h2 id="configuracio-del-projecte">Configuració del projecte</h2>
 <p>Descarregueu el projecte base des del següent enllaç: <a href="https://github.com/ricardoprofe/pacman_ia_base_PXIA_25_26/tree/main">Enllaç al projecte base</a>.</p>
 <p>Un cop descarregat, obriu-lo amb Unity. Veureu que és el clàssic Pacman.</p>
-<p><img alt="Pacman" src="../images/pacman1.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/pacman1.png" data-title="Pacman" data-desc-position="bottom"><img alt="Pacman" src="../images/pacman1.png"></a></p>
 <p>Ara, descarregueu el paquet del A* Pathfinding Project des del següent enllaç:</p>
 <ul>
 <li><a href="https://arongranberg.com/astar/download">A* Pathfinding Project</a></li>
 </ul>
 <p>Descarregueu la versió gratuïta.</p>
 <p>Importeu el paquet descarregat al vostre projecte de Unity, fent doble click o arrossegant-lo a la finestra de Unity dins de la carpeta "Packages". Deixeu totes les opcions per defecte seleccionades i feu click a "Import".</p>
-<p><img alt="Importar paquet" src="../images/import1.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/import1.png" data-title="Importar paquet" data-desc-position="bottom"><img alt="Importar paquet" src="../images/import1.png"></a></p>
 <h2 id="afegir-component-de-pathfinding">Afegir component de pathfinding</h2>
 <p>Per afegir el component de pathfinding al vostre escenari, primer creem un <em>GameObject</em> buit. Nomeneu-lo <strong>"A*"</strong>.</p>
 <p>Seleccioneu el <em>GameObject</em> <strong>"A*"</strong> i feu click a "Add Component". Cerqueu "Pathfinder" i afegiu-lo.</p>
@@ -798,9 +460,9 @@
 <li><em>Obstacle layer mask</em>: Obstacle. Això farà que el pathfinding considere com a obstacles tots els objectes que estiguin en la capa "Obstacle".</li>
 <li><em>Height testing</em>: desactivat. Això desactiva la comprovació d'altura, ja que estem treballant en 2D.</li>
 </ul>
-<p><img alt="A* Configuració" src="../images/a_config1.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/a_config1.png" data-title="A* Configuració" data-desc-position="bottom"><img alt="A* Configuració" src="../images/a_config1.png"></a></p>
 <p>Un cop fet això, feu click a "Scan" per generar el graf de navegació. Us haurà generat una graella blava sobre l'escenari amb els possibles camins.</p>
-<p><img alt="Graella de navegació" src="../images/pacman2.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/pacman2.png" data-title="Graella de navegació" data-desc-position="bottom"><img alt="Graella de navegació" src="../images/pacman2.png"></a></p>
 <h2 id="afegir-components-de-pathfinding-als-fantasmes">Afegir components de pathfinding als fantasmes</h2>
 <p>Selecioneu el fantasma roig (Ghost_blinky) i feu click a "Add Component". Cerqueu "AIPath (2D,3D)" i afegiu-lo. Veureu que us ha afegit dos components nous: <strong>AIPath</strong> i <strong>Seeker</strong>.</p>
 <p>En el component <strong>AIPath</strong>, configureu els següents paràmetres:</p>
@@ -811,15 +473,15 @@
 </ul>
 <p>Ara afegiu un component més: feu click a "Add Component", cerqueu "AI Destination Setter" i afegiu-lo. Afegiu el gameobject Pacman al camp <strong>Target</strong> del component.</p>
 <p>Si poseu en marxa el joc, veureu que el fantasma comença a perseguir el Pacman utilitzant el pathfinding.</p>
-<p>N'hi ha 3 paràmetres més que podem ajustar:</p>
+<p>N'hi ha 3 paràmetres més que podem ajustar en <strong><code>AI Path</code></strong>:</p>
 <ul>
 <li><em>Slowdown distance</em>: distància a la qual el fantasma comença a frenar quan s'acosta a la seva destinació: 0.</li>
 <li><em>Pick next waypoint distance</em>: distància a la qual el fantasma considera que ha arribat a un punt de pas i comença a moure's cap al següent: 2.</li>
 <li><em>End reached distance</em>: distància a la qual el fantasma considera que ha arribat a la seva destinació final: 2.5.</li>
 </ul>
-<p><img alt="Configuració fantasma" src="../images/a_config2.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/a_config2.png" data-title="Configuració fantasma" data-desc-position="bottom"><img alt="Configuració fantasma" src="../images/a_config2.png"></a></p>
 <p>Si poseu en marxa el joc, veureu que el fantasma persegueix el Pacman utilitzant el pathfinding. Fixeu-vos en el gizmo que marca el camí que està seguint el fantasma.</p>
-<p><img alt="Fantasma perseguint" src="../images/pacman3.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/pacman3.png" data-title="Fantasma perseguint" data-desc-position="bottom"><img alt="Fantasma perseguint" src="../images/pacman3.png"></a></p>
 <h2 id="programacio-de-la-ia-per-codi">Programació de la IA per codi</h2>
 <p>En aquest apartat, programarem la IA del fantasma per codi.</p>
 <p>Obre l'script <strong>GhostMovement.cs</strong>.</p>
@@ -832,22 +494,22 @@
 <li><a href="https://arongranberg.com/astar/documentation/4_2_17_c030646a/aidestinationsetter.html">AIDestinationSetter</a>: component que estableix la destinació d'una entitat.</li>
 </ul>
 <p>El primer serà importar el <em>namespace</em> <strong><code>Pathfinding</code></strong>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Pathfinding</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
-<p>Després crearem 2 propietats públiques per al Pacman i per a un punt de cera (target) que serà el pròxim punt del camí:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
-<span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">pacman</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
-<p>target serà el primer objectiu del fantasma; quan arribe a ell, el següent objectiu serà el Pacman.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Pathfinding</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Després crearem 2 propietats públiques per al Pacman i per a un punt de cerca (target) que serà el pròxim punt del camí:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">pacman</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>target</code> serà el primer objectiu del fantasma; quan arribe a ell, el següent objectiu serà el Pacman.</p>
 <p>També necessitem referències als components <code>IAstarAI</code> i <code>AIDestinationSetter</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">IAstarAI</span><span class="w"> </span><span class="n">ai</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="n">AIDestinationSetter</span><span class="w"> </span><span class="n">destinationSetter</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><code>ai</code> ens proporciona les funcionalitats bàsiques per a moure el fantasma, mentre que <code>destinationSetter</code> ens permetrà establir la destinació del fantasma.</p>
 <p>El següent pas serà inicialitzar aquestes referències dins del mètode <code>Start()</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -866,9 +528,10 @@
 
 <span class="w">    </span><span class="n">ResetState</span><span class="p">();</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-<p>Finalment, dins del mètode <code>Update()</code>, comprovararem si el fantasma ha arribat al seu objectiu actual. Si és així, actualitzarem l'objectiu a Pacman:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Amb aquest codi, establim la destinació inicial del fantasma al punt de cerca (target) i assignem aquest punt al component <code>AIDestinationSetter</code>.</p>
+<p>Finalment, dins del mètode <code>Update()</code>, comprovarem si el fantasma ha arribat al seu objectiu actual. Si és així, actualitzarem l'objectiu a Pacman:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -877,32 +540,32 @@
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ai</span><span class="p">.</span><span class="n">reachedDestination</span><span class="p">){</span>
-<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Reached&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">"Reached"</span><span class="p">);</span>
 <span class="w">        </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pacman</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-<p>Ara hem de crear un GameObject buit dins de l'escena i anomenar-lo <code>target01</code>. Col·loca'l en el cantó superior dreta de l'escena, en un lloc accessible per al fantasma. Després, assigna aquest GameObject a la propietat <strong>Target</strong> del script <strong>GhostMovement</strong> del fantasma roig. Assigna també el Pacman a la propietat <strong>Pacman</strong>.</p>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Ara hem de crear un GameObject buit dins de l'escena i anomenar-lo <code>Target01</code>. Col·loca'l en el cantó superior dreta de l'escena, en un lloc accessible per al fantasma. Després, assigna aquest GameObject a la propietat <strong>Target</strong> del script <strong>GhostMovement</strong> del fantasma roig. Assigna també el Pacman a la propietat <strong>Pacman</strong>.</p>
 <p>Posa en marxa el joc i comprova que el fantasma es mou cap al punt de cerca primer i després comença a perseguir el Pacman.</p>
 <h2 id="afegint-punts-de-cerca">Afegint punts de cerca</h2>
-<p>Ara afegirem més punts de cerca perquè el fantasma no vage directament al Pacman després d'arribar al primer punt.
-La forma més eficient de fer-ho és crear un array de punts de cerca i anar actualitzant l'objectiu a mesura que el fantasma arribe a cada punt.</p>
-<p>Actualitza les propietats públiques per a que siguen un array de punts de cerca. També necessitem una propietat privada per a portar el compte de l'índex del punt de cerca actual:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>Ara afegirem més punts de cerca perquè el fantasma no vaja directament al Pacman després d'arribar al primer punt.</p>
+<p>La forma més eficient de fer-ho és crear un array de punts de cerca i anar actualitzant l'objectiu a mesura que el fantasma arribe a cada punt.</p>
+<p>Actualitza la propietat <code>target</code> per a que siga un array de punts de cerca. També necessitem una propietat privada per a portar el compte de l'índex del punt de cerca actual:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="p">[]</span><span class="w"> </span><span class="n">targets</span><span class="p">;</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="na">[SerializeField]</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Transform</span><span class="p">[]</span><span class="w"> </span><span class="n">targets</span><span class="p">;</span>
 
 <span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">currentTargetIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>En l'inspector, crea un Empty Object anomenat <code>BlinkyTargets</code> i mou dins el <code>target_01</code>. Duplica el target per a crear 3 punts de cerca més (<code>target_02</code>, <code>target_03</code> i <code>target_04</code>). Col·loca'ls en diferents llocs de l'escena tal com s'indica en la imatge:</p>
-<p><img alt="Targets" src="../images/targets01.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/targets01.png" data-title="Targets" data-desc-position="bottom"><img alt="Targets" src="../images/targets01.png"></a></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Pots afegir als targets un component sprite renderer per a veure'ls millor en l'escena. Recorda desactivar aquest component abans de posar en marxa el joc.</p>
 </div>
 <p>Assigna els 4 targets a l'array <strong>Targets</strong> del script <strong>GhostMovement</strong> del fantasma roig.</p>
 <p>Com estem treballant amb un array de punts de cerca, necessitem canviar la inicialització del primer objectiu dins del mètode <code>Start()</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -921,9 +584,9 @@ La forma més eficient de fer-ho és crear un array de punts de cerca i anar act
 
 <span class="w">    </span><span class="n">ResetState</span><span class="p">();</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Per a actualitzar l'objectiu quan el fantasma arribe a un punt de cerca, actualitza el mètode <code>Update()</code> de la següent manera:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -948,11 +611,11 @@ La forma més eficient de fer-ho és crear un array de punts de cerca i anar act
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>En aquest mètode, comprovem si el fantasma ha arribat a la seva destinació actual. Si és així, verifiquem si l'índex del punt de cerca actual és l'últim de l'array. Si ho és, ha arribat al final de l'array i establim l'objectiu a Pacman. Si no ho és, incrementem l'índex del punt de cerca i actualitzem l'objectiu al següent punt de cerca de l'array.</p>
 <p>Posa en marxa el joc i comprova que el fantasma es mou pels punts de cerca abans de perseguir el Pacman.</p>
 <p>Per finalitzar, hem de fer que el destí s'actualitze després de la mort del Pacman, quan es torne a iniciar el joc. Creem el mètode <code>ResetDestination()</code> que s'encarregarà de reiniciar l'índex del punt de cerca i establir el destí al primer punt de cerca:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -961,9 +624,9 @@ La forma més eficient de fer-ho és crear un array de punts de cerca i anar act
 <span class="w">    </span><span class="n">currentTargetIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
 <span class="w">    </span><span class="n">destinationSetter</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targets</span><span class="p">[</span><span class="n">currentTargetIndex</span><span class="p">];</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Aquest mètode es cridarà des del script <strong>Ghost.cs</strong>, dins del mètode <code>ResetState()</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1004,9 +667,9 @@ La forma més eficient de fer-ho és crear un array de punts de cerca i anar act
 <span class="w">        </span><span class="n">initialBehavior</span><span class="p">.</span><span class="n">Enable</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Per últim, comprova que, en l'script GameManager.cs, dins del mètode <code>ResetState()</code>, es crida el mètode <code>ResetState()</code> del Pacman abans que el dels fantasmes, per evitar errors:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1025,7 +688,7 @@ La forma més eficient de fer-ho és crear un array de punts de cerca i anar act
 <span class="w">        </span><span class="n">ghosts</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ResetState</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Ja està! Posa en marxa el joc i comprova que, després de la mort del Pacman, els fantasma roig torna a moure's pels punts de cerca abans de perseguir-lo de nou.</p>
 <h2 id="tasques">Tasques</h2>
 <ul>
@@ -1076,5 +739,7 @@ La forma més eficient de fer-ho és crear un array de punts de cerca i anar act
       <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
